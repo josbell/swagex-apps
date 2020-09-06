@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogRef
+} from '@angular/material/dialog';
 
 export interface Tile {
   color: string;
@@ -41,7 +46,16 @@ export class FloorSpotSelectionComponent implements OnInit {
     { id: 19, available: true },
     { id: 20, available: true }
   ];
-  constructor() {}
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialogRef: MatDialogRef<FloorSpotSelectionComponent>
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('FloorSpotSelectionComponent data', this.data);
+  }
+
+  onSelection(id: string) {
+    this.dialogRef.close(id);
+  }
 }

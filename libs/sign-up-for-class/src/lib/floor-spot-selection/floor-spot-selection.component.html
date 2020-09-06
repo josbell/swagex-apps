@@ -14,11 +14,11 @@
     fxShow
     fxHide.gt-sm
   >
-    <button mat-mini-fab fxFlex="18">1</button>
-    <button mat-mini-fab fxFlex="18">2</button>
+    <button mat-mini-fab fxFlex="18" (click)="onSelection('1')">1</button>
+    <button mat-mini-fab fxFlex="18" (click)="onSelection('2')">2</button>
     <div id="teacher-space" fxFlex="grow">Teacher</div>
-    <button mat-mini-fab fxFlex="18">3</button>
-    <button mat-mini-fab fxFlex="18">4</button>
+    <button mat-mini-fab fxFlex="18" (click)="onSelection('3')">3</button>
+    <button mat-mini-fab fxFlex="18" (click)="onSelection('4')">4</button>
   </div>
 
   <div
@@ -30,11 +30,11 @@
     fxHide
     fxShow.gt-sm
   >
-    <button mat-raised-button fxFlex="18">1</button>
-    <button mat-raised-button fxFlex="18">2</button>
+    <button mat-raised-button fxFlex="18" (click)="onSelection('1')">1</button>
+    <button mat-raised-button fxFlex="18" (click)="onSelection('2')">2</button>
     <div id="teacher-space" fxFlex="grow">Teacher</div>
-    <button mat-raised-button fxFlex="18">3</button>
-    <button mat-raised-button fxFlex="18">4</button>
+    <button mat-raised-button fxFlex="18" (click)="onSelection('3')">3</button>
+    <button mat-raised-button fxFlex="18" (click)="onSelection('4')">4</button>
   </div>
 
   <div
@@ -46,12 +46,12 @@
     fxFlex="grow"
     fxLayoutGap="10px"
   >
-    <button mat-mini-fab fxFlex>5</button>
-    <button mat-mini-fab fxFlex>6</button>
-    <button mat-mini-fab fxFlex>7</button>
-    <button mat-mini-fab fxFlex>8</button>
-    <button mat-mini-fab fxFlex>9</button>
-    <button mat-mini-fab fxFlex>10</button>
+    <button mat-mini-fab fxFlex (click)="onSelection('5')">5</button>
+    <button mat-mini-fab fxFlex (click)="onSelection('6')">6</button>
+    <button mat-mini-fab fxFlex (click)="onSelection('7')">7</button>
+    <button mat-mini-fab fxFlex (click)="onSelection('8')">8</button>
+    <button mat-mini-fab fxFlex (click)="onSelection('9')">9</button>
+    <button mat-mini-fab fxFlex (click)="onSelection('10')">10</button>
   </div>
 
   <div
@@ -65,12 +65,12 @@
     fxHide
     fxShow.gt-sm
   >
-    <button mat-raised-button fxFlex>5</button>
-    <button mat-raised-button fxFlex>6</button>
-    <button mat-raised-button fxFlex>7</button>
-    <button mat-raised-button fxFlex>8</button>
-    <button mat-raised-button fxFlex>9</button>
-    <button mat-raised-button fxFlex>10</button>
+    <button mat-raised-button fxFlex (click)="onSelection('5')">5</button>
+    <button mat-raised-button fxFlex (click)="onSelection('6')">6</button>
+    <button mat-raised-button fxFlex (click)="onSelection('7')">7</button>
+    <button mat-raised-button fxFlex (click)="onSelection('8')">8</button>
+    <button mat-raised-button fxFlex (click)="onSelection('9')">9</button>
+    <button mat-raised-button fxFlex (click)="onSelection('10')">10</button>
   </div>
 
   <div
@@ -82,11 +82,11 @@
     fxFlex="grow"
     fxLayoutGap="10px"
   >
-    <button mat-mini-fab fxFlex>11</button>
-    <button mat-mini-fab fxFlex>12</button>
-    <button mat-mini-fab fxFlex>13</button>
-    <button mat-mini-fab fxFlex>14</button>
-    <button mat-mini-fab fxFlex>15</button>
+    <button mat-mini-fab fxFlex (click)="onSelection('11')">11</button>
+    <button mat-mini-fab fxFlex (click)="onSelection('12')">12</button>
+    <button mat-mini-fab fxFlex (click)="onSelection('13')">13</button>
+    <button mat-mini-fab fxFlex (click)="onSelection('14')">14</button>
+    <button mat-mini-fab fxFlex (click)="onSelection('15')">15</button>
   </div>
 
   <div
@@ -100,11 +100,11 @@
     fxHide
     fxShow.gt-sm
   >
-    <button mat-raised-button fxFlex>11</button>
-    <button mat-raised-button fxFlex>12</button>
-    <button mat-raised-button fxFlex>13</button>
-    <button mat-raised-button fxFlex>14</button>
-    <button mat-raised-button fxFlex>15</button>
+    <button mat-raised-button fxFlex (click)="onSelection('11')">11</button>
+    <button mat-raised-button fxFlex (click)="onSelection('12')">12</button>
+    <button mat-raised-button fxFlex (click)="onSelection('13')">13</button>
+    <button mat-raised-button fxFlex (click)="onSelection('14')">14</button>
+    <button mat-raised-button fxFlex (click)="onSelection('15')">15</button>
   </div>
 
   <div
@@ -117,10 +117,10 @@
     fxHide.gt-sm
   >
     <span fxFlex></span>
-    <button mat-mini-fab fxFlex>16</button>
-    <button mat-mini-fab fxFlex>17</button>
-    <button mat-mini-fab fxFlex>18</button>
-    <button mat-mini-fab fxFlex>19</button>
+    <button mat-mini-fab fxFlex (click)="onSelection('16')">16</button>
+    <button mat-mini-fab fxFlex (click)="onSelection('17')">17</button>
+    <button mat-mini-fab fxFlex (click)="onSelection('18')">18</button>
+    <button mat-mini-fab fxFlex (click)="onSelection('19')">19</button>
     <button mat-mini-fab fxFlex>20</button>
   </div>
 
@@ -134,10 +134,10 @@
     fxShow.gt-sm
   >
     <div mat-raised-button fxFlex></div>
-    <button mat-raised-button fxFlex>16</button>
-    <button mat-raised-button fxFlex>17</button>
-    <button mat-raised-button fxFlex>18</button>
-    <button mat-raised-button fxFlex>19</button>
-    <button mat-raised-button fxFlex>20</button>
+    <button mat-raised-button fxFlex (click)="onSelection('16')">16</button>
+    <button mat-raised-button fxFlex (click)="onSelection('17')">17</button>
+    <button mat-raised-button fxFlex (click)="onSelection('18')">18</button>
+    <button mat-raised-button fxFlex (click)="onSelection('19')">19</button>
+    <button mat-raised-button fxFlex (click)="onSelection('20')">20</button>
   </div>
 </div>
