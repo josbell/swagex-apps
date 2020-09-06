@@ -6,14 +6,14 @@
     fxLayoutGap="30px"
   >
     <swagex-material-card
-      *ngFor="let card of classes"
+      *ngFor="let class of classes"
       fxFlex="33.33"
-      [title]="card.title"
-      [actionButtons]="card.actionButtons"
-      [imageUrl]="card.imageUrl"
-      [description]="card.description"
+      [title]="class.title"
+      [actionButtons]="class.actionButtons"
+      [imageUrl]="class.imageUrl"
+      [description]="class.description"
     >
-      <button mat-button (click)="openBottomSheet()">
+      <button mat-button (click)="onBookClassClick(class.id)">
         Book Class
       </button>
     </swagex-material-card>

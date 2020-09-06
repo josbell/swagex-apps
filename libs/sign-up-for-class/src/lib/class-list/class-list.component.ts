@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CardConfig } from '@swagex/common-ui/web-components';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { SelectClassDateTimeComponent } from '../select-class-date-time/select-class-date-time.component';
 
 interface ClassCard extends CardConfig {
+  id: string;
   instructor: string;
   time: string;
   nextClass: string;
@@ -16,9 +17,12 @@ interface ClassCard extends CardConfig {
 })
 export class ClassListComponent implements OnInit {
   @Input('backgroundGray') public backgroundGray;
+  @Output() public bookClassClicked: EventEmitter<string> = new EventEmitter();
+
   constructor(private _bottomSheet: MatBottomSheet) {}
   classes: ClassCard[] = [
     {
+      id: '1',
       title: 'Reggaeton Basic',
       subtitle: 'Express Yourself',
       imageUrl:
@@ -30,6 +34,7 @@ export class ClassListComponent implements OnInit {
       actionButtons: [{ id: 'more', label: 'More' }]
     },
     {
+      id: '2',
       title: 'Reggaeton Advanced',
       subtitle: 'Express Yourself more intensely',
       imageUrl:
@@ -44,7 +49,7 @@ export class ClassListComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  openBottomSheet(): void {
-    this._bottomSheet.open(SelectClassDateTimeComponent);
+  onBookClassClick(id: string): void {
+    this.bookClassClicked.emit(id);
   }
 }
