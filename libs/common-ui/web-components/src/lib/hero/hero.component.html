@@ -1,0 +1,15 @@
+<video
+  *ngIf="videoUrl"
+  fxHide
+  fxShow.gt-sm
+  id="hero-video"
+  playsinline
+  autoplay
+  [muted]="true"
+  loop
+>
+  <source src="{{ videoUrl }}" type="video/mp4" />
+</video>
+<div fxLayout="column" class="hero-text">
+  <ng-content></ng-content>
+</div>

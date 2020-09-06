@@ -1,0 +1,42 @@
+<section class="grid-container">
+  <mat-toolbar
+    [color]="toolbarColor ? null : 'primary'"
+    [ngStyle]="{ 'background-color': toolbarColor }"
+    class="header"
+    role="heading"
+    flexLayout
+  >
+    <button fxHide.gt-sm mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mlw-header></mlw-header>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="content-container">
+    <mat-sidenav
+      fxHide.gt-sm
+      #snav
+      mode="side"
+      class="side-nav"
+      disableClose="false"
+      [fixedInViewport]="true"
+      fixedTopGap="70"
+      fixedBottomGap="70"
+    >
+      <mat-nav-list>
+        <ng-container *ngFor="let item of configService.menuItems">
+          <mlw-side-nav-item
+            [item]="item"
+            [depth]="0"
+            (closeMenu)="snav.close()"
+          ></mlw-side-nav-item>
+        </ng-container>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="main-content">
+      <mlw-content></mlw-content>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  <mlw-footer></mlw-footer>
+</section>

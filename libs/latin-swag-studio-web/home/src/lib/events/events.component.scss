@@ -1,0 +1,33 @@
+@import 'theme_variables';
+@import 'variables';
+:host {
+  background-color: rgba(0, 0, 0, 0.024);
+  .section-heading {
+    margin-bottom: 35px;
+  }
+  .primary-color {
+    color: $primary;
+  }
+  .event-row {
+    padding: 25px 0px;
+  }
+
+  .vertical-divider {
+    border-width: 1px;
+    height: 50px;
+  }
+
+  img {
+    border-radius: 50%;
+    max-height: 100px;
+    margin-right: 15px;
+  }
+
+  a {
+    color: $primary;
+    margin-top: 25px;
+    &:hover {
+      color: rgba(0, 0, 0, 0.54);
+    }
+  }
+}

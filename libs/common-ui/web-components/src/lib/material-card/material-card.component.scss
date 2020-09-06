@@ -1,0 +1,16 @@
+@import 'theme_variables';
+@import 'variables';
+
+:host {
+  img {
+    height: 360px;
+    object-fit: cover;
+  }
+
+  mat-card-content {
+    mat-divider {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+  }
+}

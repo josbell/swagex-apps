@@ -1,0 +1,33 @@
+$hero-height: 65vh;
+
+:host {
+  height: $hero-height;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background-color: black;
+  video {
+    width: 100vw;
+    position: absolute;
+  }
+  .hero-text {
+    z-index: 2;
+  }
+}
+
+@supports (clip-path: none) {
+  :host.diagonal-hero {
+    clip-path: polygon(0% 15%, 100% 0%, 100% 85%, 0% 100%);
+    z-index: 1;
+    .hero-text {
+      -webkit-transform: skewY(-3deg);
+      -moz-transform: skewY(-3deg);
+      -ms-transform: skewY(-3deg);
+      -o-transform: skewY(-3deg);
+      transform: skewY(-3deg);
+    }
+  }
+}

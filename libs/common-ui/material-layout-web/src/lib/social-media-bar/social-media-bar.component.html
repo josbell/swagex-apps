@@ -1,0 +1,7 @@
+<a
+  *ngFor="let icon of configService.socialIcons"
+  [href]="icon.link"
+  [title]="icon.alt"
+>
+  <img class="top-image" [src]="icon.imageFile" [alt]="icon.alt" />
+</a>

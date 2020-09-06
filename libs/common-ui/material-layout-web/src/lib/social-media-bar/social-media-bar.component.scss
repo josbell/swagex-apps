@@ -1,0 +1,11 @@
+:host {
+  min-height: 20px;
+  max-width: 100%;
+
+  .top-image {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+}

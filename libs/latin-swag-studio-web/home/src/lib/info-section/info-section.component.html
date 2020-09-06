@@ -1,0 +1,36 @@
+<section
+  class="home-section container"
+  [ngClass]="{ 'light-gray': backgroundGray }"
+  fxLayout="column"
+>
+  <div class="section-header">
+    <h2>About Our Studio</h2>
+    <p>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat unde
+      inventore molestias ab adipisci eius nisi placeat at.
+    </p>
+  </div>
+  <div
+    fxLayout="row"
+    fxLayout.lt-sm="column"
+    fxLayoutWrap="nowrap"
+    fxLayoutGap="30px"
+  >
+    <swagex-material-card
+      *ngFor="let card of cards"
+      fxFlex="33.33"
+      [title]="card.title"
+      [actionButtons]="card.actionButtons"
+      [imageUrl]="card.imageUrl"
+      [description]="card.description"
+    >
+      <button mat-icon-button>
+        <mat-icon class="text-muted">link</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon class="text-muted">share</mat-icon>
+      </button></swagex-material-card
+    >
+  </div>
+  <!-- <img fxFlex="50" src="/assets/images/about-us-img.jpg" class="responsive" /> -->
+</section>

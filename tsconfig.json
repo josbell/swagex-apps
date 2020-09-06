@@ -1,0 +1,34 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@swagex/common-ui/material-layout-web": [
+        "libs/common-ui/material-layout-web/src/index.ts"
+      ],
+      "@swagex/common-ui/material": ["libs/common-ui/material/src/index.ts"],
+      "@swagex/latin-swag-studio-web/home": [
+        "libs/latin-swag-studio-web/home/src/index.ts"
+      ],
+      "@swagex/common-ui/styles": ["libs/common-ui/styles/src/index.ts"],
+      "@swagex/common-ui/web-components": [
+        "libs/common-ui/web-components/src/index.ts"
+      ],
+      "@swagex/sign-up-for-class": ["libs/sign-up-for-class/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

@@ -1,0 +1,117 @@
+@import 'theme_variables';
+@import 'variables';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #fff;
+  margin-top: 65px;
+  position: relative;
+
+  swagex-hero {
+    .mat-display-1 {
+      line-height: 3vw;
+      font-size: 3vw;
+    }
+
+    .mat-display-4 {
+      line-height: 20vw;
+      font-size: 25vw;
+      font-weight: 500;
+      margin-left: -20px;
+    }
+
+    .mat-display-4,
+    .mat-display-1 {
+      color: white;
+      margin: 0;
+    }
+  }
+
+  lsw-info-section,
+  lsw-events,
+  lsw-reviews {
+    padding: 80px 0;
+  }
+
+  // .info-section,
+  // .upcoming-events,
+  // .welcome-offer {
+  //   margin-top: -100px;
+  //   position: relative;
+  //   color: white;
+  //   display: flex;
+  //   text-align: center;
+  //   flex-direction: column;
+  //   justify-content: center;
+  //   align-items: center;
+  //   padding: 100px 20px 50px 20px;
+  //   background-color: $primary;
+  // }
+
+  // .info-section {
+  //   position: relative;
+  //   padding: 100px 20px;
+  //   display: flex;
+  //   flex-direction: row;
+  //   justify-content: center;
+  //   align-items: center;
+
+  //   swagex-material-card {
+  //     &:not(:first-child) {
+  //       margin-left: 100px;
+  //     }
+  //   }
+  // }
+
+  // .upcoming-events {
+  //   position: relative;
+  //   margin: 100px 0px;
+  //   padding: 20px;
+  //   .section-heading {
+  //     display: flex;
+  //     flex-direction: column;
+  //     justify-content: flex-start;
+  //     .mat-headline {
+  //       margin-bottom: 0;
+  //     }
+  //   }
+  // }
+
+  .dance-styles {
+    color: white;
+    position: relative;
+    padding: 100px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: url('/assets/images/info-section-background-img.jpg') no-repeat
+      center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    .heading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 50px;
+      .mat-display-2 {
+        margin: 0;
+      }
+    }
+    .style-grid {
+      // Refactor  with Grid
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      img {
+        border-radius: 50%;
+        margin-bottom: 50px;
+      }
+    }
+  }
+}

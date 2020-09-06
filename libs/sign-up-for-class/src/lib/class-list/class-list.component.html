@@ -1,0 +1,21 @@
+<section class="home-section container" fxLayout="column">
+  <div
+    fxLayout="row"
+    fxLayout.lt-sm="column"
+    fxLayoutWrap="nowrap"
+    fxLayoutGap="30px"
+  >
+    <swagex-material-card
+      *ngFor="let card of classes"
+      fxFlex="33.33"
+      [title]="card.title"
+      [actionButtons]="card.actionButtons"
+      [imageUrl]="card.imageUrl"
+      [description]="card.description"
+    >
+      <button mat-button (click)="openBottomSheet()">
+        Book Class
+      </button>
+    </swagex-material-card>
+  </div>
+</section>

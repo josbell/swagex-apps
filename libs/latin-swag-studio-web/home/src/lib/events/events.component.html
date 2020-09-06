@@ -1,0 +1,56 @@
+<section fxLayout="column" class="upcoming-events container">
+  <span fxLayout="column" class="section-heading">
+    <span class="mat-headline m-0">Upcoming Events</span>
+    <span class="mat-subheading-2 primary-color">Time to dance</span>
+  </span>
+
+  <mat-divider></mat-divider>
+  <ng-container *ngFor="let event of events; last as last; first as isFirst">
+    <div class="event-row" fxLayout fxLayoutAlign="space-around center">
+      <div fxLayout="column">
+        <span class="mat-body-strong">{{ event.date }} </span>
+        <span class="text-muted">{{ event.year }}</span>
+      </div>
+      <mat-divider
+        class="vertical-divider"
+        [vertical]="true"
+        [inset]="true"
+      ></mat-divider>
+      <div fxLayout>
+        <img [src]="event.imageUrl" class="responsive" />
+        <span fxLayout="column" fxLayoutAlign="center">
+          <span class="mat-body-strong">{{ event.name }}</span>
+          <span class="text-muted">{{ event.location }}</span>
+        </span>
+      </div>
+      <mat-divider
+        class="vertical-divider"
+        [vertical]="true"
+        [inset]="true"
+      ></mat-divider>
+      <div fxLayout="column">
+        <span class="mat-body-strong">{{ event.weekday }}</span>
+        <span class="text-muted">{{ event.time }}</span>
+      </div>
+      <mat-divider
+        class="vertical-divider"
+        [vertical]="true"
+        [inset]="true"
+      ></mat-divider>
+      <div fxLayout="column">
+        <span class="mat-body-strong">${{ event.cost }}</span>
+        <span class="text-muted">{{ event.qty }}</span>
+      </div>
+      <mat-divider
+        class="vertical-divider"
+        [vertical]="true"
+        [inset]="true"
+      ></mat-divider>
+      <div fxLayout="column" fxLayoutAlign="center center">
+        <button mat-flat-button color="accent">Learn More</button>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+  </ng-container>
+  <a href="">View More...</a>
+</section>

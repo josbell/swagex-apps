@@ -1,0 +1,40 @@
+{
+  "npmScope": "swagex",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "latin-swag-studio-web": {
+      "tags": ["app"]
+    },
+    "latin-swag-studio-web-e2e": {
+      "tags": ["app"],
+      "implicitDependencies": ["latin-swag-studio-web"]
+    },
+    "common-ui-material-layout-web": {
+      "tags": ["shared"]
+    },
+    "common-ui-material": {
+      "tags": ["shared"]
+    },
+    "latin-swag-studio-web-home": {
+      "tags": ["feature:shared"]
+    },
+    "common-ui-styles": {
+      "tags": ["shared"]
+    },
+    "common-ui-web-components": {
+      "tags": ["shared"]
+    },
+    "sign-up-for-class": {
+      "tags": []
+    }
+  }
+}

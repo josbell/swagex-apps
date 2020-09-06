@@ -1,0 +1,9 @@
+@import "theme_variables";
+@import "variables";
+
+:host {
+  &:hover {
+    background-color: $accent;
+    color: black;
+  }
+}

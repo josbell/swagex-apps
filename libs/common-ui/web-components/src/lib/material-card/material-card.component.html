@@ -1,0 +1,16 @@
+<mat-card class="p-0 m-0">
+  <img mat-card-image [src]="imageUrl" [alt]="alt" />
+  <mat-card-content>
+    <h5>
+      <strong
+        ><a href="">{{ title }}</a></strong
+      >
+    </h5>
+    <p>
+      {{ description }}
+    </p>
+
+    <mat-divider></mat-divider>
+    <ng-content></ng-content>
+  </mat-card-content>
+</mat-card>
