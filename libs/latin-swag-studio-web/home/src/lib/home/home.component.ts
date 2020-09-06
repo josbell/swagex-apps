@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  heroVideoUrl = '/assets/hero_video.mp4';
+  heroVideoUrl = '/assets/josbell-zouk.mp4';
 
   styles = [
     'Jazz Funk',

@@ -26,7 +26,6 @@ import { SelectClassDateTimeComponent } from './select-class-date-time/select-cl
     FiltersComponent,
     FloorSpotSelectionComponent,
     SignUpForClassComponent,
-    FiltersComponent,
     FloorSpotSelectionComponent,
     HomeComponent,
     SelectClassDateTimeComponent
