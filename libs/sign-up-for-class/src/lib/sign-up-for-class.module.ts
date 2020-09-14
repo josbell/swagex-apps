@@ -5,6 +5,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { CommonUiMaterialModule } from '@swagex/common-ui/material';
 import { CommonUiWebComponentsModule } from '@swagex/common-ui/web-components';
+import { PaymentModule } from '@swagex/payment';
 
 import { ClassListComponent } from './class-list/class-list.component';
 import { FiltersComponent } from './filters/filters.component';
@@ -19,7 +20,8 @@ import { SelectClassDateTimeComponent } from './select-class-date-time/select-cl
     RouterModule,
     CommonUiMaterialModule,
     FlexLayoutModule,
-    CommonUiWebComponentsModule
+    CommonUiWebComponentsModule,
+    PaymentModule
   ],
   declarations: [
     ClassListComponent,

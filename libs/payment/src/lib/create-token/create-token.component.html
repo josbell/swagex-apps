@@ -1,0 +1,29 @@
+<div
+  ngxStripeCardGroup
+  [formGroup]="stripeTest"
+  [elementsOptions]="elementsOptions"
+  fxLayout="column"
+  fxLayoutAlign="center"
+>
+  <ngx-stripe-card-number
+    fxFlex
+    fxFill
+    containerClass="stripe-input"
+    [options]="cardOptions"
+  ></ngx-stripe-card-number>
+  <span fxLayout fxLayoutAlign="center">
+    <ngx-stripe-card-expiry
+      fxFlex
+      containerClass="stripe-input"
+      [options]="cardOptions"
+    ></ngx-stripe-card-expiry>
+    <ngx-stripe-card-cvc
+      fxFlex
+      containerClass="stripe-input"
+      [options]="cardOptions"
+    ></ngx-stripe-card-cvc>
+  </span>
+  <button mat-raised-button type="submit" (click)="pay()" color="primary">
+    PAY $15.00
+  </button>
+</div>

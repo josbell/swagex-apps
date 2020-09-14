@@ -27,7 +27,8 @@
       "@swagex/common-ui/web-components": [
         "libs/common-ui/web-components/src/index.ts"
       ],
-      "@swagex/sign-up-for-class": ["libs/sign-up-for-class/src/index.ts"]
+      "@swagex/sign-up-for-class": ["libs/sign-up-for-class/src/index.ts"],
+      "@swagex/payment": ["libs/payment/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

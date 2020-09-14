@@ -4,6 +4,7 @@ import {
   MatDialog,
   MatDialogRef
 } from '@angular/material/dialog';
+import { StripePaymentsService } from '@swagex/payment';
 
 export interface Tile {
   color: string;
@@ -48,7 +49,8 @@ export class FloorSpotSelectionComponent implements OnInit {
   ];
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public dialogRef: MatDialogRef<FloorSpotSelectionComponent>
+    public dialogRef: MatDialogRef<FloorSpotSelectionComponent>,
+    public paymentService: StripePaymentsService
   ) {}
 
   ngOnInit(): void {
@@ -57,5 +59,6 @@ export class FloorSpotSelectionComponent implements OnInit {
 
   onSelection(id: string) {
     this.dialogRef.close(id);
+    this.paymentService.createCheckoutSession();
   }
 }
