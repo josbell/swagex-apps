@@ -3,7 +3,7 @@ import { CardConfig } from '@swagex/common-ui/web-components';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { SelectClassDateTimeComponent } from '../select-class-date-time/select-class-date-time.component';
 
-interface ClassCard extends CardConfig {
+export interface ClassCard extends CardConfig {
   id: string;
   instructor: string;
   time: string;
@@ -17,7 +17,10 @@ interface ClassCard extends CardConfig {
 })
 export class ClassListComponent implements OnInit {
   @Input('backgroundGray') public backgroundGray;
-  @Output() public bookClassClicked: EventEmitter<string> = new EventEmitter();
+  @Output() public bookClassClicked: EventEmitter<{
+    id: string;
+    title: string;
+  }> = new EventEmitter();
 
   constructor(private _bottomSheet: MatBottomSheet) {}
   classes: ClassCard[] = [
@@ -49,7 +52,7 @@ export class ClassListComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onBookClassClick(id: string): void {
-    this.bookClassClicked.emit(id);
+  onBookClassClick({ id, title }) {
+    this.bookClassClicked.emit({ id, title });
   }
 }

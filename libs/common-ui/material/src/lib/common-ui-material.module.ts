@@ -13,6 +13,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [],
@@ -30,7 +32,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatCheckboxModule,
     MatTabsModule,
     MatBottomSheetModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     MatButtonModule,
@@ -45,7 +49,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatCheckboxModule,
     MatTabsModule,
     MatBottomSheetModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class CommonUiMaterialModule {}

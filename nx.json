@@ -18,6 +18,13 @@
       "tags": ["app"],
       "implicitDependencies": ["latin-swag-studio-web"]
     },
+    "eys-studio-web": {
+      "tags": ["app"]
+    },
+    "eys-studio-web-e2e": {
+      "tags": ["app"],
+      "implicitDependencies": ["eys-studio-web"]
+    },
     "common-ui-material-layout-web": {
       "tags": ["shared"]
     },

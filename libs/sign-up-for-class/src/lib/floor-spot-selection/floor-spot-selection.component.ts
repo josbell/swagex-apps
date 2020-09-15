@@ -47,18 +47,13 @@ export class FloorSpotSelectionComponent implements OnInit {
     { id: 19, available: true },
     { id: 20, available: true }
   ];
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    public dialogRef: MatDialogRef<FloorSpotSelectionComponent>,
-    public paymentService: StripePaymentsService
-  ) {}
+  constructor(public paymentService: StripePaymentsService) {}
 
   ngOnInit(): void {
-    console.log('FloorSpotSelectionComponent data', this.data);
+    console.log('FloorSpotSelectionComponent data');
   }
 
   onSelection(id: string) {
-    this.dialogRef.close(id);
     this.paymentService.createCheckoutSession();
   }
 }

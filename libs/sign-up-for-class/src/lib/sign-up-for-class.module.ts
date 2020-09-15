@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Route } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { CommonUiMaterialModule } from '@swagex/common-ui/material';
@@ -13,6 +13,8 @@ import { FloorSpotSelectionComponent } from './floor-spot-selection/floor-spot-s
 import { SignUpForClassComponent } from './sign-up-for-class/sign-up-for-class.component';
 import { HomeComponent } from './home/home.component';
 import { SelectClassDateTimeComponent } from './select-class-date-time/select-class-date-time.component';
+import { BookClassSpotsComponent } from './book-class-spots/book-class-spots.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   imports: [
@@ -31,8 +33,14 @@ import { SelectClassDateTimeComponent } from './select-class-date-time/select-cl
     FiltersComponent,
     FloorSpotSelectionComponent,
     HomeComponent,
-    SelectClassDateTimeComponent
+    SelectClassDateTimeComponent,
+    BookClassSpotsComponent
   ],
-  exports: [SignUpForClassComponent, ClassListComponent]
+  providers: [MatDatepickerModule],
+  exports: [
+    SignUpForClassComponent,
+    ClassListComponent,
+    BookClassSpotsComponent
+  ]
 })
 export class SignUpForClassModule {}
