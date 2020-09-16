@@ -1,4 +1,5 @@
-<div id="mirror">Mirror</div>
+<div id="mirror"><span class="text-muted">Mirror</span></div>
+
 <div
   class="floor-spots-container"
   fxLayout="column"
@@ -16,7 +17,10 @@
   >
     <button mat-mini-fab fxFlex="18" (click)="onSelection('1')">1</button>
     <button mat-mini-fab fxFlex="18" (click)="onSelection('2')">2</button>
-    <div id="teacher-space" fxFlex="grow">Teacher</div>
+    <div id="teacher-space" fxFlex="grow">
+      <mat-icon aria-hidden="false" aria-label="teacher icon">person</mat-icon>
+      Teacher
+    </div>
     <button mat-mini-fab fxFlex="18" (click)="onSelection('3')">3</button>
     <button mat-mini-fab fxFlex="18" (click)="onSelection('4')">4</button>
   </div>
@@ -36,7 +40,14 @@
     <button mat-raised-button fxFlex="18" (click)="onSelection('2')">
       2
     </button>
-    <div id="teacher-space" fxFlex="grow">Teacher</div>
+    <div
+      id="teacher-space"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      fxFlex="grow"
+    >
+      <mat-icon aria-hidden="false" aria-label="teacher icon">person</mat-icon>
+    </div>
     <button mat-raised-button fxFlex="18" (click)="onSelection('3')">
       3
     </button>

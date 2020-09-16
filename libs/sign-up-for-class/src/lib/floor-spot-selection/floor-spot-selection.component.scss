@@ -1,17 +1,24 @@
-:host {
-  #mirror {
-    margin: 20px auto;
-    text-align: center;
-    border: 3px dashed grey;
-    border-radius: 5px;
-    padding: 15px;
-  }
+@import 'theme_variables';
+@import 'variables';
 
-  #teacher-space {
-    text-align: center;
-  }
+#mirror {
+  margin: 20px auto;
+  text-align: center;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  padding: 15px;
+}
 
-  .floor-spots-container {
-    height: 40vh;
-  }
+#teacher-space {
+  text-align: center;
+}
+
+.floor-spots-container {
+  height: 40vh;
+}
+
+.mat-icon {
+  font-size: 60px;
+  height: 60px;
+  width: 60px;
 }

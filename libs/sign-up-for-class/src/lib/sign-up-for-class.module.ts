@@ -15,6 +15,19 @@ import { HomeComponent } from './home/home.component';
 import { SelectClassDateTimeComponent } from './select-class-date-time/select-class-date-time.component';
 import { BookClassSpotsComponent } from './book-class-spots/book-class-spots.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ReactiveFormsModule } from '@angular/forms';
+
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'LL'
+  },
+  display: {
+    dateInput: 'YYYY-MM-DD',
+    monthYearLabel: 'YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'YYYY'
+  }
+};
 
 @NgModule({
   imports: [
@@ -23,7 +36,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     CommonUiMaterialModule,
     FlexLayoutModule,
     CommonUiWebComponentsModule,
-    PaymentModule
+    PaymentModule,
+    ReactiveFormsModule
   ],
   declarations: [
     ClassListComponent,

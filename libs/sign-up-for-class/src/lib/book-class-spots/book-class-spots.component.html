@@ -1,9 +1,50 @@
 <section class="home-section container" fxLayout="column">
-  <mat-form-field appearance="fill">
-    <mat-label>Choose a date</mat-label>
-    <input matInput [matDatepicker]="picker" />
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
+  <mat-card fxLayout fxLayoutAlign="space-around center">
+    <div fxLayout="column" fxFlex.gt-sm="20">
+      <mat-form-field appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" [formControl]="initialDate" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Number of Guests</mat-label>
+        <mat-select [(value)]="selected" required>
+          <mat-option
+            *ngFor="let number of numberOfGuestsOptions"
+            [value]="number"
+          >
+            {{ number }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <mat-list fxHide fxShow.gt-sm>
+      <mat-list-item>
+        <mat-icon mat-list-icon color="primary">groups</mat-icon>
+        <h5 matLine><b>Class</b></h5>
+        <p matLine>Reggaeton Advanced</p>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon mat-list-icon color="primary">person</mat-icon>
+        <h5 matLine><b>Instructor</b></h5>
+        <p matLine>Edwins</p>
+      </mat-list-item>
+    </mat-list>
+    <mat-list fxHide fxShow.gt-sm>
+      <mat-list-item>
+        <mat-icon mat-list-icon color="primary">access_time</mat-icon>
+        <h5 matLine><b>When</b></h5>
+        <p matLine>8:30pm</p>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon mat-list-icon color="primary">location_on</mat-icon>
+        <h5 matLine><b>Where</b></h5>
+        <p matLine>7640 NW 25th ST #110</p>
+        <p matLine>Miami, Florida 33122</p>
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
   <swagex-floor-spot-selection></swagex-floor-spot-selection>
 </section>
