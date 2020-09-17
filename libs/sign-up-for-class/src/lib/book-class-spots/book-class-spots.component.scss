@@ -3,5 +3,16 @@
   position: relative;
   section {
     padding: 100px 20px 50px 20px;
+    .mat-icon-mobile {
+      font-size: 50px;
+      height: 50px;
+      width: 0;
+    }
+    mat-datepicker-toggle {
+      display: inline-block;
+    }
+    mat-list {
+      margin-top: -35px;
+    }
   }
 }

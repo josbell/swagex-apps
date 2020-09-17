@@ -17,8 +17,22 @@
   height: 40vh;
 }
 
-.mat-icon {
-  font-size: 60px;
-  height: 60px;
-  width: 60px;
+#row-1 {
+  .mat-icon {
+    font-size: 60px;
+    height: 60px;
+    width: 60px;
+  }
+}
+
+#row-1-mobile {
+  .mat-icon {
+    font-size: 40px;
+    height: 40px;
+    width: 40px;
+  }
+}
+
+.footer {
+  margin-top: 30px;
 }

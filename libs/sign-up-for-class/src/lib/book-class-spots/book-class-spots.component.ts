@@ -19,4 +19,8 @@ export class BookClassSpotsComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  previousDate() {}
+
+  nextDate() {}
 }

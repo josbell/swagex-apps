@@ -19,7 +19,6 @@
     <button mat-mini-fab fxFlex="18" (click)="onSelection('2')">2</button>
     <div id="teacher-space" fxFlex="grow">
       <mat-icon aria-hidden="false" aria-label="teacher icon">person</mat-icon>
-      Teacher
     </div>
     <button mat-mini-fab fxFlex="18" (click)="onSelection('3')">3</button>
     <button mat-mini-fab fxFlex="18" (click)="onSelection('4')">4</button>
@@ -159,4 +158,14 @@
     <button mat-raised-button fxFlex (click)="onSelection('19')">19</button>
     <button mat-raised-button fxFlex (click)="onSelection('20')">20</button>
   </div>
+</div>
+<div class="footer" fxLayout fxLayoutAlign="end stretch">
+  <button
+    fxFlex.lt-md="100"
+    fxFlex.gt-sm="nogrow"
+    mat-raised-button
+    color="primary"
+  >
+    Book Class
+  </button>
 </div>
