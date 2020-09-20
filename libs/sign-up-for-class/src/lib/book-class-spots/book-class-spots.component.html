@@ -1,5 +1,10 @@
 <section class="home-section container" fxLayout="column" *ngIf="class">
-  <mat-card fxLayout.gt-md fxLayoutAlign.gt-md="space-around center">
+  <mat-card
+    fxLayout="column"
+    fxLayout.gt-xs="row"
+    fxLayoutAlign="space-between start"
+    fxLayoutAlign.gt-xs="space-around center"
+  >
     <div
       *ngIf="allowChangeDatesAndNumberOfGuests"
       class="controls-column"
