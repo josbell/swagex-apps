@@ -1,17 +1,12 @@
 <section class="home-section container" fxLayout="column">
-  <div
-    fxLayout="row"
-    fxLayout.lt-sm="column"
-    fxLayoutWrap="nowrap"
-    fxLayoutGap="30px"
-  >
+  <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="30px">
     <swagex-material-card
-      *ngFor="let class of classes"
-      fxFlex="33.33"
+      fxFlex="20"
+      *ngFor="let class of classStoreService.danceClasses | async"
       [title]="class.title"
-      [actionButtons]="class.actionButtons"
-      [imageUrl]="class.imageUrl"
-      [description]="class.description"
+      [actionButtons]="actionButtons"
+      imageUrl="/assets/images/dance-classes/{{ class.id }}.jpg"
+      [description]="class.shortDescription"
     >
       <button mat-button (click)="onBookClassClick(class)">
         Book Class

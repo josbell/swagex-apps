@@ -45,6 +45,9 @@
     },
     "payment": {
       "tags": []
+    },
+    "shared-models": {
+      "tags": ["shared"]
     }
   }
 }

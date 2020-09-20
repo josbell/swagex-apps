@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CardConfig } from '@swagex/common-ui/web-components';
-import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { SelectClassDateTimeComponent } from '../select-class-date-time/select-class-date-time.component';
+import { DanceClassStoreApi } from '../model';
 
 export interface ClassCard extends CardConfig {
   id: string;
@@ -21,34 +20,39 @@ export class ClassListComponent implements OnInit {
     id: string;
     title: string;
   }> = new EventEmitter();
+  actionButtons = [{ id: 'more', label: 'More' }];
+  classes;
 
-  constructor(private _bottomSheet: MatBottomSheet) {}
-  classes: ClassCard[] = [
-    {
-      id: '1',
-      title: 'Reggaeton Basic',
-      subtitle: 'Express Yourself',
-      imageUrl:
-        'https://dance-studio.cmsmasters.net/wp-content/uploads/2015/04/1.jpg',
-      description: 'Shake your booty',
-      instructor: 'Suly',
-      time: '7:30pm Tuesday',
-      nextClass: 'August 25',
-      actionButtons: [{ id: 'more', label: 'More' }]
-    },
-    {
-      id: '2',
-      title: 'Reggaeton Advanced',
-      subtitle: 'Express Yourself more intensely',
-      imageUrl:
-        'https://dance-studio.cmsmasters.net/wp-content/uploads/2015/04/1.jpg',
-      description: 'Shake your booty intensely',
-      instructor: 'Edwins',
-      time: '8:30pm Tuesday',
-      nextClass: 'August 25',
-      actionButtons: [{ id: 'more', label: 'More' }]
-    }
-  ];
+  constructor(public classStoreService: DanceClassStoreApi) {
+    // this.classes = this.classStoreService.danceClasses;
+  }
+
+  // classes: ClassCard[] = [
+  //   {
+  //     id: '1',
+  //     title: 'Reggaeton Basic',
+  //     subtitle: 'Express Yourself',
+  //     imageUrl:
+  //       'https://dance-studio.cmsmasters.net/wp-content/uploads/2015/04/1.jpg',
+  //     description: 'Shake your booty',
+  //     instructor: 'Suly',
+  //     time: '7:30pm Tuesday',
+  //     nextClass: 'August 25',
+  //     actionButtons: [{ id: 'more', label: 'More' }]
+  //   },
+  //   {
+  //     id: '2',
+  //     title: 'Reggaeton Advanced',
+  //     subtitle: 'Express Yourself more intensely',
+  //     imageUrl:
+  //       'https://dance-studio.cmsmasters.net/wp-content/uploads/2015/04/1.jpg',
+  //     description: 'Shake your booty intensely',
+  //     instructor: 'Edwins',
+  //     time: '8:30pm Tuesday',
+  //     nextClass: 'August 25',
+  //     actionButtons: [{ id: 'more', label: 'More' }]
+  //   }
+  // ];
 
   ngOnInit(): void {}
 

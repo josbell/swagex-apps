@@ -159,7 +159,12 @@
     <button mat-raised-button fxFlex (click)="onSelection('20')">20</button>
   </div>
 </div>
-<div class="footer" fxLayout fxLayoutAlign="end stretch">
+<div
+  class="footer"
+  fxLayout
+  fxLayoutAlign="end stretch"
+  *ngIf="allowChangeDatesAndNumberOfGuests"
+>
   <button
     fxFlex.lt-md="100"
     fxFlex.gt-sm="nogrow"

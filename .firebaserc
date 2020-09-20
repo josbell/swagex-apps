@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "eys-dance-studio": {
+      "hosting": {
+        "eys-studio-web": [
+          "eys-dance-studio"
+        ]
+      }
+    }
+  }
+}

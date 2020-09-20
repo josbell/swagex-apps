@@ -26,9 +26,13 @@
               "apps/latin-swag-studio-web/src/assets"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": ["libs/common-ui/styles/src/lib"]
+              "includePaths": [
+                "libs/common-ui/styles/src/lib"
+              ]
             },
-            "styles": ["apps/latin-swag-studio-web/src/styles.scss"],
+            "styles": [
+              "apps/latin-swag-studio-web/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -86,7 +90,10 @@
               "apps/latin-swag-studio-web/tsconfig.app.json",
               "apps/latin-swag-studio-web/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/latin-swag-studio-web/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/latin-swag-studio-web/**"
+            ]
           }
         },
         "test": {
@@ -97,6 +104,10 @@
             "passWithNoTests": true,
             "setupFile": "apps/latin-swag-studio-web/src/test-setup.ts"
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     },
@@ -121,7 +132,9 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/latin-swag-studio-web-e2e/tsconfig.e2e.json"],
+            "tsConfig": [
+              "apps/latin-swag-studio-web-e2e/tsconfig.e2e.json"
+            ],
             "exclude": [
               "**/node_modules/**",
               "!apps/latin-swag-studio-web-e2e/**"
@@ -143,7 +156,10 @@
               "libs/utils/tsconfig.lib.json",
               "libs/utils/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/utils/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/utils/**"
+            ]
           }
         },
         "test": {
@@ -169,7 +185,10 @@
               "libs/feature/api/tsconfig.lib.json",
               "libs/feature/api/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/feature/api/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/feature/api/**"
+            ]
           }
         },
         "test": {
@@ -195,7 +214,10 @@
               "libs/feature/shared/tsconfig.lib.json",
               "libs/feature/shared/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/feature/shared/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/feature/shared/**"
+            ]
           }
         },
         "test": {
@@ -221,7 +243,10 @@
               "libs/feature/lazy/tsconfig.lib.json",
               "libs/feature/lazy/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/feature/lazy/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/feature/lazy/**"
+            ]
           }
         },
         "test": {
@@ -247,7 +272,10 @@
               "libs/ui/tsconfig.lib.json",
               "libs/ui/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/ui/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ui/**"
+            ]
           }
         },
         "test": {
@@ -273,7 +301,10 @@
               "libs/ui/web-layout-material/tsconfig.lib.json",
               "libs/ui/web-layout-material/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/ui/web-layout-material/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ui/web-layout-material/**"
+            ]
           }
         },
         "test": {
@@ -340,7 +371,10 @@
               "libs/common-ui/material/tsconfig.lib.json",
               "libs/common-ui/material/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/common-ui/material/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/common-ui/material/**"
+            ]
           }
         },
         "test": {
@@ -407,7 +441,10 @@
               "libs/common-ui/styles/tsconfig.lib.json",
               "libs/common-ui/styles/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/common-ui/styles/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/common-ui/styles/**"
+            ]
           }
         },
         "test": {
@@ -468,7 +505,10 @@
               "libs/sign-up-for-class/tsconfig.lib.json",
               "libs/sign-up-for-class/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/sign-up-for-class/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/sign-up-for-class/**"
+            ]
           }
         },
         "test": {
@@ -500,7 +540,10 @@
               "libs/payment/tsconfig.lib.json",
               "libs/payment/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/payment/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/payment/**"
+            ]
           }
         },
         "test": {
@@ -543,7 +586,14 @@
               "apps/eys-studio-web/src/favicon.ico",
               "apps/eys-studio-web/src/assets"
             ],
-            "styles": ["apps/eys-studio-web/src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "libs/common-ui/styles/src/lib"
+              ]
+            },
+            "styles": [
+              "apps/eys-studio-web/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -601,7 +651,10 @@
               "apps/eys-studio-web/tsconfig.app.json",
               "apps/eys-studio-web/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/eys-studio-web/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/eys-studio-web/**"
+            ]
           }
         },
         "test": {
@@ -612,6 +665,10 @@
             "passWithNoTests": true,
             "setupFile": "apps/eys-studio-web/src/test-setup.ts"
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     },
@@ -636,8 +693,42 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/eys-studio-web-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/eys-studio-web-e2e/**"]
+            "tsConfig": [
+              "apps/eys-studio-web-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/eys-studio-web-e2e/**"
+            ]
+          }
+        }
+      }
+    },
+    "shared-models": {
+      "root": "libs/shared-models",
+      "sourceRoot": "libs/shared-models/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared-models/tsconfig.lib.json",
+              "libs/shared-models/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared-models/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared-models/jest.config.js",
+            "tsConfig": "libs/shared-models/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }

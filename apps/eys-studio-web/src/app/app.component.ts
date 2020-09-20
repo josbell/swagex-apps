@@ -3,6 +3,7 @@ import {
   LayoutService,
   LayoutConfig
 } from '@swagex/common-ui/material-layout-web';
+import { DanceClassesService } from './dance-classes.service';
 
 @Component({
   selector: 'swagex-root',
@@ -12,7 +13,10 @@ import {
 export class AppComponent {
   title = 'Eys Studio';
 
-  constructor(configService: LayoutService) {
+  constructor(
+    configService: LayoutService,
+    private classService: DanceClassesService
+  ) {
     const frameworkConfig: LayoutConfig = {
       title: this.title,
       toolbarColor: '#fff',

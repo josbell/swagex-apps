@@ -1,9 +1,10 @@
-<section class="home-section container" fxLayout="column">
+<section class="home-section container" fxLayout="column" *ngIf="class">
   <mat-card fxLayout.gt-md fxLayoutAlign.gt-md="space-around center">
     <div
+      *ngIf="allowChangeDatesAndNumberOfGuests"
       class="controls-column"
       fxLayout="column"
-      fxLayoutAlign.lt-md="center stretch"
+      fxLayoutAlign.lt-sm="center stretch"
     >
       <span fxLayout fxLayoutAlign="space-around stretch">
         <mat-icon
@@ -77,24 +78,24 @@
       </span>
     </div>
 
-    <mat-list class="first-info-column" fxHide fxShow.gt-sm>
+    <mat-list class="first-info-column">
       <mat-list-item>
         <mat-icon mat-list-icon color="primary">groups</mat-icon>
         <h5 matLine><b>Class</b></h5>
-        <p matLine>Reggaeton Advanced</p>
+        <p matLine>{{ class.title }}</p>
       </mat-list-item>
       <mat-list-item>
         <mat-icon mat-list-icon color="primary">person</mat-icon>
         <h5 matLine><b>Instructor</b></h5>
-        <p matLine>Edwins</p>
+        <p matLine>{{ class.instructor }}</p>
       </mat-list-item>
     </mat-list>
 
-    <mat-list class="second-info-column" fxHide fxShow.gt-sm>
+    <mat-list class="second-info-column">
       <mat-list-item>
         <mat-icon mat-list-icon color="primary">access_time</mat-icon>
         <h5 matLine><b>When</b></h5>
-        <p matLine>8:30pm</p>
+        <p matLine>{{ class.time }}</p>
       </mat-list-item>
       <mat-list-item>
         <mat-icon mat-list-icon color="primary">location_on</mat-icon>
