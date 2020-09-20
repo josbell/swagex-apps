@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
 import { ActivatedRoute } from '@angular/router';
+import { DanceClass } from '@swagex/shared-models';
 import { switchMap } from 'rxjs/operators';
 
 import { AppDateAdapter, APP_DATE_FORMATS } from '../format-date-picker';
@@ -17,7 +18,7 @@ import { DanceClassStoreApi } from '../model';
   ]
 })
 export class BookClassSpotsComponent implements OnInit {
-  class;
+  class: DanceClass;
   allowChangeDatesAndNumberOfGuests: boolean = false;
   numberOfGuestsOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   selected = 1;

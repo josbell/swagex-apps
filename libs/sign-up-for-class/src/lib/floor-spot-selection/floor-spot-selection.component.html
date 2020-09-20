@@ -8,36 +8,115 @@
 >
   <div
     id="row-1-mobile"
-    class="row"
+    class="row row-mobile"
     fxLayout
     fxFlex="grow"
     fxLayoutGap="10px"
     fxShow
     fxHide.gt-xs
   >
-    <button mat-mini-fab fxFlex="18" (click)="onSelection('1')">1</button>
-    <button mat-mini-fab fxFlex="18" (click)="onSelection('2')">2</button>
+    <button
+      mat-mini-fab
+      fxFlex="18"
+      [disabled]="bookedSpacesModel['1']"
+      (click)="onSelection('1')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['1']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['1']">1</span>
+    </button>
+    <button
+      mat-mini-fab
+      fxFlex="18"
+      [disabled]="bookedSpacesModel['2']"
+      (click)="onSelection('2')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['2']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['2']">2</span>
+    </button>
     <div id="teacher-space" fxFlex="grow">
-      <mat-icon aria-hidden="false" aria-label="teacher icon">person</mat-icon>
+      <mat-icon
+        class="instructor-icon"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >person</mat-icon
+      >
     </div>
-    <button mat-mini-fab fxFlex="18" (click)="onSelection('3')">3</button>
-    <button mat-mini-fab fxFlex="18" (click)="onSelection('4')">4</button>
+    <button
+      mat-mini-fab
+      fxFlex="18"
+      [disabled]="bookedSpacesModel['3']"
+      (click)="onSelection('3')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['3']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['3']">3</span>
+    </button>
+    <button
+      mat-mini-fab
+      fxFlex="18"
+      [disabled]="bookedSpacesModel['4']"
+      (click)="onSelection('4')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['4']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['4']">4</span>
+    </button>
   </div>
 
   <div
     id="row-1"
-    class="row"
+    class="row row-web"
     fxLayout
     fxFlex="grow"
     fxLayoutGap="10px"
     fxHide
     fxShow.gt-xs
   >
-    <button mat-raised-button fxFlex="18" (click)="onSelection('1')">
-      1
+    <button
+      mat-raised-button
+      fxFlex="18"
+      [disabled]="bookedSpacesModel['1']"
+      (click)="onSelection('1')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['1']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['1']">1</span>
     </button>
-    <button mat-raised-button fxFlex="18" (click)="onSelection('2')">
-      2
+    <button
+      [disabled]="bookedSpacesModel['2']"
+      mat-raised-button
+      fxFlex="18"
+      (click)="onSelection('2')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['2']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['2']">2</span>
     </button>
     <div
       id="teacher-space"
@@ -45,36 +124,141 @@
       fxLayoutAlign="center center"
       fxFlex="grow"
     >
-      <mat-icon aria-hidden="false" aria-label="teacher icon">person</mat-icon>
+      <mat-icon
+        aria-hidden="false"
+        class="instructor-icon"
+        aria-label="teacher icon"
+        >person</mat-icon
+      >
     </div>
-    <button mat-raised-button fxFlex="18" (click)="onSelection('3')">
-      3
+    <button
+      [disabled]="bookedSpacesModel['3']"
+      mat-raised-button
+      fxFlex="18"
+      (click)="onSelection('3')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['3']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['3']">3</span>
     </button>
-    <button mat-raised-button fxFlex="18" (click)="onSelection('4')">
-      4
+    <button
+      mat-raised-button
+      fxFlex="18"
+      [disabled]="bookedSpacesModel['4']"
+      (click)="onSelection('4')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['4']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['4']">4</span>
     </button>
   </div>
 
   <div
     id="row-2-mobile"
-    class="row"
+    class="row row-mobile"
     fxLayout
     fxShow
     fxHide.gt-xs
     fxFlex="grow"
     fxLayoutGap="10px"
   >
-    <button mat-mini-fab fxFlex (click)="onSelection('5')">5</button>
-    <button mat-mini-fab fxFlex (click)="onSelection('6')">6</button>
-    <button mat-mini-fab fxFlex (click)="onSelection('7')">7</button>
-    <button mat-mini-fab fxFlex (click)="onSelection('8')">8</button>
-    <button mat-mini-fab fxFlex (click)="onSelection('9')">9</button>
-    <button mat-mini-fab fxFlex (click)="onSelection('10')">10</button>
+    <button
+      [disabled]="bookedSpacesModel['5']"
+      mat-mini-fab
+      fxFlex
+      (click)="onSelection('5')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['5']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['5']">5</span>
+    </button>
+    <button
+      mat-mini-fab
+      fxFlex
+      [disabled]="bookedSpacesModel['6']"
+      (click)="onSelection('6')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['6']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['6']">6</span>
+    </button>
+    <button
+      [disabled]="bookedSpacesModel['7']"
+      mat-mini-fab
+      fxFlex
+      (click)="onSelection('7')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['7']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['7']">7</span>
+    </button>
+    <button
+      mat-mini-fab
+      fxFlex
+      [disabled]="bookedSpacesModel['8']"
+      (click)="onSelection('8')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['8']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['8']">8</span>
+    </button>
+    <button
+      mat-mini-fab
+      fxFlex
+      [disabled]="bookedSpacesModel['9']"
+      (click)="onSelection('9')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['9']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['9']">9</span>
+    </button>
+    <button
+      mat-mini-fab
+      fxFlex
+      [disabled]="bookedSpacesModel['10']"
+      (click)="onSelection('10')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['10']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['10']">10</span>
+    </button>
   </div>
 
   <div
     id="row-2"
-    class="row"
+    class="row row-web"
     fxLayout
     fxShow
     fxHide.gt-xs
@@ -83,33 +267,176 @@
     fxHide
     fxShow.gt-sm
   >
-    <button mat-raised-button fxFlex (click)="onSelection('5')">5</button>
-    <button mat-raised-button fxFlex (click)="onSelection('6')">6</button>
-    <button mat-raised-button fxFlex (click)="onSelection('7')">7</button>
-    <button mat-raised-button fxFlex (click)="onSelection('8')">8</button>
-    <button mat-raised-button fxFlex (click)="onSelection('9')">9</button>
-    <button mat-raised-button fxFlex (click)="onSelection('10')">10</button>
+    <button
+      mat-raised-button
+      fxFlex
+      [disabled]="bookedSpacesModel['5']"
+      (click)="onSelection('5')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['5']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['5']">5</span>
+    </button>
+    <button
+      mat-raised-button
+      fxFlex
+      [disabled]="bookedSpacesModel['6']"
+      (click)="onSelection('6')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['6']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['6']">6</span>
+    </button>
+    <button
+      mat-raised-button
+      fxFlex
+      [disabled]="bookedSpacesModel['7']"
+      (click)="onSelection('7')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['7']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['7']">7</span>
+    </button>
+    <button
+      mat-raised-button
+      fxFlex
+      [disabled]="bookedSpacesModel['8']"
+      (click)="onSelection('8')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['8']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['8']">8</span>
+    </button>
+    <button
+      mat-raised-button
+      fxFlex
+      [disabled]="bookedSpacesModel['9']"
+      (click)="onSelection('9')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['9']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['9']">9</span>
+    </button>
+    <button
+      mat-raised-button
+      fxFlex
+      [disabled]="bookedSpacesModel['10']"
+      (click)="onSelection('10')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['10']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['10']">10</span>
+    </button>
   </div>
 
   <div
     id="row-3-mobile"
-    class="row"
+    class="row row-mobile"
     fxLayout
     fxShow
     fxHide.gt-xs
     fxFlex="grow"
     fxLayoutGap="10px"
   >
-    <button mat-mini-fab fxFlex (click)="onSelection('11')">11</button>
-    <button mat-mini-fab fxFlex (click)="onSelection('12')">12</button>
-    <button mat-mini-fab fxFlex (click)="onSelection('13')">13</button>
-    <button mat-mini-fab fxFlex (click)="onSelection('14')">14</button>
-    <button mat-mini-fab fxFlex (click)="onSelection('15')">15</button>
+    <button
+      mat-mini-fab
+      fxFlex
+      [disabled]="bookedSpacesModel['11']"
+      (click)="onSelection('11')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['11']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['11']">11</span>
+    </button>
+    <button
+      mat-mini-fab
+      fxFlex
+      [disabled]="bookedSpacesModel['12']"
+      (click)="onSelection('12')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['12']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['12']">12</span>
+    </button>
+    <button
+      mat-mini-fab
+      fxFlex
+      [disabled]="bookedSpacesModel['13']"
+      (click)="onSelection('13')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['13']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['13']">13</span>
+    </button>
+    <button
+      mat-mini-fab
+      fxFlex
+      [disabled]="bookedSpacesModel['14']"
+      (click)="onSelection('14')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['14']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['14']">14</span>
+    </button>
+    <button
+      mat-mini-fab
+      fxFlex
+      [disabled]="bookedSpacesModel['15']"
+      (click)="onSelection('15')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['15']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['15']">15</span>
+    </button>
   </div>
 
   <div
     id="row-3"
-    class="row"
+    class="row row-web"
     fxLayout
     fxShow
     fxHide.gt-xs
@@ -118,16 +445,81 @@
     fxHide
     fxShow.gt-xs
   >
-    <button mat-raised-button fxFlex (click)="onSelection('11')">11</button>
-    <button mat-raised-button fxFlex (click)="onSelection('12')">12</button>
-    <button mat-raised-button fxFlex (click)="onSelection('13')">13</button>
-    <button mat-raised-button fxFlex (click)="onSelection('14')">14</button>
-    <button mat-raised-button fxFlex (click)="onSelection('15')">15</button>
+    <button
+      mat-raised-button
+      fxFlex
+      [disabled]="bookedSpacesModel['11']"
+      (click)="onSelection('11')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['11']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['11']">11</span>
+    </button>
+    <button
+      mat-raised-button
+      fxFlex
+      [disabled]="bookedSpacesModel['12']"
+      (click)="onSelection('12')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['12']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['12']">12</span>
+    </button>
+    <button
+      mat-raised-button
+      fxFlex
+      [disabled]="bookedSpacesModel['13']"
+      (click)="onSelection('13')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['13']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['13']">13</span>
+    </button>
+    <button
+      mat-raised-button
+      fxFlex
+      [disabled]="bookedSpacesModel['14']"
+      (click)="onSelection('14')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['14']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['14']">14</span>
+    </button>
+    <button
+      mat-raised-button
+      fxFlex
+      [disabled]="bookedSpacesModel['15']"
+      (click)="onSelection('15')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['15']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['15']">15</span>
+    </button>
   </div>
 
   <div
     id="row-4-mobile"
-    class="row"
+    class="row row-mobile"
     fxLayout
     fxFlex="grow"
     fxLayoutGap="10px"
@@ -135,16 +527,76 @@
     fxHide.gt-xs
   >
     <span fxFlex></span>
-    <button mat-mini-fab fxFlex (click)="onSelection('16')">16</button>
-    <button mat-mini-fab fxFlex (click)="onSelection('17')">17</button>
-    <button mat-mini-fab fxFlex (click)="onSelection('18')">18</button>
-    <button mat-mini-fab fxFlex (click)="onSelection('19')">19</button>
-    <button mat-mini-fab fxFlex>20</button>
+    <button
+      mat-mini-fab
+      fxFlex
+      [disabled]="bookedSpacesModel['16']"
+      (click)="onSelection('16')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['16']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['16']">16</span>
+    </button>
+    <button
+      mat-mini-fab
+      fxFlex
+      [disabled]="bookedSpacesModel['17']"
+      (click)="onSelection('17')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['17']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['17']">17</span>
+    </button>
+    <button
+      mat-mini-fab
+      fxFlex
+      [disabled]="bookedSpacesModel['18']"
+      (click)="onSelection('18')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['18']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['18']">18</span>
+    </button>
+    <button
+      mat-mini-fab
+      fxFlex
+      [disabled]="bookedSpacesModel['19']"
+      (click)="onSelection('19')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['19']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['19']">19</span>
+    </button>
+    <button [disabled]="bookedSpacesModel['20']" mat-mini-fab fxFlex>
+      <mat-icon
+        *ngIf="bookedSpacesModel['20']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['20']">20</span>
+    </button>
   </div>
 
   <div
     id="row-4"
-    class="row"
+    class="row row-web"
     fxLayout
     fxFlex="grow"
     fxLayoutGap="10px"
@@ -152,11 +604,76 @@
     fxShow.gt-xs
   >
     <div mat-raised-button fxFlex></div>
-    <button mat-raised-button fxFlex (click)="onSelection('16')">16</button>
-    <button mat-raised-button fxFlex (click)="onSelection('17')">17</button>
-    <button mat-raised-button fxFlex (click)="onSelection('18')">18</button>
-    <button mat-raised-button fxFlex (click)="onSelection('19')">19</button>
-    <button mat-raised-button fxFlex (click)="onSelection('20')">20</button>
+    <button
+      mat-raised-button
+      fxFlex
+      [disabled]="bookedSpacesModel['16']"
+      (click)="onSelection('16')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['16']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['16']">16</span>
+    </button>
+    <button
+      mat-raised-button
+      fxFlex
+      [disabled]="bookedSpacesModel['17']"
+      (click)="onSelection('17')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['17']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['17']">17</span>
+    </button>
+    <button
+      mat-raised-button
+      fxFlex
+      [disabled]="bookedSpacesModel['18']"
+      (click)="onSelection('18')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['18']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['18']">18</span>
+    </button>
+    <button
+      mat-raised-button
+      fxFlex
+      [disabled]="bookedSpacesModel['19']"
+      (click)="onSelection('19')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['19']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['19']">19</span>
+    </button>
+    <button
+      mat-raised-button
+      fxFlex
+      [disabled]="bookedSpacesModel['20']"
+      (click)="onSelection('20')"
+    >
+      <mat-icon
+        *ngIf="bookedSpacesModel['20']"
+        aria-hidden="false"
+        aria-label="teacher icon"
+        >clear</mat-icon
+      >
+      <span *ngIf="!bookedSpacesModel['20']">20</span>
+    </button>
   </div>
 </div>
 <div

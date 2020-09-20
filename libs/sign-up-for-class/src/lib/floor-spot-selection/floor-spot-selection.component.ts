@@ -1,10 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import {
-  MAT_DIALOG_DATA,
-  MatDialog,
-  MatDialogRef
-} from '@angular/material/dialog';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { StripePaymentsService } from '@swagex/payment';
+import { BookedSpace } from '@swagex/shared-models';
 
 export interface Tile {
   color: string;
@@ -13,6 +9,29 @@ export interface Tile {
   text: string;
 }
 
+const modelInitalState = {
+  '1': false,
+  '2': false,
+  '3': false,
+  '4': false,
+  '5': false,
+  '6': false,
+  '7': false,
+  '8': false,
+  '9': false,
+  '10': false,
+  '11': false,
+  '12': false,
+  '13': false,
+  '14': false,
+  '15': false,
+  '16': false,
+  '17': false,
+  '18': false,
+  '19': false,
+  '20': false
+};
+
 @Component({
   selector: 'swagex-floor-spot-selection',
   templateUrl: './floor-spot-selection.component.html',
@@ -20,38 +39,33 @@ export interface Tile {
 })
 export class FloorSpotSelectionComponent implements OnInit {
   allowChangeDatesAndNumberOfGuests = false;
-  tiles: Tile[] = [
-    { text: 'One', cols: 3, rows: 1, color: 'lightblue' },
-    { text: 'Two', cols: 1, rows: 2, color: 'lightgreen' },
-    { text: 'Three', cols: 1, rows: 1, color: 'lightpink' },
-    { text: 'Four', cols: 2, rows: 1, color: '#DDBDF1' }
-  ];
-  spots = [
-    { id: 1, available: false },
-    { id: 2, available: true },
-    { id: 3, available: true },
-    { id: 4, available: false },
-    { id: 5, available: true },
-    { id: 6, available: true },
-    { id: 7, available: false },
-    { id: 8, available: true },
-    { id: 9, available: true },
-    { id: 10, available: false },
-    { id: 11, available: true },
-    { id: 12, available: true },
-    { id: 13, available: false },
-    { id: 14, available: true },
-    { id: 15, available: true },
-    { id: 16, available: true },
-    { id: 17, available: true },
-    { id: 18, available: true },
-    { id: 19, available: true },
-    { id: 20, available: true }
-  ];
+  @Input() bookedSpaces: BookedSpace[] = [];
+  bookedSpacesModel;
+
   constructor(public paymentService: StripePaymentsService) {}
 
   ngOnInit(): void {
     console.log('FloorSpotSelectionComponent data');
+    console.log(this.bookedSpaces);
+    this.updateModel();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
+    this.updateModel();
+  }
+
+  updateModel() {
+    this.bookedSpacesModel = { ...modelInitalState };
+    this.bookedSpaces.forEach(
+      space => (this.bookedSpacesModel[String(space.spaceNumber)] = true)
+    );
+  }
+
+  isSpaceBooked(position: number): boolean {
+    return this.bookedSpaces.some(
+      (bookedSpace: BookedSpace) => bookedSpace.spaceNumber === position
+    );
   }
 
   onSelection(id: string) {

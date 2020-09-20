@@ -17,7 +17,7 @@
   height: 40vh;
 }
 
-#row-1 {
+.row-web {
   .mat-icon {
     font-size: 60px;
     height: 60px;
@@ -27,9 +27,11 @@
 
 #row-1-mobile {
   .mat-icon {
-    font-size: 40px;
-    height: 40px;
-    width: 40px;
+    &.instructor-icon {
+      font-size: 40px;
+      height: 40px;
+      width: 40px;
+    }
   }
 }
 
