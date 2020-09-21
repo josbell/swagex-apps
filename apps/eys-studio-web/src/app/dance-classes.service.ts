@@ -10,14 +10,12 @@ import { map, filter } from 'rxjs/operators';
 })
 export class DanceClassesService implements DanceClassStoreApi {
   danceClasses: BehaviorSubject<DanceClass[]> = new BehaviorSubject(null);
+  danceClassRef = this.db.collection<DanceClass>('dance-class');
 
-  constructor(private db: AngularFirestore) {
-    this.loadClasses();
-  }
+  constructor(private db: AngularFirestore) {}
 
   loadClasses(): void {
-    this.db
-      .collection<DanceClass>('dance-class')
+    this.danceClassRef
       .valueChanges({ idField: 'id' })
       .subscribe((classes: DanceClass[]) => {
         console.log(classes);
@@ -25,11 +23,22 @@ export class DanceClassesService implements DanceClassStoreApi {
       });
   }
 
+  fetchClasses(): Observable<DanceClass[]> {
+    return this.danceClasses.asObservable();
+  }
+
   getClass(id: string): Observable<DanceClass> {
+    // Need to handle id not found
+    const areDanceClassesLoaded = !!this.danceClasses.getValue();
+    return areDanceClassesLoaded
+      ? this._getClassFromLocalCache(id)
+      : this._getClassFromDB(id);
+  }
+
+  private _getClassFromLocalCache(id: string): Observable<DanceClass> {
     return this.danceClasses.pipe(
       filter(val => Boolean(val)),
       map((danceClasses: DanceClass[]) => {
-        console.log('getClass', id, danceClasses);
         const danceClass = danceClasses.find(
           danceClass => danceClass.id === id
         );
@@ -39,7 +48,7 @@ export class DanceClassesService implements DanceClassStoreApi {
     );
   }
 
-  fetchClasses(): Observable<DanceClass[]> {
-    return this.danceClasses.asObservable();
+  private _getClassFromDB(id: string): Observable<DanceClass> {
+    return this.danceClassRef.doc<DanceClass>(id).valueChanges();
   }
 }

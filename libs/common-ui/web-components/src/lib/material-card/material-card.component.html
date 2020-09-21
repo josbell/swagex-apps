@@ -6,11 +6,14 @@
         ><a href="">{{ title }}</a></strong
       >
     </h5>
+
+    <mat-card-subtitle *ngIf="subtitle">{{ subtitle }}</mat-card-subtitle>
+    <ng-content select="[after-subtitle]"></ng-content>
     <p>
       {{ description }}
     </p>
-
     <mat-divider></mat-divider>
+
     <ng-content></ng-content>
   </mat-card-content>
 </mat-card>

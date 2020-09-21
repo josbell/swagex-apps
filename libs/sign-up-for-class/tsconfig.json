@@ -3,5 +3,8 @@
   "compilerOptions": {
     "types": ["node", "jest"]
   },
-  "include": ["**/*.ts"]
+  "include": [
+    "**/*.ts",
+    "../../apps/eys-studio-web/src/app/dance-classes.service.spec.ts"
+  ]
 }

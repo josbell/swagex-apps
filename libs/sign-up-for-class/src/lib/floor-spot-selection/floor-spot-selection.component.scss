@@ -1,6 +1,17 @@
 @import 'theme_variables';
 @import 'variables';
 
+::ng-deep .mat-tooltip {
+  font-size: 20px;
+}
+
+.instructions {
+  margin: 15px;
+  button {
+    margin-left: 5px;
+  }
+}
+
 #mirror {
   margin: 20px auto;
   text-align: center;
@@ -18,10 +29,19 @@
 }
 
 .row-web {
-  .mat-icon {
+  & .mat-icon {
     font-size: 60px;
     height: 60px;
     width: 60px;
+  }
+  button {
+    &:hover:enabled {
+      background-color: $primary;
+      span {
+        font-size: x-large;
+        color: white;
+      }
+    }
   }
 }
 

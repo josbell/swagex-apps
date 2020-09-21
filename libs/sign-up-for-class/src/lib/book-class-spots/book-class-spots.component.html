@@ -1,4 +1,4 @@
-<section class="home-section container" fxLayout="column" *ngIf="class">
+<section class="home-section container" fxLayout="column" *ngIf="danceClass">
   <mat-card
     fxLayout="column"
     fxLayout.gt-xs="row"
@@ -83,16 +83,20 @@
       </span>
     </div>
 
-    <mat-list class="first-info-column">
+    <h3 class="mobile-class-title" fxShow fxHide.gt-xs>
+      {{ danceClass.title }}
+    </h3>
+
+    <mat-list class="first-info-column" fxHide fxShow.gt-xs>
       <mat-list-item>
         <mat-icon mat-list-icon color="primary">groups</mat-icon>
         <h5 matLine><b>Class</b></h5>
-        <p matLine>{{ class.title }}</p>
+        <p matLine>{{ danceClass.title }}</p>
       </mat-list-item>
       <mat-list-item>
         <mat-icon mat-list-icon color="primary">person</mat-icon>
         <h5 matLine><b>Instructor</b></h5>
-        <p matLine>{{ class.instructor }}</p>
+        <p matLine>{{ danceClass.instructor }}</p>
       </mat-list-item>
     </mat-list>
 
@@ -100,7 +104,8 @@
       <mat-list-item>
         <mat-icon mat-list-icon color="primary">access_time</mat-icon>
         <h5 matLine><b>When</b></h5>
-        <p matLine>{{ class.time }}</p>
+        <p matLine>{{ nextClassDate }}</p>
+        <p matLine>{{ danceClass.timeDisplay }}</p>
       </mat-list-item>
       <mat-list-item>
         <mat-icon mat-list-icon color="primary">location_on</mat-icon>
@@ -112,6 +117,6 @@
   </mat-card>
 
   <swagex-floor-spot-selection
-    [bookedSpaces]="class.spacesBooked"
+    [bookedSpaces]="danceClass.spacesBooked"
   ></swagex-floor-spot-selection>
 </section>

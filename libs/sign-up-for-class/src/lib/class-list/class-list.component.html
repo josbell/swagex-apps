@@ -4,13 +4,21 @@
       fxFlex="20"
       *ngFor="let class of classStoreService.danceClasses | async"
       [title]="class.title"
+      [subtitle]="class.weekdayDisplay + 's @ ' + class.timeDisplay"
       [actionButtons]="actionButtons"
       imageUrl="/assets/images/dance-classes/{{ class.id }}.jpg"
-      [description]="class.shortDescription"
     >
-      <button mat-button (click)="onBookClassClick(class)">
-        Book Class
-      </button>
+      <h3 after-subtitle>$15</h3>
+      <span fxLayout>
+        <button
+          fxFlex
+          mat-raised-button
+          color="primary"
+          (click)="onBookClassClick(class)"
+        >
+          Book Next Class
+        </button>
+      </span>
     </swagex-material-card>
   </div>
 </section>

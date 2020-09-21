@@ -20,11 +20,7 @@ export class AppComponent {
     const frameworkConfig: LayoutConfig = {
       title: this.title,
       toolbarColor: '#fff',
-      menuItems: [
-        { text: 'Schedule', route: '/schedule', icon: 'group' },
-        { text: 'Lessons', route: '/lessons', icon: 'person' },
-        { text: 'Services', route: '/services', icon: 'feedback' }
-      ],
+      menuItems: [{ text: 'Classes', route: '/classes', icon: 'group' }],
       socialIcons: [
         {
           imageFile: 'assets/social_media_icons/instagram.svg',

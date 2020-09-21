@@ -8,8 +8,10 @@ export interface DanceClass {
   shortDescription: string;
   subtitle: string;
   title: string;
-  weekday: WeekDay;
+  weekday: number;
+  weekdayDisplay: string;
   time: string;
+  timeDisplay: string;
   spacesBooked: BookedSpace[];
 }
 

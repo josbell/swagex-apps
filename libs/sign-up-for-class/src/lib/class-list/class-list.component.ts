@@ -24,35 +24,9 @@ export class ClassListComponent implements OnInit {
   classes;
 
   constructor(public classStoreService: DanceClassStoreApi) {
-    // this.classes = this.classStoreService.danceClasses;
+    this.classStoreService.loadClasses();
+    // Need to call method on route resolve
   }
-
-  // classes: ClassCard[] = [
-  //   {
-  //     id: '1',
-  //     title: 'Reggaeton Basic',
-  //     subtitle: 'Express Yourself',
-  //     imageUrl:
-  //       'https://dance-studio.cmsmasters.net/wp-content/uploads/2015/04/1.jpg',
-  //     description: 'Shake your booty',
-  //     instructor: 'Suly',
-  //     time: '7:30pm Tuesday',
-  //     nextClass: 'August 25',
-  //     actionButtons: [{ id: 'more', label: 'More' }]
-  //   },
-  //   {
-  //     id: '2',
-  //     title: 'Reggaeton Advanced',
-  //     subtitle: 'Express Yourself more intensely',
-  //     imageUrl:
-  //       'https://dance-studio.cmsmasters.net/wp-content/uploads/2015/04/1.jpg',
-  //     description: 'Shake your booty intensely',
-  //     instructor: 'Edwins',
-  //     time: '8:30pm Tuesday',
-  //     nextClass: 'August 25',
-  //     actionButtons: [{ id: 'more', label: 'More' }]
-  //   }
-  // ];
 
   ngOnInit(): void {}
 

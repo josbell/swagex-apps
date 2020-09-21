@@ -4,9 +4,11 @@ import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
 import { ActivatedRoute } from '@angular/router';
 import { DanceClass } from '@swagex/shared-models';
 import { switchMap } from 'rxjs/operators';
+import * as moment from 'moment';
 
 import { AppDateAdapter, APP_DATE_FORMATS } from '../format-date-picker';
 import { DanceClassStoreApi } from '../model';
+import { DanceClassService } from '../dance-class.service';
 
 @Component({
   selector: 'swagex-book-class-spots',
@@ -18,7 +20,8 @@ import { DanceClassStoreApi } from '../model';
   ]
 })
 export class BookClassSpotsComponent implements OnInit {
-  class: DanceClass;
+  danceClass: DanceClass;
+  nextClassDate: string;
   allowChangeDatesAndNumberOfGuests: boolean = false;
   numberOfGuestsOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   selected = 1;
@@ -27,7 +30,8 @@ export class BookClassSpotsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    public danceClassStore: DanceClassStoreApi
+    public danceClassStore: DanceClassStoreApi,
+    public danceClassService: DanceClassService
   ) {}
 
   ngOnInit(): void {
@@ -36,8 +40,12 @@ export class BookClassSpotsComponent implements OnInit {
         switchMap(params => this.danceClassStore.getClass(params.get('id')))
       )
       .subscribe(danceClass => {
-        console.log(danceClass);
-        this.class = danceClass;
+        this.danceClass = danceClass;
+        const classDate = this.danceClassService.nextDay(
+          danceClass.weekday,
+          danceClass.time
+        );
+        this.nextClassDate = classDate;
       });
   }
 
