@@ -61,10 +61,8 @@ export class CreateTokenComponent implements OnInit {
       .subscribe(result => {
         if (result.token) {
           // Use the token
-          console.log(result.token.id);
         } else if (result.error) {
           // Error creating the token
-          console.log(result.error.message);
         }
       });
   }

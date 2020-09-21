@@ -31,7 +31,6 @@ export class StripePaymentsService {
     this.httpService
       .post(url, body)
       .subscribe((response: StripeCheckoutSession) => {
-        console.log(response);
         const { id: sessionId } = response;
         this.stripeService.redirectToCheckout({ sessionId }).subscribe(
           response => console.log('redirectToCheckout response', response),

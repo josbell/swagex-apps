@@ -18,7 +18,6 @@ export class DanceClassesService implements DanceClassStoreApi {
     this.danceClassRef
       .valueChanges({ idField: 'id' })
       .subscribe((classes: DanceClass[]) => {
-        console.log(classes);
         this.danceClasses.next(classes);
       });
   }
@@ -42,7 +41,6 @@ export class DanceClassesService implements DanceClassStoreApi {
         const danceClass = danceClasses.find(
           danceClass => danceClass.id === id
         );
-        console.log(danceClass);
         return danceClass;
       })
     );

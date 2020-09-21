@@ -45,13 +45,10 @@ export class FloorSpotSelectionComponent implements OnInit {
   constructor(public paymentService: StripePaymentsService) {}
 
   ngOnInit(): void {
-    console.log('FloorSpotSelectionComponent data');
-    console.log(this.bookedSpaces);
     this.updateModel();
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
+  ngOnChanges(_changes: SimpleChanges) {
     this.updateModel();
   }
 
