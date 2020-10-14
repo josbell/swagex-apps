@@ -16,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { DanceClassesService } from './dance-classes.service';
 
 @NgModule({
@@ -29,7 +30,8 @@ import { DanceClassesService } from './dance-classes.service';
     SignUpForClassModule,
     PaymentModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireFunctionsModule
   ],
   providers: [{ provide: DanceClassStoreApi, useClass: DanceClassesService }],
   bootstrap: [AppComponent]

@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  webAppUrl: 'localhost:4200',
   firebase: {
     apiKey: 'AIzaSyDF-MjXM0k_EAhNHLFkneshtU0qTQnR5Gk',
     authDomain: 'eys-dance-studio.firebaseapp.com',

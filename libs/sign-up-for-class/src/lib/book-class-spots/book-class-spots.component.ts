@@ -10,6 +10,12 @@ import { AppDateAdapter, APP_DATE_FORMATS } from '../format-date-picker';
 import { DanceClassStoreApi } from '../model';
 import { DanceClassService } from '../dance-class.service';
 
+export interface BookedClassPayload extends DanceClass {
+  quantity: number;
+  spaceNumber: string;
+  bookingDate: string;
+}
+
 @Component({
   selector: 'swagex-book-class-spots',
   templateUrl: './book-class-spots.component.html',
@@ -52,4 +58,14 @@ export class BookClassSpotsComponent implements OnInit {
   previousDate() {}
 
   nextDate() {}
+
+  onSpaceSelection(spaceNumber: string): void {
+    const props: BookedClassPayload = {
+      ...this.danceClass,
+      quantity: 1,
+      spaceNumber,
+      bookingDate: this.nextClassDate
+    };
+    this.danceClassStore.createCheckoutSession(props);
+  }
 }

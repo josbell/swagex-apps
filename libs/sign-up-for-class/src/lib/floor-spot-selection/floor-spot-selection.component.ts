@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { StripePaymentsService } from '@swagex/payment';
 import { BookedSpace } from '@swagex/shared-models';
 
@@ -40,6 +40,7 @@ const modelInitalState = {
 export class FloorSpotSelectionComponent implements OnInit {
   allowChangeDatesAndNumberOfGuests = false;
   @Input() bookedSpaces: BookedSpace[] = [];
+  @Output() onSpaceSelection = new EventEmitter<string>();
   bookedSpacesModel;
 
   constructor(public paymentService: StripePaymentsService) {}
@@ -48,13 +49,13 @@ export class FloorSpotSelectionComponent implements OnInit {
     this.updateModel();
   }
 
-  ngOnChanges(_changes: SimpleChanges) {
+  ngOnChanges(_) {
     this.updateModel();
   }
 
   updateModel() {
     this.bookedSpacesModel = { ...modelInitalState };
-    this.bookedSpaces.forEach(
+    this.bookedSpaces?.forEach(
       space => (this.bookedSpacesModel[String(space.spaceNumber)] = true)
     );
   }
@@ -66,6 +67,6 @@ export class FloorSpotSelectionComponent implements OnInit {
   }
 
   onSelection(id: string) {
-    this.paymentService.createCheckoutSession();
+    this.onSpaceSelection.emit(id);
   }
 }

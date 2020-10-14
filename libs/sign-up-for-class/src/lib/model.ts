@@ -1,4 +1,4 @@
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { DanceClass } from '@swagex/shared-models';
 
 export abstract class DanceClassStoreApi {
@@ -9,4 +9,12 @@ export abstract class DanceClassStoreApi {
   fetchClasses: () => Observable<DanceClass[]>;
 
   getClass: (id: string) => Observable<DanceClass>;
+
+  createCheckoutSession: (bookedClass: BookedClassPayload) => void;
+}
+
+export interface BookedClassPayload extends DanceClass {
+  quantity: number;
+  spaceNumber: string;
+  bookingDate: string;
 }
