@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'swagex-payment-succeeded',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./payment-succeeded.component.scss']
 })
 export class PaymentSucceededComponent implements OnInit {
+  constructor(public router: Router) {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  onDone(): void {
+    this.router.navigate(['classes']);
   }
-
 }
