@@ -1,3 +1,15 @@
 :host {
   width: 100%;
+  a {
+    // To address Safari bug
+    align-items: flex-start;
+    img {
+      width: 100px;
+      align-self: center;
+    }
+    span {
+      margin-left: 5px;
+      margin-top: 5px;
+    }
+  }
 }

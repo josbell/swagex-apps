@@ -1,7 +1,12 @@
-<header fxLayout fxLayoutAlign="space-between">
-  <h1 fxFlexAlign="center">
-    <a routerLink="/">{{ configService.title }}</a>
-  </h1>
+<header
+  fxLayout="row"
+  fxLayoutAlign="center"
+  fxLayoutAlign.gt-sm="space-between"
+>
+  <a fxLayout routerLink="/">
+    <img src="/assets/images/eys-logo.jpg" alt="alt" />
+    <span>{{ configService.title }}</span></a
+  >
   <div fxLayout>
     <mlw-menu fxHide fxShow.gt-sm></mlw-menu>
     <mlw-social-media-bar fxHide fxShow.gt-sm></mlw-social-media-bar>
