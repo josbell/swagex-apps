@@ -2,19 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
 import { ActivatedRoute } from '@angular/router';
-import { DanceClass } from '@swagex/shared-models';
+import {
+  BookedClassPayload,
+  DanceClass,
+  DanceClassStoreApi,
+  PersonalDetails
+} from '@swagex/shared-models';
 import { switchMap } from 'rxjs/operators';
-import * as moment from 'moment';
 
 import { AppDateAdapter, APP_DATE_FORMATS } from '../format-date-picker';
-import { DanceClassStoreApi } from '../model';
 import { DanceClassService } from '../dance-class.service';
-
-export interface BookedClassPayload extends DanceClass {
-  quantity: number;
-  spaceNumber: string;
-  bookingDate: string;
-}
+import { MatDialog } from '@angular/material/dialog';
+import {
+  StudentFormComponent,
+  StudentFormPayload
+} from '../student-form/student-form.component';
 
 @Component({
   selector: 'swagex-book-class-spots',
@@ -31,13 +33,15 @@ export class BookClassSpotsComponent implements OnInit {
   allowChangeDatesAndNumberOfGuests: boolean = false;
   numberOfGuestsOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   selected = 1;
+  selectedSpace: string;
 
   initialDate = new FormControl(new Date());
 
   constructor(
     private route: ActivatedRoute,
     public danceClassStore: DanceClassStoreApi,
-    public danceClassService: DanceClassService
+    public danceClassService: DanceClassService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -46,6 +50,7 @@ export class BookClassSpotsComponent implements OnInit {
         switchMap(params => this.danceClassStore.getClass(params.get('id')))
       )
       .subscribe(danceClass => {
+        console.log(danceClass);
         this.danceClass = danceClass;
         const classDate = this.danceClassService.nextDay(
           danceClass.weekday,
@@ -60,11 +65,28 @@ export class BookClassSpotsComponent implements OnInit {
   nextDate() {}
 
   onSpaceSelection(spaceNumber: string): void {
+    this.selectedSpace = spaceNumber;
+    this.openStudentFormDialog();
+  }
+
+  openStudentFormDialog() {
+    const dialogRef = this.dialog.open(StudentFormComponent, {
+      width: '600px'
+    });
+    dialogRef.afterClosed().subscribe((studentDetails: StudentFormPayload) => {
+      if (studentDetails && !studentDetails.hasSubscription) {
+        this.createCheckoutSession(studentDetails);
+      }
+    });
+  }
+
+  createCheckoutSession(studentDetails: StudentFormPayload) {
     const props: BookedClassPayload = {
       ...this.danceClass,
       quantity: 1,
-      spaceNumber,
-      bookingDate: this.nextClassDate
+      spaceNumber: this.selectedSpace,
+      classDate: this.nextClassDate,
+      studentDetails
     };
     this.danceClassStore.createCheckoutSession(props);
   }

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { StripePaymentsService } from '@swagex/payment';
-import { BookedSpace } from '@swagex/shared-models';
+import { BookedSpace, Spaces } from '@swagex/shared-models';
 
 export interface Tile {
   color: string;
@@ -39,7 +39,7 @@ const modelInitalState = {
 })
 export class FloorSpotSelectionComponent implements OnInit {
   allowChangeDatesAndNumberOfGuests = false;
-  @Input() bookedSpaces: BookedSpace[] = [];
+  @Input() spaces: Spaces;
   @Output() onSpaceSelection = new EventEmitter<string>();
   bookedSpacesModel;
 
@@ -54,16 +54,11 @@ export class FloorSpotSelectionComponent implements OnInit {
   }
 
   updateModel() {
-    this.bookedSpacesModel = { ...modelInitalState };
-    this.bookedSpaces?.forEach(
-      space => (this.bookedSpacesModel[String(space.spaceNumber)] = true)
-    );
+    this.bookedSpacesModel = { ...modelInitalState, ...this.spaces };
   }
 
   isSpaceBooked(position: number): boolean {
-    return this.bookedSpaces.some(
-      (bookedSpace: BookedSpace) => bookedSpace.spaceNumber === position
-    );
+    return this.spaces[String(position)];
   }
 
   onSelection(id: string) {

@@ -29,7 +29,10 @@
       ],
       "@swagex/sign-up-for-class": ["libs/sign-up-for-class/src/index.ts"],
       "@swagex/payment": ["libs/payment/src/index.ts"],
-      "@swagex/shared-models": ["libs/shared-models/src/index.ts"]
+      "@swagex/shared-models": ["libs/shared-models/src/index.ts"],
+      "@swagex/common-ui/material-phone-input": [
+        "libs/common-ui/material-phone-input/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

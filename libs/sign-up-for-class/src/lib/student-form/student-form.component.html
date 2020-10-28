@@ -1,0 +1,51 @@
+<h2 mat-dialog-title>Student Info</h2>
+<form [formGroup]="studentForm" (ngSubmit)="studentForm.valid && onSubmit()">
+  <mat-dialog-content fxLayout="column">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter dancer's first name</mat-label>
+      <input
+        formControlName="firstName"
+        matInput
+        placeholder="Maria"
+        required
+      />
+      <mat-error *ngIf="firstName.invalid"
+        >You must enter dancer's first name</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Enter dancer's last name</mat-label>
+      <input
+        formControlName="lastName"
+        matInput
+        placeholder="Gonzales"
+        required
+      />
+      <mat-error *ngIf="email.invalid"
+        >You must enter dancer's last name</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Enter confirmation email</mat-label>
+      <input
+        formControlName="email"
+        matInput
+        placeholder="pat@example.com"
+        required
+      />
+      <mat-error *ngIf="email.invalid">{{ getEmailErrorMessage() }}</mat-error>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="hasSubscription"
+      >Reserve space with subscription</mat-checkbox
+    >
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button type="submit">
+      {{ !!hasSubscription.value ? 'Reserve' : 'Pay' }}
+    </button>
+  </mat-dialog-actions>
+</form>

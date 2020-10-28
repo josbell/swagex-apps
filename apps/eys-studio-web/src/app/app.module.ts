@@ -6,10 +6,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { LatinSwagStudioWebHomeModule } from '@swagex/latin-swag-studio-web/home';
 import { CommonUiMaterialLayoutWebModule } from '@swagex/common-ui/material-layout-web';
-import {
-  DanceClassStoreApi,
-  SignUpForClassModule
-} from '@swagex/sign-up-for-class';
+import { SignUpForClassModule } from '@swagex/sign-up-for-class';
 import { PaymentModule } from '@swagex/payment';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +15,7 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { DanceClassesService } from './dance-classes.service';
+import { DanceClassStoreApi } from '@swagex/shared-models';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,7 +31,9 @@ import { DanceClassesService } from './dance-classes.service';
     AngularFirestoreModule,
     AngularFireFunctionsModule
   ],
-  providers: [{ provide: DanceClassStoreApi, useClass: DanceClassesService }],
+  providers: [
+    { provide: DanceClassStoreApi, useExisting: DanceClassesService }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

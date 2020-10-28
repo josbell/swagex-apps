@@ -48,6 +48,9 @@
     },
     "shared-models": {
       "tags": ["shared"]
+    },
+    "common-ui-material-phone-input": {
+      "tags": ["shared"]
     }
   }
 }

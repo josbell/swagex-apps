@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CardConfig } from '@swagex/common-ui/web-components';
-import { DanceClassStoreApi } from '../model';
+import { DanceClassStoreApi } from '@swagex/shared-models';
 
 export interface ClassCard extends CardConfig {
   id: string;

@@ -1,24 +1,17 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { DanceClass } from '@swagex/shared-models';
 import {
+  BookedClassPayload,
+  DanceClass,
   DanceClassStoreApi,
-  BookedClassPayload
-} from '@swagex/sign-up-for-class';
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { map, filter, switchMap } from 'rxjs/operators';
+  LineItem
+} from '@swagex/shared-models';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map, filter, switchMap, tap } from 'rxjs/operators';
 import { AngularFireFunctions } from '@angular/fire/functions';
 import { StripeService } from 'ngx-stripe';
 import { environment } from '../environments/environment';
 
-interface LineItem {
-  name: string;
-  amount: number;
-  currency: string;
-  quantity: number;
-  images?: string[];
-  description?: string;
-}
 interface StripeCheckoutSession {
   id: string;
 }
@@ -75,13 +68,13 @@ export class DanceClassesService implements DanceClassStoreApi {
   buildLineItem({
     id,
     title,
-    bookingDate,
+    classDate,
     spaceNumber,
     quantity,
     timeDisplay
   }: BookedClassPayload): LineItem[] {
     const imageUrl = `${environment.webAppUrl}/assets/images/dance-classes/${id}.jpg`;
-    const description = `${bookingDate}, ${timeDisplay} - Space Number: ${spaceNumber}`;
+    const description = `${classDate}, ${timeDisplay} - Space Number: ${spaceNumber}`;
     const lineItems = [
       {
         name: title,
@@ -102,7 +95,26 @@ export class DanceClassesService implements DanceClassStoreApi {
       'stripeCheckout'
     );
 
-    createSession({ line_items: lineItems })
+    const successRoute = 'payment-succeeded';
+    const cancelRoute = `classes/${bookedClass.id}/book`;
+    const customerEmail = bookedClass.studentDetails.email;
+    const metadata = {
+      danceClassId: bookedClass.id,
+      danceClassTitle: bookedClass.title,
+      danceClassTime: bookedClass.timeDisplay,
+      danceClassDate: bookedClass.classDate,
+      bookingQuantity: bookedClass.quantity,
+      spaceNumber: bookedClass.spaceNumber,
+      ...bookedClass.studentDetails
+    };
+
+    createSession({
+      lineItems,
+      successRoute,
+      cancelRoute,
+      customerEmail,
+      metadata
+    })
       .pipe(
         switchMap(({ id: sessionId }: StripeCheckoutSession) =>
           this.stripeService.redirectToCheckout({ sessionId })

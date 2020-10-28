@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BookingConfirmation, DanceClassStoreApi } from '@swagex/shared-models';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'swagex-payment-succeeded',
@@ -7,7 +9,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./payment-succeeded.component.scss']
 })
 export class PaymentSucceededComponent implements OnInit {
-  constructor(public router: Router) {}
+  confirmationDetails: Observable<BookingConfirmation>;
+  constructor(
+    public router: Router,
+    public danceClassStore: DanceClassStoreApi
+  ) {}
 
   ngOnInit(): void {}
 

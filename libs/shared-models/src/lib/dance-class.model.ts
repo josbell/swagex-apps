@@ -12,7 +12,11 @@ export interface DanceClass {
   weekdayDisplay: string;
   time: string;
   timeDisplay: string;
-  spacesBooked: BookedSpace[];
+  spaces: Spaces;
+}
+
+export interface Spaces {
+  [key: string]: boolean;
 }
 
 export interface BookedSpace {

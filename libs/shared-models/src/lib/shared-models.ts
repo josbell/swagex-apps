@@ -1,11 +1,7 @@
 export interface PersonalDetails {
-  id: string;
-  firstName: string;
-  lastName?: string;
+  name: string;
   email?: string;
   phone?: string;
-  shippingAddress?: Shipping;
-  billingAddress?: Shipping;
 }
 
 export interface Shipping {
