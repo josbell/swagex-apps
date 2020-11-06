@@ -58,7 +58,6 @@ export class StudentFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.studentForm.value);
     this.dialogRef.close(this.studentForm.value);
   }
 }

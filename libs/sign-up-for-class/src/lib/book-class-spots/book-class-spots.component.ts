@@ -50,7 +50,6 @@ export class BookClassSpotsComponent implements OnInit {
         switchMap(params => this.danceClassStore.getClass(params.get('id')))
       )
       .subscribe(danceClass => {
-        console.log(danceClass);
         this.danceClass = danceClass;
         const classDate = this.danceClassService.nextDay(
           danceClass.weekday,

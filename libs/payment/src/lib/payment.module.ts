@@ -9,6 +9,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import { PaymentFailedComponent } from './payment-failed/payment-failed.component';
 import { PaymentSucceededComponent } from './payment-succeeded/payment-succeeded.component';
+import { WindowRefService } from '@swagex/utils';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { PaymentSucceededComponent } from './payment-succeeded/payment-succeeded
     PaymentFailedComponent,
     PaymentSucceededComponent
   ],
+  providers: [WindowRefService],
   exports: [PaymentComponent, PaymentFailedComponent, PaymentSucceededComponent]
 })
 export class PaymentModule {}

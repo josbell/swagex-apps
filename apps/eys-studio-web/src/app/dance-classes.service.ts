@@ -11,6 +11,7 @@ import { map, filter, switchMap, tap } from 'rxjs/operators';
 import { AngularFireFunctions } from '@angular/fire/functions';
 import { StripeService } from 'ngx-stripe';
 import { environment } from '../environments/environment';
+import { WindowRefService } from '@swagex/utils';
 
 interface StripeCheckoutSession {
   id: string;
@@ -26,7 +27,8 @@ export class DanceClassesService implements DanceClassStoreApi {
   constructor(
     private db: AngularFirestore,
     private firebaseFunctions: AngularFireFunctions,
-    private stripeService: StripeService
+    private stripeService: StripeService,
+    private windowService: WindowRefService
   ) {}
 
   loadClasses(): void {
@@ -116,9 +118,19 @@ export class DanceClassesService implements DanceClassStoreApi {
       metadata
     })
       .pipe(
-        switchMap(({ id: sessionId }: StripeCheckoutSession) =>
-          this.stripeService.redirectToCheckout({ sessionId })
-        )
+        switchMap(({ id: sessionId }: StripeCheckoutSession) => {
+          let confirmationCache = {
+            spaceNumber: bookedClass.spaceNumber,
+            danceClassTitle: bookedClass.title,
+            danceClassDate: bookedClass.classDate,
+            danceClassTime: bookedClass.timeDisplay
+          };
+          this.windowService.nativeWindow.localStorage.setItem(
+            sessionId,
+            JSON.stringify(confirmationCache)
+          );
+          return this.stripeService.redirectToCheckout({ sessionId });
+        })
       )
       .subscribe(
         response => console.log('redirectToCheckout response', response),
