@@ -16,6 +16,11 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { DanceClassesService } from './dance-classes.service';
 import { DanceClassStoreApi } from '@swagex/shared-models';
+import { WindowRefService } from '@swagex/utils';
+
+export function windowFactory(): Window {
+  return window;
+}
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,7 +37,8 @@ import { DanceClassStoreApi } from '@swagex/shared-models';
     AngularFireFunctionsModule
   ],
   providers: [
-    { provide: DanceClassStoreApi, useExisting: DanceClassesService }
+    { provide: DanceClassStoreApi, useExisting: DanceClassesService },
+    WindowRefService
   ],
   bootstrap: [AppComponent]
 })

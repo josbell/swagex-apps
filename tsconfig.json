@@ -32,7 +32,8 @@
       "@swagex/shared-models": ["libs/shared-models/src/index.ts"],
       "@swagex/common-ui/material-phone-input": [
         "libs/common-ui/material-phone-input/src/index.ts"
-      ]
+      ],
+      "@swagex/utils": ["libs/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

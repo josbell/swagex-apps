@@ -51,6 +51,9 @@
     },
     "common-ui-material-phone-input": {
       "tags": ["shared"]
+    },
+    "utils": {
+      "tags": ["shared"]
     }
   }
 }

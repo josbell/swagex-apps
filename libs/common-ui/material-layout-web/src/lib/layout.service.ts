@@ -7,6 +7,7 @@ import { IconFiles, MenuItem, LayoutConfig } from './model';
 export class LayoutService {
   title?: string;
   socialIcons: IconFiles[];
+  horizontalMenu = true;
   menuItems: MenuItem[];
   toolbarColor?: string;
 

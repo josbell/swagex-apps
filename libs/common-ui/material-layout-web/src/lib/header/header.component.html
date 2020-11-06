@@ -8,7 +8,15 @@
     <span>{{ configService.title }}</span></a
   >
   <div fxLayout>
-    <mlw-menu fxHide fxShow.gt-sm></mlw-menu>
+    <ng-container *ngIf="configService.horizontalMenu; else menuButton">
+      <ng-container *ngFor="let item of configService.menuItems">
+        <a mat-button [routerLink]="item.route">{{ item.text }}</a>
+      </ng-container>
+    </ng-container>
     <mlw-social-media-bar fxHide fxShow.gt-sm></mlw-social-media-bar>
   </div>
 </header>
+
+<ng-template #menuButton>
+  <mlw-menu fxHide fxShow.gt-sm></mlw-menu>
+</ng-template>

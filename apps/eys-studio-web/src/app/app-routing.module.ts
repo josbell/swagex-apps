@@ -8,6 +8,7 @@ import { BookClassSpotsComponent } from '@swagex/sign-up-for-class';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
+  { path: 'signin', component: HomeComponent },
   { path: 'classes', component: SignUpForClassComponent },
   { path: 'classes/:id/book', component: BookClassSpotsComponent },
   { path: 'payment', component: PaymentComponent },
