@@ -7,7 +7,7 @@ import {
 import { CardConfig } from '@swagex/common-ui/web-components';
 
 @Component({
-  selector: 'lsw-info-section',
+  selector: 'swagex-info-section',
   templateUrl: './info-section.component.html',
   styleUrls: ['./info-section.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LayoutService } from '../layout.service';
 import { Router } from '@angular/router';
+import { UserApi } from '@swagex/shared-models';
 
 @Component({
   selector: 'mlw-header',
@@ -8,7 +9,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  constructor(public configService: LayoutService, public router: Router) {}
+  constructor(
+    public configService: LayoutService,
+    public router: Router,
+    public userApi: UserApi
+  ) {}
 
   ngOnInit(): void {}
+
+  handleSignIn() {
+    this.userApi.signInWithGoogle();
+  }
+
+  handleSignOut() {
+    this.userApi.signOut();
+  }
 }

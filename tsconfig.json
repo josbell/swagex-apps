@@ -34,7 +34,8 @@
         "libs/common-ui/material-phone-input/src/index.ts"
       ],
       "@swagex/utils": ["libs/utils/src/index.ts"],
-      "@swagex/users": ["libs/users/src/index.ts"]
+      "@swagex/users": ["libs/users/src/index.ts"],
+      "@swagex/eys-dance-studio-web": ["libs/eys-dance-studio-web/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

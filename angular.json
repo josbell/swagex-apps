@@ -751,6 +751,38 @@
           "style": "scss"
         }
       }
+    },
+    "eys-dance-studio-web": {
+      "projectType": "library",
+      "root": "libs/eys-dance-studio-web",
+      "sourceRoot": "libs/eys-dance-studio-web/src",
+      "prefix": "swagex",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/eys-dance-studio-web/tsconfig.lib.json",
+              "libs/eys-dance-studio-web/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/eys-dance-studio-web/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/eys-dance-studio-web/jest.config.js",
+            "tsConfig": "libs/eys-dance-studio-web/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/eys-dance-studio-web/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

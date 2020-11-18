@@ -12,6 +12,20 @@
       <ng-container *ngFor="let item of configService.menuItems">
         <a mat-button [routerLink]="item.route">{{ item.text }}</a>
       </ng-container>
+      <button
+        mat-button
+        *ngIf="!(userApi.isLoggedIn | async)"
+        (click)="handleSignIn()"
+      >
+        Sign In
+      </button>
+      <button
+        mat-button
+        *ngIf="userApi.isLoggedIn | async"
+        (click)="handleSignOut()"
+      >
+        Sign Out
+      </button>
     </ng-container>
     <mlw-social-media-bar fxHide fxShow.gt-sm></mlw-social-media-bar>
   </div>

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import {
   BookedClassPayload,
@@ -10,7 +10,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map, filter, switchMap, tap } from 'rxjs/operators';
 import { AngularFireFunctions } from '@angular/fire/functions';
 import { StripeService } from 'ngx-stripe';
-import { environment } from '../environments/environment';
 import { WindowRefService } from '@swagex/utils';
 
 interface StripeCheckoutSession {
@@ -28,7 +27,8 @@ export class DanceClassesService implements DanceClassStoreApi {
     private db: AngularFirestore,
     private firebaseFunctions: AngularFireFunctions,
     private stripeService: StripeService,
-    private windowService: WindowRefService
+    private windowService: WindowRefService,
+    @Inject('environment') private environment: any
   ) {}
 
   loadClasses(): void {
@@ -75,7 +75,7 @@ export class DanceClassesService implements DanceClassStoreApi {
     quantity,
     timeDisplay
   }: BookedClassPayload): LineItem[] {
-    const imageUrl = `${environment.webAppUrl}/assets/images/dance-classes/${id}.jpg`;
+    const imageUrl = `${this.environment.webAppUrl}/assets/images/dance-classes/${id}.jpg`;
     const description = `${classDate}, ${timeDisplay} - Space Number: ${spaceNumber}`;
     const lineItems = [
       {

@@ -3,7 +3,7 @@ import {
   LayoutService,
   LayoutConfig
 } from '@swagex/common-ui/material-layout-web';
-import { DanceClassesService } from './dance-classes.service';
+import { DanceClassesService } from '@swagex/eys-dance-studio-web';
 
 @Component({
   selector: 'swagex-root',
@@ -22,7 +22,7 @@ export class AppComponent {
       toolbarColor: '#fff',
       menuItems: [
         { text: 'Classes', route: '/classes', icon: 'group' },
-        { text: 'Sign In', route: '/signin', icon: 'login' }
+        { text: 'Admin', route: '/admin', icon: 'group' }
       ],
       socialIcons: [
         {

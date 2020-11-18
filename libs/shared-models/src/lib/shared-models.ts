@@ -4,6 +4,7 @@ export interface PersonalDetails {
   phone?: string;
 }
 
+
 export interface Shipping {
   name: string;
   phone: string;

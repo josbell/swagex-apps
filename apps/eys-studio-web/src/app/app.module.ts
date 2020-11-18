@@ -2,9 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { LatinSwagStudioWebHomeModule } from '@swagex/latin-swag-studio-web/home';
+import {
+  EysDanceStudioWebModule,
+  DanceClassesService,
+  UserService
+} from '@swagex/eys-dance-studio-web';
 import { CommonUiMaterialLayoutWebModule } from '@swagex/common-ui/material-layout-web';
 import { SignUpForClassModule } from '@swagex/sign-up-for-class';
 import { PaymentModule } from '@swagex/payment';
@@ -14,8 +18,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireFunctionsModule } from '@angular/fire/functions';
-import { DanceClassesService } from './dance-classes.service';
-import { DanceClassStoreApi } from '@swagex/shared-models';
+
+import { DanceClassStoreApi, UserApi } from '@swagex/shared-models';
 import { WindowRefService } from '@swagex/utils';
 
 export function windowFactory(): Window {
@@ -29,6 +33,7 @@ export function windowFactory(): Window {
     BrowserAnimationsModule,
     AppRoutingModule,
     CommonUiMaterialLayoutWebModule,
+    EysDanceStudioWebModule,
     LatinSwagStudioWebHomeModule,
     SignUpForClassModule,
     PaymentModule,
@@ -38,6 +43,8 @@ export function windowFactory(): Window {
   ],
   providers: [
     { provide: DanceClassStoreApi, useExisting: DanceClassesService },
+    { provide: UserApi, useExisting: UserService },
+    { provide: 'environment', useValue: environment },
     WindowRefService
   ],
   bootstrap: [AppComponent]

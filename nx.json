@@ -57,6 +57,9 @@
     },
     "users": {
       "tags": ["shared"]
+    },
+    "eys-dance-studio-web": {
+      "tags": ["feature:shared"]
     }
   }
 }

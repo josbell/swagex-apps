@@ -1,23 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { CommonUiMaterialModule } from '@swagex/common-ui/material';
+import { CommonUiWebComponentsModule } from '@swagex/common-ui/web-components';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NguCarouselModule } from '@ngu/carousel';
+
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
+    RouterModule,
     CommonUiMaterialModule,
     FlexLayoutModule,
-    RouterModule.forChild([
-      { path: '', pathMatch: 'full', component: LoginPageComponent }
-    ])
+    CommonUiWebComponentsModule,
+    NguCarouselModule
   ],
-  declarations: [LoginPageComponent],
-  exports: []
+  declarations: [LandingPageComponent]
 })
-export class UsersModule {}
+export class EysDanceStudioWebModule {}

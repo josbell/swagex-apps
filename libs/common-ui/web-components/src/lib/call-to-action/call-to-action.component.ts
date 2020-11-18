@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'lsw-call-to-action',
+  selector: 'swagex-call-to-action',
   templateUrl: './call-to-action.component.html',
   styleUrls: ['./call-to-action.component.scss']
 })
