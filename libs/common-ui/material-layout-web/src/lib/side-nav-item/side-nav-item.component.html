@@ -4,8 +4,11 @@
   (click)="onItemSelected(item)"
   [ngStyle]="{ 'padding-left': depth * 12 + 'px' }"
 >
-  <mat-icon *ngIf="item.icon" class="routeIcon">{{ item.icon }}</mat-icon>
-  {{ item.text }}
+  <span class="item">
+    <mat-icon *ngIf="item.icon" class="routeIcon">{{ item.icon }}</mat-icon>
+    {{ item.text }}
+  </span>
+
   <span fxFlex *ngIf="item.submenu && item.submenu.length">
     <span fxFlex></span>
     <mat-icon [@indicatorRotate]="expanded ? 'expanded' : 'collapsed'">

@@ -1,13 +1,13 @@
 :host {
   outline: none;
   width: 100%;
-}
-
-.mat-list-item {
-  padding: 8px 0;
-  width: auto;
-
-  .routeIcon {
-    margin-right: 40px;
+  .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-right: 12px;
+    width: 100%;
   }
 }

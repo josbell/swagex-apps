@@ -7,7 +7,7 @@
     <img src="/assets/images/eys-logo.jpg" alt="alt" />
     <span>{{ configService.title }}</span></a
   >
-  <div fxLayout>
+  <div fxLayout fxHide fxShow.gt-sm>
     <ng-container *ngIf="configService.horizontalMenu; else menuButton">
       <ng-container *ngFor="let item of configService.menuItems">
         <a mat-button [routerLink]="item.route">{{ item.text }}</a>
@@ -27,7 +27,7 @@
         Sign Out
       </button>
     </ng-container>
-    <mlw-social-media-bar fxHide fxShow.gt-sm></mlw-social-media-bar>
+    <mlw-social-media-bar></mlw-social-media-bar>
   </div>
 </header>
 

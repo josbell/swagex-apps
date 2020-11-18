@@ -31,6 +31,29 @@
             (closeMenu)="snav.close()"
           ></mlw-side-nav-item>
         </ng-container>
+        <span
+          mat-list-item
+          class="auth-container"
+          fxLayout
+          fxFlexAlign="space-between center"
+          *ngIf="!(userApi.isLoggedIn | async)"
+        >
+          <mat-icon class="routeIcon">group</mat-icon>
+          <button mat-button (click)="handleSignIn()">
+            Sign In
+          </button>
+        </span>
+        <span
+          mat-list-item
+          class="auth-container"
+          fxLayout
+          *ngIf="userApi.isLoggedIn | async"
+        >
+          <mat-icon class="routeIcon">group</mat-icon>
+          <button mat-button (click)="handleSignOut()">
+            Sign Out
+          </button>
+        </span>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content class="main-content">

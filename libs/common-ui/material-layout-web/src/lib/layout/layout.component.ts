@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserApi } from '@swagex/shared-models';
 import { LayoutService } from '../layout.service';
 
 @Component({
@@ -8,9 +9,17 @@ import { LayoutService } from '../layout.service';
 })
 export class LayoutComponent implements OnInit {
   toolbarColor: string;
-  constructor(public configService: LayoutService) {
+  constructor(public configService: LayoutService, public userApi: UserApi) {
     this.toolbarColor = this.configService.toolbarColor;
   }
 
   ngOnInit(): void {}
+
+  handleSignIn() {
+    this.userApi.signInWithGoogle();
+  }
+
+  handleSignOut() {
+    this.userApi.signOut();
+  }
 }
