@@ -60,6 +60,12 @@
     },
     "eys-dance-studio-web": {
       "tags": ["feature:shared"]
+    },
+    "admin": {
+      "tags": ["shared"]
+    },
+    "common-ui-class-list": {
+      "tags": ["shared"]
     }
   }
 }

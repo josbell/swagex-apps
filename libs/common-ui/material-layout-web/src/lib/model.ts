@@ -9,8 +9,10 @@ export interface IconFiles {
 export interface MenuItem {
   text: string;
   route: string;
+  isVisible?: boolean;
   icon?: string;
   submenu?: MenuItem[];
+  requiredRole?: string;
 }
 
 export interface LayoutConfig {

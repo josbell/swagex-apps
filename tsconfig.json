@@ -35,7 +35,11 @@
       ],
       "@swagex/utils": ["libs/utils/src/index.ts"],
       "@swagex/users": ["libs/users/src/index.ts"],
-      "@swagex/eys-dance-studio-web": ["libs/eys-dance-studio-web/src/index.ts"]
+      "@swagex/eys-dance-studio-web": [
+        "libs/eys-dance-studio-web/src/index.ts"
+      ],
+      "@swagex/admin": ["libs/admin/src/index.ts"],
+      "@swagex/common-ui/class-list": ["libs/common-ui/class-list/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

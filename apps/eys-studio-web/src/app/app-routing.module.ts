@@ -5,12 +5,18 @@ import { PaymentComponent } from 'libs/payment/src/lib/payment/payment.component
 import { PaymentSucceededComponent } from 'libs/payment/src/lib/payment-succeeded/payment-succeeded.component';
 import { BookClassSpotsComponent } from '@swagex/sign-up-for-class';
 import { LandingPageComponent } from 'libs/eys-dance-studio-web/src/lib/landing-page/landing-page.component';
+import { AuthGuard } from '@swagex/users';
 
 const routes: Routes = [
   { path: 'home', component: LandingPageComponent },
   {
     path: 'signin',
     loadChildren: () => import('@swagex/users').then(m => m.UsersModule)
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('@swagex/admin').then(m => m.AdminModule),
+    canActivate: [AuthGuard]
   },
   { path: 'classes', component: SignUpForClassComponent },
   { path: 'classes/:id/book', component: BookClassSpotsComponent },

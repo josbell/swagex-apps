@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserApi } from '@swagex/shared-models';
 import { LayoutService } from '../layout.service';
+import { MenuItem } from '../model';
 
 @Component({
   selector: 'mlw-layout',
@@ -16,10 +17,10 @@ export class LayoutComponent implements OnInit {
   ngOnInit(): void {}
 
   handleSignIn() {
-    this.userApi.signInWithGoogle();
+    this.configService.handleSignIn();
   }
 
   handleSignOut() {
-    this.userApi.signOut();
+    this.configService.handleSignOut();
   }
 }

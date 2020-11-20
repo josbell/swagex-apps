@@ -24,7 +24,7 @@
       fixedBottomGap="70"
     >
       <mat-nav-list>
-        <ng-container *ngFor="let item of configService.menuItems">
+        <ng-container *ngFor="let item of configService.visibleMenuItems">
           <mlw-side-nav-item
             [item]="item"
             [depth]="0"
@@ -36,9 +36,9 @@
           class="auth-container"
           fxLayout
           fxFlexAlign="space-between center"
-          *ngIf="!(userApi.isLoggedIn | async)"
+          *ngIf="!(configService.isLoggedIn() | async)"
         >
-          <mat-icon class="routeIcon">group</mat-icon>
+          <mat-icon class="routeIcon">login</mat-icon>
           <button mat-button (click)="handleSignIn()">
             Sign In
           </button>
@@ -47,9 +47,9 @@
           mat-list-item
           class="auth-container"
           fxLayout
-          *ngIf="userApi.isLoggedIn | async"
+          *ngIf="configService.isLoggedIn() | async"
         >
-          <mat-icon class="routeIcon">group</mat-icon>
+          <mat-icon class="routeIcon">login</mat-icon>
           <button mat-button (click)="handleSignOut()">
             Sign Out
           </button>

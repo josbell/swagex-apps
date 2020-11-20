@@ -20,8 +20,6 @@ export class ClassListComponent implements OnInit {
     id: string;
     title: string;
   }> = new EventEmitter();
-  actionButtons = [{ id: 'more', label: 'More' }];
-  classes;
 
   constructor(public classStoreService: DanceClassStoreApi) {
     this.classStoreService.loadClasses();

@@ -1,7 +1,7 @@
 <button mat-button [matMenuTriggerFor]="menu">Menu</button>
 
 <mat-menu #menu="matMenu" dir="ltr">
-  <ng-container *ngFor="let item of configService.menuItems">
+  <ng-container *ngFor="let item of configService.visibleMenuItems">
     <button
       *ngIf="item.submenu"
       [routerLink]="item.route"
@@ -16,7 +16,7 @@
       {{ item.text }}
     </button>
     <mat-menu #sub_menu="matMenu">
-      <ng-container *ngFor="let item of configService.menuItems">
+      <ng-container *ngFor="let item of configService.visibleMenuItems">
         <button
           *ngFor="let subItem of item.submenu"
           [routerLink]="subItem.route"

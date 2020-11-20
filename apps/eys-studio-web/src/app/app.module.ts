@@ -21,6 +21,7 @@ import { AngularFireFunctionsModule } from '@angular/fire/functions';
 
 import { DanceClassStoreApi, UserApi } from '@swagex/shared-models';
 import { WindowRefService } from '@swagex/utils';
+import { AdminModule } from '@swagex/admin';
 
 export function windowFactory(): Window {
   return window;
@@ -39,7 +40,8 @@ export function windowFactory(): Window {
     PaymentModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireFunctionsModule
+    AngularFireFunctionsModule,
+    AdminModule
   ],
   providers: [
     { provide: DanceClassStoreApi, useExisting: DanceClassesService },

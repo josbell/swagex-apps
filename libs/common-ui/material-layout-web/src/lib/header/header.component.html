@@ -9,19 +9,19 @@
   >
   <div fxLayout fxHide fxShow.gt-sm>
     <ng-container *ngIf="configService.horizontalMenu; else menuButton">
-      <ng-container *ngFor="let item of configService.menuItems">
+      <ng-container *ngFor="let item of configService.visibleMenuItems">
         <a mat-button [routerLink]="item.route">{{ item.text }}</a>
       </ng-container>
       <button
         mat-button
-        *ngIf="!(userApi.isLoggedIn | async)"
+        *ngIf="!(configService.isLoggedIn() | async)"
         (click)="handleSignIn()"
       >
         Sign In
       </button>
       <button
         mat-button
-        *ngIf="userApi.isLoggedIn | async"
+        *ngIf="configService.isLoggedIn() | async"
         (click)="handleSignOut()"
       >
         Sign Out

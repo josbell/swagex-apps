@@ -17,6 +17,10 @@ export class UserService implements UserApi {
 
   constructor(private auth: AngularFireAuth) {}
 
+  hasRole(roleName: string) {
+    return true;
+  }
+
   signInWith(username: string, passworkd: string, rememberMe: boolean) {}
 
   signInWithEmail(username: string, password: string, rememberMe: boolean) {}

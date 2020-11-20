@@ -22,7 +22,12 @@ export class AppComponent {
       toolbarColor: '#fff',
       menuItems: [
         { text: 'Classes', route: '/classes', icon: 'group' },
-        { text: 'Admin', route: '/admin', icon: 'group' }
+        {
+          text: 'Admin',
+          route: '/admin',
+          icon: 'admin_panel_settings',
+          requiredRole: 'admin'
+        }
       ],
       socialIcons: [
         {

@@ -24,6 +24,7 @@ export abstract class UserApi {
     newPassword: string
   ) => void;
   register: (userInfo: UserInfo) => void;
+  hasRole: (roleName: string) => boolean;
   isLoggedIn: Observable<boolean>;
   hasSignInError: Observable<boolean>;
   signInErrorMsg: Observable<string>;
