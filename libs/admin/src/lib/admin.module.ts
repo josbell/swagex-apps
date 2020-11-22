@@ -5,14 +5,16 @@ import { RouterModule } from '@angular/router';
 import { CommonUiWebComponentsModule } from '@swagex/common-ui/web-components';
 
 import { AdminComponent } from './admin/admin.component';
+import { ClassBookingsComponent } from './class-bookings/class-bookings.component';
 @NgModule({
   imports: [
     CommonModule,
     CommonUiWebComponentsModule,
     RouterModule.forChild([
-      { path: '', pathMatch: 'full', component: AdminComponent }
+      { path: '', pathMatch: 'full', component: AdminComponent },
+      { path: ':id/bookings', component: ClassBookingsComponent }
     ])
   ],
-  declarations: [AdminComponent]
+  declarations: [AdminComponent, ClassBookingsComponent]
 })
 export class AdminModule {}

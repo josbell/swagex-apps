@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DanceClassStoreApi } from '@swagex/shared-models';
 
 @Component({
@@ -7,7 +8,11 @@ import { DanceClassStoreApi } from '@swagex/shared-models';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-  constructor(public classStoreService: DanceClassStoreApi) {
+  constructor(
+    private router: Router,
+    public route: ActivatedRoute,
+    public classStoreService: DanceClassStoreApi
+  ) {
     this.classStoreService.loadClasses();
   }
 
@@ -15,5 +20,6 @@ export class AdminComponent implements OnInit {
 
   handleClassClick({ id, title }): void {
     console.log(id, title);
+    this.router.navigate([id, 'bookings'], { relativeTo: this.route });
   }
 }
