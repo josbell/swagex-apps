@@ -1,2 +1,7 @@
 <!-- <swagex-filters></swagex-filters> -->
-<swagex-class-list (bookClassClicked)="bookClicked($event)"></swagex-class-list>
+<swagex-dance-class-panels
+  [danceClasses]="classStoreService.danceClasses"
+  buttonLabel="Book Class"
+  price="$15"
+  (panelClicked)="bookClicked($event)"
+></swagex-dance-class-panels>

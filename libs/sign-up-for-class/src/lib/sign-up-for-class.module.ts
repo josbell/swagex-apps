@@ -7,8 +7,6 @@ import { CommonUiMaterialModule } from '@swagex/common-ui/material';
 import { CommonUiWebComponentsModule } from '@swagex/common-ui/web-components';
 import { PaymentModule } from '@swagex/payment';
 
-import { ClassListComponent } from './class-list/class-list.component';
-import { FiltersComponent } from './filters/filters.component';
 import { FloorSpotSelectionComponent } from './floor-spot-selection/floor-spot-selection.component';
 import { SignUpForClassComponent } from './sign-up-for-class/sign-up-for-class.component';
 import { BookClassSpotsComponent } from './book-class-spots/book-class-spots.component';
@@ -40,20 +38,13 @@ export const MY_FORMATS = {
     FormsModule
   ],
   declarations: [
-    ClassListComponent,
-    FiltersComponent,
     FloorSpotSelectionComponent,
     SignUpForClassComponent,
-    FiltersComponent,
     FloorSpotSelectionComponent,
     BookClassSpotsComponent,
     StudentFormComponent
   ],
   providers: [MatDatepickerModule],
-  exports: [
-    SignUpForClassComponent,
-    ClassListComponent,
-    BookClassSpotsComponent
-  ]
+  exports: [SignUpForClassComponent, BookClassSpotsComponent]
 })
 export class SignUpForClassModule {}

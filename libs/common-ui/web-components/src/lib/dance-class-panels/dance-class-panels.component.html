@@ -2,12 +2,12 @@
   <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="30px">
     <swagex-material-card
       fxFlex="20"
-      *ngFor="let class of classStoreService.danceClasses | async"
+      *ngFor="let class of danceClasses | async"
       [title]="class.title"
       [subtitle]="class.weekdayDisplay + 's @ ' + class.timeDisplay"
       imageUrl="/assets/images/dance-classes/{{ class.id }}.jpg"
     >
-      <h3 after-subtitle>$15</h3>
+      <h3 after-subtitle>{{ price }}</h3>
       <span fxLayout>
         <button
           fxFlex
@@ -15,7 +15,7 @@
           color="primary"
           (click)="onBookClassClick(class)"
         >
-          Book Next Class
+          {{ buttonLabel }}
         </button>
       </span>
     </swagex-material-card>

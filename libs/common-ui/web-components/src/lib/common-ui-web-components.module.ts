@@ -10,6 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 import { CallToActionComponent } from './call-to-action/call-to-action.component';
 import { InfoSectionComponent } from './info-section/info-section.component';
 import { NguCarouselModule } from '@ngu/carousel';
+import { DanceClassPanelsComponent } from './dance-class-panels/dance-class-panels.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { NguCarouselModule } from '@ngu/carousel';
     MaterialCardComponent,
     FooterComponent,
     CallToActionComponent,
-    InfoSectionComponent
+    InfoSectionComponent,
+    DanceClassPanelsComponent
   ],
   exports: [
     HeroComponent,
@@ -32,7 +34,8 @@ import { NguCarouselModule } from '@ngu/carousel';
     MaterialCardComponent,
     FooterComponent,
     CallToActionComponent,
-    InfoSectionComponent
+    InfoSectionComponent,
+    DanceClassPanelsComponent
   ]
 })
 export class CommonUiWebComponentsModule {}

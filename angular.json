@@ -815,38 +815,6 @@
           "style": "scss"
         }
       }
-    },
-    "common-ui-class-list": {
-      "projectType": "library",
-      "root": "libs/common-ui/class-list",
-      "sourceRoot": "libs/common-ui/class-list/src",
-      "prefix": "swagex",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/common-ui/class-list/tsconfig.lib.json",
-              "libs/common-ui/class-list/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/common-ui/class-list/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/common-ui/class-list/jest.config.js",
-            "tsConfig": "libs/common-ui/class-list/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/common-ui/class-list/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
     }
   },
   "cli": {

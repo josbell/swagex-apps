@@ -38,8 +38,7 @@
       "@swagex/eys-dance-studio-web": [
         "libs/eys-dance-studio-web/src/index.ts"
       ],
-      "@swagex/admin": ["libs/admin/src/index.ts"],
-      "@swagex/common-ui/class-list": ["libs/common-ui/class-list/src/index.ts"]
+      "@swagex/admin": ["libs/admin/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

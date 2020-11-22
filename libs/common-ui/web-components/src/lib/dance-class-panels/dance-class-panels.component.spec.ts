@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ClassListComponent } from './class-list.component';
+import { DanceClassPanelsComponent } from './dance-class-panels.component';
 
-describe('ClassListComponent', () => {
-  let component: ClassListComponent;
-  let fixture: ComponentFixture<ClassListComponent>;
+describe('DanceClassPanelsComponent', () => {
+  let component: DanceClassPanelsComponent;
+  let fixture: ComponentFixture<DanceClassPanelsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ClassListComponent ]
+      declarations: [ DanceClassPanelsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ClassListComponent);
+    fixture = TestBed.createComponent(DanceClassPanelsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DanceClassStoreApi } from '@swagex/shared-models';
 
 @Component({
   selector: 'swagex-admin',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(public classStoreService: DanceClassStoreApi) {
+    this.classStoreService.loadClasses();
   }
 
+  ngOnInit(): void {}
+
+  handleClassClick({ id, title }): void {
+    console.log(id, title);
+  }
 }

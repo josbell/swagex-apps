@@ -1,1 +1,6 @@
-<p>admin works!</p>
+<swagex-dance-class-panels
+  [danceClasses]="classStoreService.danceClasses"
+  buttonLabel="Manage Class"
+  price="$15"
+  (panelClicked)="handleClassClick($event)"
+></swagex-dance-class-panels>
