@@ -1,11 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators
 } from '@angular/forms';
-import { TransitionCheckState } from '@angular/material/checkbox';
 import { MatDialogRef } from '@angular/material/dialog';
 import { PersonalDetails } from '@swagex/shared-models';
 

@@ -5,8 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import {
   BookedClassPayload,
   DanceClass,
-  DanceClassStoreApi,
-  PersonalDetails
+  DanceClassStoreApi
 } from '@swagex/shared-models';
 import { switchMap } from 'rxjs/operators';
 

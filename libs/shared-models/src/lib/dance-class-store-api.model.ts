@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { DanceClass } from './dance-class.model';
+import { AdminViewBooking, DanceClass } from './dance-class.model';
 import { PersonalDetails } from './shared-models';
 
 export abstract class DanceClassStoreApi {
@@ -12,6 +12,10 @@ export abstract class DanceClassStoreApi {
   getClass: (id: string) => Observable<DanceClass>;
 
   createCheckoutSession: (bookedClass: BookedClassPayload) => void;
+}
+
+export abstract class DanceClassBookingsApi {
+  getBookings: (id: string) => Observable<AdminViewBooking[]>;
 }
 
 export interface BookedClassPayload extends DanceClass {

@@ -6,10 +6,12 @@ import { CommonUiWebComponentsModule } from '@swagex/common-ui/web-components';
 
 import { AdminComponent } from './admin/admin.component';
 import { ClassBookingsComponent } from './class-bookings/class-bookings.component';
+import { CommonUiMaterialModule } from '@swagex/common-ui/material';
 @NgModule({
   imports: [
     CommonModule,
     CommonUiWebComponentsModule,
+    CommonUiMaterialModule,
     RouterModule.forChild([
       { path: '', pathMatch: 'full', component: AdminComponent },
       { path: ':id/bookings', component: ClassBookingsComponent }

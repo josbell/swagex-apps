@@ -1,5 +1,4 @@
-import { Instructor, Student } from './shared-models';
-
+import { PersonalDetails } from './shared-models';
 export interface DanceClass {
   id: string;
   active: boolean;
@@ -15,6 +14,12 @@ export interface DanceClass {
   spaces: Spaces;
 }
 
+export interface AdminViewBooking extends PersonalDetails {
+  created: Date;
+  payMethod: string;
+  spaceNumber: string;
+}
+
 export interface Spaces {
   [key: string]: boolean;
 }
@@ -22,6 +27,7 @@ export interface Spaces {
 export interface BookedSpace {
   spaceNumber: number;
   booking: string;
+  studentInfo: PersonalDetails;
 }
 
 export interface DanceClassConfig {

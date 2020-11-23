@@ -1,9 +1,9 @@
 export interface PersonalDetails {
-  name: string;
+  firstName: string;
+  lastName: string;
   email?: string;
   phone?: string;
 }
-
 
 export interface Shipping {
   name: string;
