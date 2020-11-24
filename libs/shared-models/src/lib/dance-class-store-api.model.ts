@@ -19,10 +19,11 @@ export abstract class DanceClassBookingsApi {
 }
 
 export interface BookedClassPayload extends DanceClass {
-  quantity: number;
   spaceNumber: string;
   classDate: string;
-  studentDetails: PersonalDetails & { hasSubscription: boolean };
+  studentDetails: PersonalDetails & {
+    paymentMethod: string;
+  };
 }
 
 export interface BookingConfirmation {

@@ -7,7 +7,7 @@ import {
   DanceClass,
   DanceClassStoreApi
 } from '@swagex/shared-models';
-import { switchMap } from 'rxjs/operators';
+import { first, switchMap } from 'rxjs/operators';
 
 import { AppDateAdapter, APP_DATE_FORMATS } from '../format-date-picker';
 import { DanceClassService } from '../dance-class.service';
@@ -15,7 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
 import {
   StudentFormComponent,
   StudentFormPayload
-} from '../student-form/student-form.component';
+} from '@swagex/common-ui/web-components';
 
 @Component({
   selector: 'swagex-book-class-spots',
@@ -78,10 +78,21 @@ export class BookClassSpotsComponent implements OnInit {
     });
   }
 
-  createCheckoutSession(studentDetails: StudentFormPayload) {
+  createCheckoutSession({
+    firstName,
+    lastName,
+    email,
+    hasSubscription
+  }: StudentFormPayload) {
+    const paymentMethod = hasSubscription ? 'Subscription' : 'Credit Card';
+    const studentDetails = {
+      firstName,
+      lastName,
+      email,
+      paymentMethod
+    };
     const props: BookedClassPayload = {
       ...this.danceClass,
-      quantity: 1,
       spaceNumber: this.selectedSpace,
       classDate: this.nextClassDate,
       studentDetails

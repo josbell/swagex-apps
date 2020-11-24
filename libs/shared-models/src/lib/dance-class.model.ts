@@ -16,7 +16,7 @@ export interface DanceClass {
 
 export interface AdminViewBooking extends PersonalDetails {
   created: Date;
-  payMethod: string;
+  paymentMethod: string;
   spaceNumber: string;
 }
 

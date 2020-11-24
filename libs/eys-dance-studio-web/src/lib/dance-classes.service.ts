@@ -72,7 +72,6 @@ export class DanceClassesService implements DanceClassStoreApi {
     title,
     classDate,
     spaceNumber,
-    quantity,
     timeDisplay
   }: BookedClassPayload): LineItem[] {
     const imageUrl = `${this.environment.webAppUrl}/assets/images/dance-classes/${id}.jpg`;
@@ -82,7 +81,7 @@ export class DanceClassesService implements DanceClassStoreApi {
         name: title,
         amount: 1500,
         currency: 'usd',
-        quantity,
+        quantity: 1,
         images: [imageUrl],
         ...(!!description && { description })
       }
@@ -100,12 +99,12 @@ export class DanceClassesService implements DanceClassStoreApi {
     const successRoute = 'payment-succeeded';
     const cancelRoute = `classes/${bookedClass.id}/book`;
     const customerEmail = bookedClass.studentDetails.email;
+    console.log(bookedClass.id);
     const metadata = {
       danceClassId: bookedClass.id,
       danceClassTitle: bookedClass.title,
       danceClassTime: bookedClass.timeDisplay,
       danceClassDate: bookedClass.classDate,
-      bookingQuantity: bookedClass.quantity,
       spaceNumber: bookedClass.spaceNumber,
       ...bookedClass.studentDetails
     };

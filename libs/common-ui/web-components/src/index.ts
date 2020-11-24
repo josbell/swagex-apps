@@ -5,4 +5,8 @@ export { CallToActionComponent } from './lib/call-to-action/call-to-action.compo
 export { InfoSectionComponent } from './lib/info-section/info-section.component';
 export { ReviewsComponent } from './lib/reviews/reviews.component';
 export { DanceClassPanelsComponent } from './lib/dance-class-panels/dance-class-panels.component';
+export {
+  StudentFormComponent,
+  StudentFormPayload
+} from './lib/student-form/student-form.component';
 export * from './lib/material-card/model';

@@ -11,8 +11,6 @@ import { FloorSpotSelectionComponent } from './floor-spot-selection/floor-spot-s
 import { SignUpForClassComponent } from './sign-up-for-class/sign-up-for-class.component';
 import { BookClassSpotsComponent } from './book-class-spots/book-class-spots.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { StudentFormComponent } from './student-form/student-form.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -33,16 +31,13 @@ export const MY_FORMATS = {
     CommonUiMaterialModule,
     FlexLayoutModule,
     CommonUiWebComponentsModule,
-    PaymentModule,
-    ReactiveFormsModule,
-    FormsModule
+    PaymentModule
   ],
   declarations: [
     FloorSpotSelectionComponent,
     SignUpForClassComponent,
     FloorSpotSelectionComponent,
-    BookClassSpotsComponent,
-    StudentFormComponent
+    BookClassSpotsComponent
   ],
   providers: [MatDatepickerModule],
   exports: [SignUpForClassComponent, BookClassSpotsComponent]

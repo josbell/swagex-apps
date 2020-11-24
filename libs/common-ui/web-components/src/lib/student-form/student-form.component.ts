@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators
 } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PersonalDetails } from '@swagex/shared-models';
 
 export interface StudentFormPayload extends PersonalDetails {
@@ -20,13 +20,21 @@ export class StudentFormComponent implements OnInit {
   studentForm: FormGroup;
   constructor(
     private fb: FormBuilder,
-    private dialogRef: MatDialogRef<StudentFormComponent>
+    private dialogRef: MatDialogRef<StudentFormComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: StudentFormPayload
   ) {
+    const {
+      firstName = '',
+      lastName = '',
+      email = '',
+      hasSubscription = false
+    } = data || {};
+
     this.studentForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      hasSubscription: [false],
-      email: ['', [Validators.required, Validators.email]]
+      firstName: [firstName, Validators.required],
+      lastName: [lastName, Validators.required],
+      hasSubscription: [!!hasSubscription],
+      email: [email, [Validators.required, Validators.email]]
     });
   }
 

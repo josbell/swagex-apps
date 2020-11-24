@@ -11,13 +11,17 @@ import { CallToActionComponent } from './call-to-action/call-to-action.component
 import { InfoSectionComponent } from './info-section/info-section.component';
 import { NguCarouselModule } from '@ngu/carousel';
 import { DanceClassPanelsComponent } from './dance-class-panels/dance-class-panels.component';
+import { StudentFormComponent } from './student-form/student-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     FlexLayoutModule,
     CommonUiMaterialModule,
-    NguCarouselModule
+    NguCarouselModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   declarations: [
     HeroComponent,
@@ -26,7 +30,8 @@ import { DanceClassPanelsComponent } from './dance-class-panels/dance-class-pane
     FooterComponent,
     CallToActionComponent,
     InfoSectionComponent,
-    DanceClassPanelsComponent
+    DanceClassPanelsComponent,
+    StudentFormComponent
   ],
   exports: [
     HeroComponent,
@@ -35,7 +40,8 @@ import { DanceClassPanelsComponent } from './dance-class-panels/dance-class-pane
     FooterComponent,
     CallToActionComponent,
     InfoSectionComponent,
-    DanceClassPanelsComponent
+    DanceClassPanelsComponent,
+    StudentFormComponent
   ]
 })
 export class CommonUiWebComponentsModule {}
