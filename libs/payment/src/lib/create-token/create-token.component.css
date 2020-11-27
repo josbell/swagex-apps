@@ -1,0 +1,31 @@
+div {
+  width: 300px;
+  margin: 30px;
+}
+
+div ngx-stripe-card-number,
+div ngx-stripe-card-expiry,
+div ngx-stripe-card-cvc {
+  padding: 5px;
+  border: 1px groove grey;
+}
+
+div ngx-stripe-card-number {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom: none;
+}
+
+div ngx-stripe-card-expiry {
+  border-bottom-left-radius: 5px;
+  border-right: none;
+}
+
+div ngx-stripe-card-cvc {
+  border-bottom-right-radius: 5px;
+}
+
+div button {
+  margin-top: 30px;
+}
+/*# sourceMappingURL=create-token.component.css.map */

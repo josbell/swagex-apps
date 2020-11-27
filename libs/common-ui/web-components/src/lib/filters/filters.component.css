@@ -1,0 +1,8 @@
+:host {
+  background-color: blue;
+  height: 100vh;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 300px;
+          flex: 0 1 300px;
+}
+/*# sourceMappingURL=filters.component.css.map */

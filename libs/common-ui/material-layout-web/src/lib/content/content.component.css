@@ -1,0 +1,7 @@
+main {
+  min-height: calc(100vh - 65px);
+  width: 100vw;
+  margin-top: 65px;
+  position: relative;
+}
+/*# sourceMappingURL=content.component.css.map */

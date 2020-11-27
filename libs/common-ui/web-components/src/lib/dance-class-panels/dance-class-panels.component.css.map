@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,CAAC;EACJ,KAAK,EAAE,IAAI;EACX,cAAc,EAAE,IAAI;CAIrB;;AAND,AAGE,KAHG,CAGH,oBAAoB,CAAC;EACnB,UAAU,EAAE,IAAI;CACjB",
+    "sources": [
+        "dance-class-panels.component.scss"
+    ],
+    "names": [],
+    "file": "dance-class-panels.component.css"
+}

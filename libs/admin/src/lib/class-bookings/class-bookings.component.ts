@@ -14,7 +14,6 @@ import {
   StudentFormComponent,
   StudentFormPayload
 } from '@swagex/common-ui/web-components';
-import { of } from 'rxjs';
 
 interface BookingRow {
   spaceNumber: string;
@@ -145,7 +144,6 @@ export class ClassBookingsComponent implements OnInit {
     const booking = this.bookings.find(
       booking => booking.spaceNumber === spaceNumber
     );
-    console.log(booking);
     this.bookingsApi.cancelBooking(booking).subscribe();
   }
 
@@ -154,8 +152,7 @@ export class ClassBookingsComponent implements OnInit {
       spaceNumber: '',
       name: '',
       paymentMethod: '',
-      email: '',
-      bookedOn: ''
+      email: ''
     };
   }
 }

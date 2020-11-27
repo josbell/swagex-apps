@@ -1,0 +1,40 @@
+:host {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+:host .bookings-container {
+  margin: 20px;
+  max-width: 100%;
+  max-height: 85vh;
+  overflow: auto;
+}
+
+:host .bookings-container table {
+  width: 100vw;
+}
+
+:host .bookings-container table td.mat-column-star {
+  width: 20px;
+  padding-right: 8px;
+}
+
+:host .bookings-container table th, :host .bookings-container table td {
+  padding: 10px;
+}
+
+:host .bookings-container table .mat-table-sticky:first-child {
+  border-right: 1px solid #e0e0e0;
+}
+
+:host .bookings-container table .mat-table-sticky:last-child {
+  border-left: 1px solid #e0e0e0;
+}
+/*# sourceMappingURL=class-bookings.component.css.map */

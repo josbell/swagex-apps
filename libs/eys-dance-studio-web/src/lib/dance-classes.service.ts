@@ -99,7 +99,6 @@ export class DanceClassesService implements DanceClassStoreApi {
     const successRoute = 'payment-succeeded';
     const cancelRoute = `classes/${bookedClass.id}/book`;
     const customerEmail = bookedClass.studentDetails.email;
-    console.log(bookedClass.id);
     const metadata = {
       danceClassId: bookedClass.id,
       danceClassTitle: bookedClass.title,

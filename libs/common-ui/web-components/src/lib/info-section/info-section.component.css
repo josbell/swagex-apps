@@ -1,0 +1,10 @@
+.home-section {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.home-section .section-header .mat-card {
+  margin: 0;
+  padding: 0;
+}
+/*# sourceMappingURL=info-section.component.css.map */

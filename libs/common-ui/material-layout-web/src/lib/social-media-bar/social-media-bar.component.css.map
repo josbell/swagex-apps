@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,CAAC;EACJ,UAAU,EAAE,IAAI;EAChB,SAAS,EAAE,IAAI;CAQhB;;AAVD,AAIE,KAJG,CAIH,UAAU,CAAC;EACT,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;EACZ,WAAW,EAAE,IAAI;EACjB,cAAc,EAAE,MAAM;CACvB",
+    "sources": [
+        "social-media-bar.component.scss"
+    ],
+    "names": [],
+    "file": "social-media-bar.component.css"
+}
