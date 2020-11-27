@@ -64,6 +64,10 @@ export class StudentFormComponent implements OnInit {
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 
+  cancel() {
+    this.dialogRef.close();
+  }
+
   onSubmit() {
     this.dialogRef.close(this.studentForm.value);
   }

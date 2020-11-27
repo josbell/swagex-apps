@@ -18,8 +18,7 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  handleClassClick({ id, title }): void {
-    console.log(id, title);
+  handleClassClick({ id }): void {
     this.router.navigate([id, 'bookings'], { relativeTo: this.route });
   }
 }

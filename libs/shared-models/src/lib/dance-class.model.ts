@@ -1,17 +1,20 @@
-import { PersonalDetails } from './shared-models';
 export interface DanceClass {
-  id: string;
+  id?: string;
   active: boolean;
   description: string;
   instructor: string;
   shortDescription: string;
+  spaces: Spaces;
   subtitle: string;
+  time: string;
+  timeDisplay: string;
   title: string;
   weekday: number;
   weekdayDisplay: string;
-  time: string;
-  timeDisplay: string;
-  spaces: Spaces;
+}
+
+export interface Spaces {
+  [key: string]: boolean;
 }
 
 export interface AdminViewBooking extends PersonalDetails {
@@ -20,58 +23,41 @@ export interface AdminViewBooking extends PersonalDetails {
   spaceNumber: string;
 }
 
-export interface Spaces {
-  [key: string]: boolean;
-}
-
 export interface BookedSpace {
   spaceNumber: number;
   booking: string;
   studentInfo: PersonalDetails;
 }
 
-export interface DanceClassConfig {
+export interface PersonalDetails {
+  firstName: string;
+  lastName: string;
+  email?: string;
+  phone?: string;
+}
+
+export interface NewBookingPayload {
+  canceled: boolean;
+  danceClassDate: string;
+  danceClassId: string;
+  danceClassTime: string;
+  danceClassTitle: string;
+  email: string;
+  firstName: string;
+  lastName?: string;
+  paymentMethod: string;
+  spaceNumber: string;
+  stripeCustomerId?: string;
+  stripeSessionId?: string;
+}
+
+export interface Booking extends NewBookingPayload {
   id: string;
-  name: string;
-  mainInstructor: string; // Instructor ID
-  description: string;
-  recurring?: boolean;
-  recurringRules?: RecurringRule[];
 }
 
-export interface DanceClassInstance {
-  config: DanceClassConfig;
-  date: Date;
-  archived: boolean;
-  studentsReserved: string[];
-  studentsBooked: string[];
-  studentsAttended: string[];
-  bookingInfo: any;
-}
-
-export interface DanceSpot {
-  number: number;
-  booked: boolean;
-}
-
-export interface RecurringRule {
-  weekday: WeekDay;
-  time: string;
-  instructor?: string; // Instructor ID
-}
-
-export enum WeekDay {
-  SUNDAY,
-  MONDAY,
-  TUESDAY,
-  WEDNESDAY,
-  THURSDAY,
-  FRIDAY,
-  SATURDAY
-}
-
-export enum DifficultyLevel {
-  BEGINNER = 'Beginner',
-  INTERMEDIATE = 'Intermediate',
-  ADVANCED = 'Advanced'
+export interface PersonalDetails {
+  firstName: string;
+  lastName: string;
+  email?: string;
+  phone?: string;
 }

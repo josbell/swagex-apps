@@ -43,7 +43,7 @@
     >
   </mat-dialog-content>
   <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button type="reset" (click)="cancel()">Cancel</button>
     <button mat-button type="submit">
       {{ !!hasSubscription.value ? 'Reserve' : 'Pay' }}
     </button>

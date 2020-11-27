@@ -16,6 +16,7 @@ import {
   StudentFormComponent,
   StudentFormPayload
 } from '@swagex/common-ui/web-components';
+import { nextDay } from '@swagex/utils';
 
 @Component({
   selector: 'swagex-book-class-spots',
@@ -50,10 +51,7 @@ export class BookClassSpotsComponent implements OnInit {
       )
       .subscribe(danceClass => {
         this.danceClass = danceClass;
-        const classDate = this.danceClassService.nextDay(
-          danceClass.weekday,
-          danceClass.time
-        );
+        const classDate = nextDay(danceClass.weekday, danceClass.time);
         this.nextClassDate = classDate;
       });
   }

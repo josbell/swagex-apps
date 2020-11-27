@@ -9,18 +9,18 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { AdminViewBooking, DanceClassBookingsApi } from '@swagex/shared-models';
-import { switchMap } from 'rxjs/operators';
+import { filter, map, switchMap, tap } from 'rxjs/operators';
 import {
   StudentFormComponent,
   StudentFormPayload
 } from '@swagex/common-ui/web-components';
+import { of } from 'rxjs';
 
 interface BookingRow {
   spaceNumber: string;
   name: string;
   paymentMethod: string;
   email: string;
-  bookedOn: string;
 }
 
 @Component({
@@ -39,6 +39,7 @@ interface BookingRow {
   ]
 })
 export class ClassBookingsComponent implements OnInit {
+  classId: string;
   bookings: AdminViewBooking[];
   rowsData: BookingRow[];
   expandedElement: BookingRow | null;
@@ -52,19 +53,21 @@ export class ClassBookingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap
-      .pipe(switchMap(params => this.bookingsApi.getBookings(params.get('id'))))
+      .pipe(
+        tap(params => (this.classId = params.get('id'))),
+        switchMap(params => this.bookingsApi.getBookings(params.get('id')))
+      )
       .subscribe(bookings => {
-        bookings.map(booking => booking);
         this.bookings = bookings;
         let rows: BookingRow[] = Array<BookingRow>(21)
           .fill(this.generateEmptySpace())
-          .map((booking, index) => ({
-            ...booking,
+          .map((emptyBooking, index) => ({
+            ...emptyBooking,
             spaceNumber: String(index + 1)
           }));
-
         const formattedBookings = bookings.forEach(booking => {
-          rows[booking.spaceNumber] = {
+          const index: number = Number(booking.spaceNumber) - 1;
+          rows[index] = {
             spaceNumber: booking.spaceNumber,
             name: `${booking.firstName} ${booking.lastName}`,
             paymentMethod: booking.paymentMethod,
@@ -101,13 +104,49 @@ export class ClassBookingsComponent implements OnInit {
       data,
       width: '600px'
     });
-    dialogRef.afterClosed().subscribe((studentDetails: StudentFormPayload) => {
-      console.log(studentDetails);
-    });
+    dialogRef
+      .afterClosed()
+      .pipe(
+        filter(val => !!val),
+        map((studentDetails: StudentFormPayload) => {
+          const { hasSubscription, ...rest } = studentDetails;
+          const paymentMethod = hasSubscription
+            ? 'Subscription'
+            : 'Credit Card';
+          return { ...rest, paymentMethod };
+        }),
+        switchMap(studentDetails => {
+          if (booking) {
+            const newBooking = {
+              ...booking,
+              ...studentDetails,
+              stripeCustomerId: '',
+              stripeSessionId: ''
+            };
+            return this.bookingsApi.replaceBooking(booking, newBooking);
+          } else {
+            return this.bookingsApi
+              .getNewBookingPayload(this.classId, {
+                ...studentDetails,
+                spaceNumber
+              })
+              .pipe(
+                switchMap(bookingPayload =>
+                  this.bookingsApi.saveNewBooking(bookingPayload)
+                )
+              );
+          }
+        })
+      )
+      .subscribe();
   }
 
-  deleteBooking(element) {
-    console.log('delete', element);
+  deleteBooking({ spaceNumber }) {
+    const booking = this.bookings.find(
+      booking => booking.spaceNumber === spaceNumber
+    );
+    console.log(booking);
+    this.bookingsApi.cancelBooking(booking).subscribe();
   }
 
   private generateEmptySpace(): BookingRow {

@@ -1,7 +1,10 @@
 import { Observable } from 'rxjs';
-import { AdminViewBooking, DanceClass } from './dance-class.model';
-import { PersonalDetails } from './shared-models';
-
+import {
+  AdminViewBooking,
+  DanceClass,
+  NewBookingPayload,
+  PersonalDetails
+} from './dance-class.model';
 export abstract class DanceClassStoreApi {
   danceClasses: Observable<DanceClass[]>;
 
@@ -16,6 +19,21 @@ export abstract class DanceClassStoreApi {
 
 export abstract class DanceClassBookingsApi {
   getBookings: (id: string) => Observable<AdminViewBooking[]>;
+  cancelBooking: (booking: any) => Observable<any>;
+  replaceBooking: (oldBooking, newBooking) => Observable<any>;
+  saveNewBooking: (booking) => Observable<any>;
+  getNewBookingPayload: (
+    danceClassId: string,
+    options: {
+      firstName?;
+      lastName?;
+      email?;
+      paymentMethod?;
+      spaceNumber?;
+      stripeCustomerId?;
+      stripeSessionId?;
+    }
+  ) => Observable<NewBookingPayload>;
 }
 
 export interface BookedClassPayload extends DanceClass {
