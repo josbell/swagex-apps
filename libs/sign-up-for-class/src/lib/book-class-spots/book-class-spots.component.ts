@@ -75,7 +75,11 @@ export class BookClassSpotsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((bookingPayload: StudentFormPayload) => {
       const { hasSubscription, ...rest } = bookingPayload;
       const paymentMethod = hasSubscription ? 'Subscription' : 'Credit Card';
-      const bookingInfo = { ...rest, paymentMethod };
+      const bookingInfo = {
+        ...rest,
+        paymentMethod,
+        spaceNumber: this.selectedSpace
+      };
       const { id } = this.danceClass;
       if (hasSubscription) {
         this.bookingService.bookClassWithSubscription(bookingInfo, id);

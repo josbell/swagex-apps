@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
 import { AngularFireFunctions } from '@angular/fire/functions';
+import { Router } from '@angular/router';
 import {
   AdminViewBooking,
   NewBookingPayload,
@@ -26,6 +27,7 @@ export class ClassBookingsService implements DanceClassBookingsApi {
     private firebaseFunctions: AngularFireFunctions,
     private stripeService: StripeService,
     private windowService: WindowRefService,
+    private router: Router,
     @Inject('environment') private environment: any
   ) {}
 
@@ -51,13 +53,14 @@ export class ClassBookingsService implements DanceClassBookingsApi {
    */
   bookClassWithSubscription(bookingData: BookingData, danceClassId: string) {
     let payload: NewBookingPayload;
-    return this.getNewBookingPayload(danceClassId, bookingData).pipe(
-      tap(payload => (payload = payload)),
-      switchMap((payload: NewBookingPayload) => this.saveNewBooking(payload)),
-      switchMap(_ =>
-        this.cacheConfirmationDataAndRedirect('subscription', payload)
+    this.getNewBookingPayload(danceClassId, bookingData)
+      .pipe(
+        tap(val => (payload = val)),
+        switchMap((payload: NewBookingPayload) => this.saveNewBooking(payload)),
+        tap(_ => this.cacheConfirmationData('subscription', payload)),
+        switchMap(_ => this.redirectToConfirmationView())
       )
-    );
+      .subscribe();
   }
 
   /**
@@ -73,12 +76,14 @@ export class ClassBookingsService implements DanceClassBookingsApi {
     let payload: NewBookingPayload;
     this.getNewBookingPayload(danceClassId, bookingData)
       .pipe(
-        switchMap((payload: NewBookingPayload) =>
-          this.createCheckoutSession(payload)
+        switchMap((val: NewBookingPayload) => {
+          payload = val;
+          return this.createCheckoutSession(val);
+        }),
+        tap(({ id: sessionId }) =>
+          this.cacheConfirmationData(sessionId, payload)
         ),
-        switchMap(({ id: sessionId }) =>
-          this.cacheConfirmationDataAndRedirect(sessionId, payload)
-        )
+        switchMap(({ id: sessionId }) => this.redirectToCheckout(sessionId))
       )
       .subscribe(
         response => console.log('redirectToCheckout response', response),
@@ -89,92 +94,38 @@ export class ClassBookingsService implements DanceClassBookingsApi {
   addBookingToDB(
     bookingData: BookingData,
     danceClassId: string
-  ): Observable<DocumentReference> {
+  ): Observable<NewBookingPayload> {
     return this.getNewBookingPayload(danceClassId, bookingData).pipe(
       tap(payload => (payload = payload)),
       switchMap((payload: NewBookingPayload) => this.saveNewBooking(payload))
     );
   }
 
-  createCheckoutSession(
-    payload: NewBookingPayload
-  ): Observable<{ id: string }> {
-    const { stripeCustomerId, stripeSessionId, ...rest } = payload;
-    const lineItems = this.buildLineItem(payload);
-
-    const createSession = this.firebaseFunctions.httpsCallable(
-      'stripeCheckout'
-    );
-
-    const successRoute = 'payment-succeeded';
-    const cancelRoute = `classes/${payload.danceClassId}/book`;
-    const customerEmail = payload.email;
-    const metadata = { ...rest };
-
-    return createSession({
-      lineItems,
-      successRoute,
-      cancelRoute,
-      customerEmail,
-      metadata
-    });
-  }
-
-  buildLineItem({
-    danceClassId,
-    danceClassTitle,
-    danceClassDate,
-    spaceNumber,
-    danceClassTime
-  }: NewBookingPayload): LineItem[] {
-    const imageUrl = `${this.environment.webAppUrl}/assets/images/dance-classes/${danceClassId}.jpg`;
-    const description = `${danceClassDate}, ${danceClassTime} - Space Number: ${spaceNumber}`;
-    const lineItems = [
-      {
-        name: danceClassTitle,
-        amount: 1500,
-        currency: 'usd',
-        quantity: 1,
-        images: [imageUrl],
-        ...(!!description && { description })
-      }
-    ];
-    return lineItems;
-  }
-
-  cacheConfirmationDataAndRedirect(
-    sessionId,
-    {
-      spaceNumber,
-      danceClassTitle,
-      danceClassDate,
-      danceClassTime
-    }: NewBookingPayload
-  ) {
-    let confirmationCache = {
-      spaceNumber,
-      danceClassTitle,
-      danceClassDate,
-      danceClassTime
-    };
-    this.windowService.nativeWindow.localStorage.setItem(
-      sessionId,
-      JSON.stringify(confirmationCache)
-    );
-    return this.stripeService.redirectToCheckout({ sessionId });
-  }
-
+  /**
+   * Replaces user booking with new one in DB
+   * Does not hit payment api
+   * @param oldBooking
+   * @param newBooking
+   */
   replaceBooking(
     oldBooking: Booking,
     newBooking: NewBookingPayload
-  ): Observable<DocumentReference> {
+  ): Observable<NewBookingPayload> {
     return this.cancelBooking(oldBooking).pipe(
       switchMap(_ => this.saveNewBooking(newBooking))
     );
   }
 
-  saveNewBooking(booking: NewBookingPayload): Observable<DocumentReference> {
-    return from(this.db.collection('bookings').add(booking));
+  /**
+   * Saves booking to DB
+   * @param booking
+   */
+  saveNewBooking(booking: NewBookingPayload): Observable<NewBookingPayload> {
+    return from(this.db.collection('bookings').add(booking)).pipe(
+      switchMap(_ => {
+        return of(booking);
+      })
+    );
   }
 
   cancelBooking({
@@ -203,6 +154,93 @@ export class ClassBookingsService implements DanceClassBookingsApi {
     return spacesRef.update(spaceUpdate);
   }
 
+  /**
+   * Stripe Service
+   * Creates Stripe payment checkout session
+   * @param payload
+   */
+  createCheckoutSession(
+    payload: NewBookingPayload
+  ): Observable<{ id: string }> {
+    const { stripeCustomerId, stripeSessionId, ...rest } = payload;
+    const lineItems = this.buildLineItem(payload);
+
+    const createSession = this.firebaseFunctions.httpsCallable(
+      'stripeCheckout'
+    );
+
+    const successRoute = 'payment-succeeded';
+    const cancelRoute = `classes/${payload.danceClassId}/book`;
+    const customerEmail = payload.email;
+    const metadata = { ...rest };
+
+    return createSession({
+      lineItems,
+      successRoute,
+      cancelRoute,
+      customerEmail,
+      metadata
+    });
+  }
+
+  /**
+   * Stripe Payment Service
+   * Builds line item
+   * @param param0
+   */
+  buildLineItem({
+    danceClassId,
+    danceClassTitle,
+    danceClassDate,
+    spaceNumber,
+    danceClassTime
+  }: NewBookingPayload): LineItem[] {
+    const imageUrl = `${this.environment.webAppUrl}/assets/images/dance-classes/${danceClassId}.jpg`;
+    const description = `${danceClassDate}, ${danceClassTime} - Space Number: ${spaceNumber}`;
+    const lineItems = [
+      {
+        name: danceClassTitle,
+        amount: 1500,
+        currency: 'usd',
+        quantity: 1,
+        images: [imageUrl],
+        ...(!!description && { description })
+      }
+    ];
+    return lineItems;
+  }
+
+  redirectToCheckout(sessionId: string) {
+    return this.stripeService.redirectToCheckout({ sessionId });
+  }
+
+  redirectToConfirmationView() {
+    return this.router.navigate(['payment-succeeded'], {
+      queryParams: { session_id: 'subscription' }
+    });
+  }
+
+  cacheConfirmationData(
+    sessionId,
+    {
+      spaceNumber,
+      danceClassTitle,
+      danceClassDate,
+      danceClassTime
+    }: NewBookingPayload
+  ) {
+    let confirmationCache = {
+      spaceNumber,
+      danceClassTitle,
+      danceClassDate,
+      danceClassTime
+    };
+    this.windowService.nativeWindow.localStorage.setItem(
+      sessionId,
+      JSON.stringify(confirmationCache)
+    );
+  }
+
   getNewBookingPayload(
     danceClassId: string,
     {
@@ -215,6 +253,7 @@ export class ClassBookingsService implements DanceClassBookingsApi {
       stripeSessionId = ''
     }: BookingData
   ): Observable<NewBookingPayload> {
+    console.log('getNewBookingPayload', danceClassId);
     return this.danceClassService.getClass(danceClassId).pipe(
       map(danceClass => {
         const danceClassDate = nextDay(danceClass.weekday, danceClass.time);

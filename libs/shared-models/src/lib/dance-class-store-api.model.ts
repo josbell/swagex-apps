@@ -35,8 +35,8 @@ export abstract class DanceClassBookingsApi {
 }
 
 export interface BookingData extends PersonalDetails {
-  paymentMethod?;
-  spaceNumber?;
+  paymentMethod;
+  spaceNumber;
   stripeCustomerId?;
   stripeSessionId?;
 }
