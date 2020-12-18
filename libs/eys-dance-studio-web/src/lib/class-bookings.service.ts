@@ -2,6 +2,8 @@ import { Inject, Injectable } from '@angular/core';
 import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
 import { AngularFireFunctions } from '@angular/fire/functions';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
+
 import {
   AdminViewBooking,
   NewBookingPayload,
@@ -28,6 +30,7 @@ export class ClassBookingsService implements DanceClassBookingsApi {
     private stripeService: StripeService,
     private windowService: WindowRefService,
     private router: Router,
+    private spinnerService: NgxSpinnerService,
     @Inject('environment') private environment: any
   ) {}
 
@@ -53,6 +56,7 @@ export class ClassBookingsService implements DanceClassBookingsApi {
    */
   bookClassWithSubscription(bookingData: BookingData, danceClassId: string) {
     let payload: NewBookingPayload;
+    this.spinnerService.show();
     this.getNewBookingPayload(danceClassId, bookingData)
       .pipe(
         tap(val => (payload = val)),
@@ -60,7 +64,7 @@ export class ClassBookingsService implements DanceClassBookingsApi {
         tap(_ => this.cacheConfirmationData('subscription', payload)),
         switchMap(_ => this.redirectToConfirmationView())
       )
-      .subscribe();
+      .subscribe(_ => this.spinnerService.hide());
   }
 
   /**
@@ -73,6 +77,7 @@ export class ClassBookingsService implements DanceClassBookingsApi {
     bookingData: BookingData,
     danceClassId: string
   ) {
+    this.spinnerService.show();
     let payload: NewBookingPayload;
     this.getNewBookingPayload(danceClassId, bookingData)
       .pipe(
@@ -83,7 +88,8 @@ export class ClassBookingsService implements DanceClassBookingsApi {
         tap(({ id: sessionId }) =>
           this.cacheConfirmationData(sessionId, payload)
         ),
-        switchMap(({ id: sessionId }) => this.redirectToCheckout(sessionId))
+        switchMap(({ id: sessionId }) => this.redirectToCheckout(sessionId)),
+        tap(_ => this.spinnerService.hide())
       )
       .subscribe(
         response => console.log('redirectToCheckout response', response),

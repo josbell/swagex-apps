@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { CommonUiMaterialModule } from '@swagex/common-ui/material';
 import { CommonUiWebComponentsModule } from '@swagex/common-ui/web-components';
@@ -16,7 +17,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     CommonUiMaterialModule,
     FlexLayoutModule,
     CommonUiWebComponentsModule,
-    NguCarouselModule
+    NguCarouselModule,
+    NgxSpinnerModule
   ],
   declarations: [LandingPageComponent]
 })

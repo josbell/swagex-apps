@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { StripePaymentsService } from '@swagex/payment';
-import { BookedSpace, Spaces } from '@swagex/shared-models';
+import { Spaces } from '@swagex/shared-models';
 
 export interface Tile {
   color: string;
