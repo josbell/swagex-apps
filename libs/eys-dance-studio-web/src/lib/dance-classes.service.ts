@@ -50,6 +50,14 @@ export class DanceClassesService implements DanceClassStoreApi {
   }
 
   private _getClassFromDB(id: string): Observable<DanceClass> {
-    return this.danceClassRef.doc<DanceClass>(id).valueChanges();
+    return this.danceClassRef
+      .doc<DanceClass>(id)
+      .valueChanges()
+      .pipe(
+        map((danceClass: DanceClass) => {
+          danceClass.id = id;
+          return danceClass;
+        })
+      );
   }
 }

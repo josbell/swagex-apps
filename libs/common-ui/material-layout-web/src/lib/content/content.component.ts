@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'mlw-content',
@@ -7,7 +6,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./content.component.scss']
 })
 export class ContentComponent implements OnInit {
-  constructor(private spinnerService: NgxSpinnerService) {}
+  constructor() {}
 
   ngOnInit(): void {}
 }

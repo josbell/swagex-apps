@@ -80,6 +80,8 @@ export class BookClassSpotsComponent implements OnInit {
         paymentMethod,
         spaceNumber: this.selectedSpace
       };
+      console.log(this.danceClass);
+
       const { id } = this.danceClass;
       if (hasSubscription) {
         this.bookingService.bookClassWithSubscription(bookingInfo, id);
@@ -87,27 +89,5 @@ export class BookClassSpotsComponent implements OnInit {
         this.bookingService.bookClassWithCreditCardPayment(bookingInfo, id);
       }
     });
-  }
-
-  getBookingPayload({
-    firstName,
-    lastName,
-    email,
-    hasSubscription
-  }: StudentFormPayload): BookedClassPayload {
-    const paymentMethod = hasSubscription ? 'Subscription' : 'Credit Card';
-    const studentDetails = {
-      firstName,
-      lastName,
-      email,
-      paymentMethod
-    };
-
-    return {
-      ...this.danceClass,
-      spaceNumber: this.selectedSpace,
-      classDate: this.nextClassDate,
-      studentDetails
-    };
   }
 }
