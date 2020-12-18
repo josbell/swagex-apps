@@ -8,7 +8,11 @@ import {
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { AdminViewBooking, DanceClassBookingsApi } from '@swagex/shared-models';
+import {
+  AdminViewBooking,
+  DanceClassBookingsApi,
+  BookingData
+} from '@swagex/shared-models';
 import { filter, map, switchMap, tap } from 'rxjs/operators';
 import {
   StudentFormComponent,
@@ -114,26 +118,23 @@ export class ClassBookingsComponent implements OnInit {
             : 'Credit Card';
           return { ...rest, paymentMethod };
         }),
-        switchMap(studentDetails => {
+        switchMap((bookingData: BookingData) => {
           if (booking) {
             const newBooking = {
               ...booking,
-              ...studentDetails,
+              ...bookingData,
               stripeCustomerId: '',
               stripeSessionId: ''
             };
             return this.bookingsApi.replaceBooking(booking, newBooking);
           } else {
-            return this.bookingsApi
-              .getNewBookingPayload(this.classId, {
-                ...studentDetails,
+            return this.bookingsApi.addBookingToDB(
+              {
+                ...bookingData,
                 spaceNumber
-              })
-              .pipe(
-                switchMap(bookingPayload =>
-                  this.bookingsApi.saveNewBooking(bookingPayload)
-                )
-              );
+              },
+              this.classId
+            );
           }
         })
       )

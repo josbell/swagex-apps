@@ -54,10 +54,3 @@ export interface NewBookingPayload {
 export interface Booking extends NewBookingPayload {
   id: string;
 }
-
-export interface PersonalDetails {
-  firstName: string;
-  lastName: string;
-  email?: string;
-  phone?: string;
-}

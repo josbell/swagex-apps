@@ -5,9 +5,10 @@ import { ActivatedRoute } from '@angular/router';
 import {
   BookedClassPayload,
   DanceClass,
+  DanceClassBookingsApi,
   DanceClassStoreApi
 } from '@swagex/shared-models';
-import { first, switchMap } from 'rxjs/operators';
+import { first, map, switchMap } from 'rxjs/operators';
 
 import { AppDateAdapter, APP_DATE_FORMATS } from '../format-date-picker';
 import { DanceClassService } from '../dance-class.service';
@@ -17,6 +18,7 @@ import {
   StudentFormPayload
 } from '@swagex/common-ui/web-components';
 import { nextDay } from '@swagex/utils';
+import { StickyStyler } from '@angular/cdk/table';
 
 @Component({
   selector: 'swagex-book-class-spots',
@@ -41,6 +43,7 @@ export class BookClassSpotsComponent implements OnInit {
     private route: ActivatedRoute,
     public danceClassStore: DanceClassStoreApi,
     public danceClassService: DanceClassService,
+    public bookingService: DanceClassBookingsApi,
     public dialog: MatDialog
   ) {}
 
@@ -69,19 +72,25 @@ export class BookClassSpotsComponent implements OnInit {
     const dialogRef = this.dialog.open(StudentFormComponent, {
       width: '600px'
     });
-    dialogRef.afterClosed().subscribe((studentDetails: StudentFormPayload) => {
-      if (studentDetails && !studentDetails.hasSubscription) {
-        this.createCheckoutSession(studentDetails);
+    dialogRef.afterClosed().subscribe((bookingPayload: StudentFormPayload) => {
+      const { hasSubscription, ...rest } = bookingPayload;
+      const paymentMethod = hasSubscription ? 'Subscription' : 'Credit Card';
+      const bookingInfo = { ...rest, paymentMethod };
+      const { id } = this.danceClass;
+      if (hasSubscription) {
+        this.bookingService.bookClassWithSubscription(bookingInfo, id);
+      } else {
+        this.bookingService.bookClassWithCreditCardPayment(bookingInfo, id);
       }
     });
   }
 
-  createCheckoutSession({
+  getBookingPayload({
     firstName,
     lastName,
     email,
     hasSubscription
-  }: StudentFormPayload) {
+  }: StudentFormPayload): BookedClassPayload {
     const paymentMethod = hasSubscription ? 'Subscription' : 'Credit Card';
     const studentDetails = {
       firstName,
@@ -89,12 +98,12 @@ export class BookClassSpotsComponent implements OnInit {
       email,
       paymentMethod
     };
-    const props: BookedClassPayload = {
+
+    return {
       ...this.danceClass,
       spaceNumber: this.selectedSpace,
       classDate: this.nextClassDate,
       studentDetails
     };
-    this.danceClassStore.createCheckoutSession(props);
   }
 }

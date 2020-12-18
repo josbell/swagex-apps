@@ -13,8 +13,6 @@ export abstract class DanceClassStoreApi {
   fetchClasses: () => Observable<DanceClass[]>;
 
   getClass: (id: string) => Observable<DanceClass>;
-
-  createCheckoutSession: (bookedClass: BookedClassPayload) => void;
 }
 
 export abstract class DanceClassBookingsApi {
@@ -22,18 +20,25 @@ export abstract class DanceClassBookingsApi {
   cancelBooking: (booking: any) => Observable<any>;
   replaceBooking: (oldBooking, newBooking) => Observable<any>;
   saveNewBooking: (booking) => Observable<any>;
-  getNewBookingPayload: (
-    danceClassId: string,
-    options: {
-      firstName?;
-      lastName?;
-      email?;
-      paymentMethod?;
-      spaceNumber?;
-      stripeCustomerId?;
-      stripeSessionId?;
-    }
-  ) => Observable<NewBookingPayload>;
+  addBookingToDB: (
+    bookingData: BookingData,
+    danceClassId: string
+  ) => Observable<any>;
+  bookClassWithSubscription: (
+    bookingData: BookingData,
+    danceClassId: string
+  ) => void;
+  bookClassWithCreditCardPayment: (
+    bookingData: BookingData,
+    danceClassId: string
+  ) => void;
+}
+
+export interface BookingData extends PersonalDetails {
+  paymentMethod?;
+  spaceNumber?;
+  stripeCustomerId?;
+  stripeSessionId?;
 }
 
 export interface BookedClassPayload extends DanceClass {
