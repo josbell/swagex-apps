@@ -8,8 +8,6 @@ import {
 export abstract class DanceClassStoreApi {
   danceClasses: Observable<DanceClass[]>;
 
-  loadClasses: () => void;
-
   fetchClasses: () => Observable<DanceClass[]>;
 
   getClass: (id: string) => Observable<DanceClass>;

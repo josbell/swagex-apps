@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection
+} from '@angular/fire/firestore';
 import { DanceClass, DanceClassStoreApi } from '@swagex/shared-models';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map, filter, take, switchMap, tap } from 'rxjs/operators';
@@ -13,11 +16,11 @@ interface StripeCheckoutSession {
 })
 export class DanceClassesService implements DanceClassStoreApi {
   danceClasses: BehaviorSubject<DanceClass[]> = new BehaviorSubject(null);
-  danceClassRef = this.db.collection<DanceClass>('dance-class');
+  danceClassRef: AngularFirestoreCollection<DanceClass> = this.db.collection<
+    DanceClass
+  >('dance-class');
 
-  constructor(private db: AngularFirestore) {}
-
-  loadClasses(): void {
+  constructor(private db: AngularFirestore) {
     this.danceClassRef
       .valueChanges({ idField: 'id' })
       .subscribe((classes: DanceClass[]) => {

@@ -13,9 +13,7 @@ export class SignUpForClassComponent implements OnInit, OnDestroy {
     private router: Router,
     public route: ActivatedRoute,
     public classStoreService: DanceClassStoreApi
-  ) {
-    this.classStoreService.loadClasses();
-  }
+  ) {}
 
   ngOnInit(): void {}
 

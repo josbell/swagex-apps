@@ -12,9 +12,7 @@ export class AdminComponent implements OnInit {
     private router: Router,
     public route: ActivatedRoute,
     public classStoreService: DanceClassStoreApi
-  ) {
-    this.classStoreService.loadClasses();
-  }
+  ) {}
 
   ngOnInit(): void {}
 
