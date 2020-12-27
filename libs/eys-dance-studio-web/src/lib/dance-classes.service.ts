@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { DanceClass, DanceClassStoreApi } from '@swagex/shared-models';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map, filter } from 'rxjs/operators';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { map, filter, take, switchMap, tap } from 'rxjs/operators';
 
 interface StripeCheckoutSession {
   id: string;
@@ -38,13 +38,14 @@ export class DanceClassesService implements DanceClassStoreApi {
   }
 
   private _getClassFromLocalCache(id: string): Observable<DanceClass> {
-    return this.danceClasses.pipe(
+    return this.danceClasses.asObservable().pipe(
+      take(1),
       filter(val => Boolean(val)),
-      map((danceClasses: DanceClass[]) => {
+      switchMap((danceClasses: DanceClass[]) => {
         const danceClass = danceClasses.find(
           danceClass => danceClass.id === id
         );
-        return danceClass;
+        return of(danceClass);
       })
     );
   }
@@ -54,6 +55,7 @@ export class DanceClassesService implements DanceClassStoreApi {
       .doc<DanceClass>(id)
       .valueChanges()
       .pipe(
+        take(1),
         map((danceClass: DanceClass) => {
           danceClass.id = id;
           return danceClass;

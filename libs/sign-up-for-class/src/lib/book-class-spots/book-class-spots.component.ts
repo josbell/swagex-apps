@@ -80,7 +80,6 @@ export class BookClassSpotsComponent implements OnInit {
         paymentMethod,
         spaceNumber: this.selectedSpace
       };
-      console.log(this.danceClass);
 
       const { id } = this.danceClass;
       if (hasSubscription) {

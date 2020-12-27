@@ -38,6 +38,7 @@ export interface PersonalDetails {
 
 export interface NewBookingPayload {
   canceled: boolean;
+  archived: boolean;
   danceClassDate: string;
   danceClassId: string;
   danceClassTime: string;

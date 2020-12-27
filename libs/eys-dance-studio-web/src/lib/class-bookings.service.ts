@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireFunctions } from '@angular/fire/functions';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -14,8 +14,8 @@ import {
 } from '@swagex/shared-models';
 import { nextDay, WindowRefService } from '@swagex/utils';
 import { StripeService } from 'ngx-stripe';
-import { from, iif, Observable, of } from 'rxjs';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { from, Observable, of } from 'rxjs';
+import { map, switchMap, take, tap } from 'rxjs/operators';
 import { DanceClassesService } from './dance-classes.service';
 import { BookingDB } from './db-model';
 
@@ -38,7 +38,6 @@ export class ClassBookingsService implements DanceClassBookingsApi {
    * Gets bookings from DB
    **/
   getBookings(classId: string): Observable<AdminViewBooking[]> {
-    console.log(classId);
     return this.db
       .collection<AdminViewBooking>('bookings', ref =>
         ref
@@ -259,12 +258,13 @@ export class ClassBookingsService implements DanceClassBookingsApi {
       stripeSessionId = ''
     }: BookingData
   ): Observable<NewBookingPayload> {
-    console.log('getNewBookingPayload', danceClassId);
     return this.danceClassService.getClass(danceClassId).pipe(
+      take(1),
       map(danceClass => {
         const danceClassDate = nextDay(danceClass.weekday, danceClass.time);
         const booking: NewBookingPayload = {
           canceled: false,
+          archived: false,
           danceClassDate,
           danceClassId,
           danceClassTime: danceClass.timeDisplay,
