@@ -34,6 +34,7 @@ export class ClassBookingsService implements DanceClassBookingsApi {
     @Inject('environment') private environment: any
   ) {}
 
+
   /**
    * Gets bookings from DB
    **/

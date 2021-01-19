@@ -38,7 +38,8 @@
       "@swagex/eys-dance-studio-web": [
         "libs/eys-dance-studio-web/src/index.ts"
       ],
-      "@swagex/admin": ["libs/admin/src/index.ts"]
+      "@swagex/admin": ["libs/admin/src/index.ts"],
+      "@swagex/space-picker": ["libs/space-picker/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

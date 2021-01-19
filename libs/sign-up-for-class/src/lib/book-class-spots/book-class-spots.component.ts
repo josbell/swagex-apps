@@ -1,24 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
 import { ActivatedRoute } from '@angular/router';
-import {
-  BookedClassPayload,
-  DanceClass,
-  DanceClassBookingsApi,
-  DanceClassStoreApi
-} from '@swagex/shared-models';
-import { first, map, switchMap } from 'rxjs/operators';
-
-import { AppDateAdapter, APP_DATE_FORMATS } from '../format-date-picker';
-import { DanceClassService } from '../dance-class.service';
+import { Subject } from 'rxjs';
+import { switchMap, takeUntil } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
+
 import {
   StudentFormComponent,
   StudentFormPayload
 } from '@swagex/common-ui/web-components';
+import {
+  DanceClass,
+  DanceClassBookingsApi,
+  DanceClassStoreApi
+} from '@swagex/shared-models';
+
 import { nextDay } from '@swagex/utils';
-import { StickyStyler } from '@angular/cdk/table';
+import { AppDateAdapter, APP_DATE_FORMATS } from '../format-date-picker';
+import { DanceClassService } from '../dance-class.service';
 
 @Component({
   selector: 'swagex-book-class-spots',
@@ -29,13 +29,14 @@ import { StickyStyler } from '@angular/cdk/table';
     { provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS }
   ]
 })
-export class BookClassSpotsComponent implements OnInit {
+export class BookClassSpotsComponent implements OnInit, OnDestroy {
   danceClass: DanceClass;
   nextClassDate: string;
   allowChangeDatesAndNumberOfGuests: boolean = false;
   numberOfGuestsOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   selected = 1;
   selectedSpace: string;
+  unsubscribe: Subject<void> = new Subject();
 
   initialDate = new FormControl(new Date());
 
@@ -50,7 +51,8 @@ export class BookClassSpotsComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap
       .pipe(
-        switchMap(params => this.danceClassStore.getClass(params.get('id')))
+        switchMap(params => this.danceClassStore.getClass(params.get('id'))),
+        takeUntil(this.unsubscribe)
       )
       .subscribe(danceClass => {
         this.danceClass = danceClass;
@@ -58,10 +60,6 @@ export class BookClassSpotsComponent implements OnInit {
         this.nextClassDate = classDate;
       });
   }
-
-  previousDate() {}
-
-  nextDate() {}
 
   onSpaceSelection(spaceNumber: string): void {
     this.selectedSpace = spaceNumber;
@@ -88,5 +86,9 @@ export class BookClassSpotsComponent implements OnInit {
         this.bookingService.bookClassWithCreditCardPayment(bookingInfo, id);
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe.next();
   }
 }

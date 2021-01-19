@@ -1,0 +1,38 @@
+<mat-card
+  fxLayout="column"
+  fxLayout.gt-xs="row"
+  fxLayoutAlign="space-between start"
+  fxLayoutAlign.gt-xs="space-around center"
+>
+  <h3 class="mobile-class-title" fxShow fxHide.gt-xs>
+    {{ title }}
+  </h3>
+
+  <mat-list class="first-info-column" fxHide fxShow.gt-xs>
+    <mat-list-item>
+      <mat-icon mat-list-icon color="primary">groups</mat-icon>
+      <h5 matLine><b>Class</b></h5>
+      <p matLine>{{ title }}</p>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-icon mat-list-icon color="primary">person</mat-icon>
+      <h5 matLine><b>Instructor</b></h5>
+      <p matLine>{{ instructor }}</p>
+    </mat-list-item>
+  </mat-list>
+
+  <mat-list class="second-info-column">
+    <mat-list-item>
+      <mat-icon mat-list-icon color="primary">access_time</mat-icon>
+      <h5 matLine><b>When</b></h5>
+      <p matLine>{{ nextClassDate }}</p>
+      <p matLine>{{ timeDisplay }}</p>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-icon mat-list-icon color="primary">location_on</mat-icon>
+      <h5 matLine><b>Where</b></h5>
+      <p matLine>7640 NW 25th ST #110</p>
+      <p matLine>Miami, Florida 33122</p>
+    </mat-list-item>
+  </mat-list>
+</mat-card>

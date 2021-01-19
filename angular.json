@@ -815,6 +815,38 @@
           "style": "scss"
         }
       }
+    },
+    "space-picker": {
+      "projectType": "library",
+      "root": "libs/space-picker",
+      "sourceRoot": "libs/space-picker/src",
+      "prefix": "swagex",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/space-picker/tsconfig.lib.json",
+              "libs/space-picker/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/space-picker/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/space-picker/jest.config.js",
+            "tsConfig": "libs/space-picker/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/space-picker/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {
