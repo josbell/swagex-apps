@@ -1,0 +1,10 @@
+@import 'theme_variables';
+@import 'variables';
+
+
+mat-card {
+  .mobile-class-title {
+    margin-left: 20px;
+    color: $accent;
+  }
+}

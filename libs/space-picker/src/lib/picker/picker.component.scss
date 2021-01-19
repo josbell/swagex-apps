@@ -1,0 +1,60 @@
+@import 'theme_variables';
+@import 'variables';
+
+::ng-deep .mat-tooltip {
+  font-size: 20px;
+}
+
+.instructions {
+  margin: 15px;
+  button {
+    margin-left: 5px;
+  }
+}
+
+#mirror {
+  margin: 20px auto;
+  text-align: center;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+#teacher-space {
+  text-align: center;
+}
+
+.floor-spots-container {
+  height: 40vh;
+}
+
+.row-web {
+  & .mat-icon {
+    font-size: 60px;
+    height: 60px;
+    width: 60px;
+  }
+  button {
+    &:hover:enabled {
+      background-color: $primary;
+      span {
+        font-size: x-large;
+        color: white;
+      }
+    }
+  }
+}
+
+#row-1-mobile {
+  .mat-icon {
+    &.instructor-icon {
+      font-size: 40px;
+      height: 40px;
+      width: 40px;
+    }
+  }
+}
+
+.footer {
+  margin-top: 30px;
+}

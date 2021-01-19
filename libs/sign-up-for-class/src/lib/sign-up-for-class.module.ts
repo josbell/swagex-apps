@@ -6,8 +6,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { CommonUiMaterialModule } from '@swagex/common-ui/material';
 import { CommonUiWebComponentsModule } from '@swagex/common-ui/web-components';
 import { PaymentModule } from '@swagex/payment';
+import { SpacePickerModule } from '@swagex/space-picker';
 
-import { FloorSpotSelectionComponent } from './floor-spot-selection/floor-spot-selection.component';
 import { SignUpForClassComponent } from './sign-up-for-class/sign-up-for-class.component';
 import { BookClassSpotsComponent } from './book-class-spots/book-class-spots.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -31,14 +31,10 @@ export const MY_FORMATS = {
     CommonUiMaterialModule,
     FlexLayoutModule,
     CommonUiWebComponentsModule,
-    PaymentModule
+    PaymentModule,
+    SpacePickerModule
   ],
-  declarations: [
-    FloorSpotSelectionComponent,
-    SignUpForClassComponent,
-    FloorSpotSelectionComponent,
-    BookClassSpotsComponent
-  ],
+  declarations: [SignUpForClassComponent, BookClassSpotsComponent],
   providers: [MatDatepickerModule],
   exports: [SignUpForClassComponent, BookClassSpotsComponent]
 })
