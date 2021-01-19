@@ -43,6 +43,7 @@ export class ClassBookingsService implements DanceClassBookingsApi {
         ref
           .where('danceClassId', '==', classId)
           .where('canceled', '==', false)
+          .where('archived', '==', false)
           .orderBy('spaceNumber')
       )
       .valueChanges({ idField: 'id' });
