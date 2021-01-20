@@ -1,46 +1,35 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
+
 import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { switchMap, takeUntil } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 
-import {
-  StudentFormComponent,
-  StudentFormPayload
-} from '@swagex/common-ui/web-components';
+import { nextDay } from '@swagex/utils';
 import {
   DanceClass,
   DanceClassBookingsApi,
   DanceClassStoreApi
 } from '@swagex/shared-models';
-
-import { nextDay } from '@swagex/utils';
-import { AppDateAdapter, APP_DATE_FORMATS } from '../format-date-picker';
-import { DanceClassService } from '../dance-class.service';
+import {
+  StudentFormComponent,
+  StudentFormPayload
+} from '@swagex/common-ui/web-components';
 
 @Component({
-  selector: 'swagex-book-class-spots',
-  templateUrl: './book-class-spots.component.html',
-  styleUrls: ['./book-class-spots.component.scss'],
-  providers: [
-    { provide: DateAdapter, useClass: AppDateAdapter },
-    { provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS }
-  ]
+  selector: 'swagex-space-picker-container',
+  templateUrl: './space-picker-container.component.html',
+  styleUrls: ['./space-picker-container.component.scss']
 })
-export class BookClassSpotsComponent implements OnInit, OnDestroy {
+export class SpacePickerContainerComponent implements OnInit, OnDestroy {
   danceClass: DanceClass;
   nextClassDate: string;
   selectedSpace: string;
   unsubscribe: Subject<void> = new Subject();
 
-  initialDate = new FormControl(new Date());
-
   constructor(
     private route: ActivatedRoute,
     public danceClassStore: DanceClassStoreApi,
-    public danceClassService: DanceClassService,
     public bookingService: DanceClassBookingsApi,
     public dialog: MatDialog
   ) {}

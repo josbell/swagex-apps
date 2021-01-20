@@ -2,7 +2,6 @@ import { Observable } from 'rxjs';
 import {
   AdminViewBooking,
   DanceClass,
-  NewBookingPayload,
   PersonalDetails
 } from './dance-class.model';
 export abstract class DanceClassStoreApi {

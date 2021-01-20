@@ -1,14 +1,14 @@
 import { async, TestBed } from '@angular/core/testing';
-import { SignUpForClassModule } from './sign-up-for-class.module';
+import { BookClassModule } from './book-class.module';
 
-describe('SignUpForClassModule', () => {
+describe('BookClassModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [SignUpForClassModule]
+      imports: [BookClassModule]
     }).compileComponents();
   }));
 
   it('should create', () => {
-    expect(SignUpForClassModule).toBeDefined();
+    expect(BookClassModule).toBeDefined();
   });
 });

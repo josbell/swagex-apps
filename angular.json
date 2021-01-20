@@ -860,6 +860,38 @@
           "style": "scss"
         }
       }
+    },
+    "book-class": {
+      "projectType": "library",
+      "root": "libs/book-class",
+      "sourceRoot": "libs/book-class/src",
+      "prefix": "swagex",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/book-class/tsconfig.lib.json",
+              "libs/book-class/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/book-class/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/book-class/jest.config.js",
+            "tsConfig": "libs/book-class/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/book-class/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

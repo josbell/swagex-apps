@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BookClassSpotsComponent } from './book-class-spots.component';
+import { ListContainerComponent } from './list-container.component';
 
-describe('BookClassSpotsComponent', () => {
-  let component: BookClassSpotsComponent;
-  let fixture: ComponentFixture<BookClassSpotsComponent>;
+describe('ListContainerComponent', () => {
+  let component: ListContainerComponent;
+  let fixture: ComponentFixture<ListContainerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BookClassSpotsComponent ]
+      declarations: [ ListContainerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BookClassSpotsComponent);
+    fixture = TestBed.createComponent(ListContainerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

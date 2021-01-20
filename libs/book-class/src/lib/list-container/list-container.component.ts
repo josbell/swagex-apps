@@ -1,21 +1,20 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DanceClassStoreApi } from '@swagex/shared-models';
+
 @Component({
-  selector: 'swagex-sign-up-for-class',
-  templateUrl: './sign-up-for-class.component.html',
-  styleUrls: ['./sign-up-for-class.component.scss']
+  selector: 'swagex-list-container',
+  templateUrl: './list-container.component.html',
+  styleUrls: ['./list-container.component.scss']
 })
-export class SignUpForClassComponent implements OnInit, OnDestroy {
+export class ListContainerComponent implements OnDestroy {
   private _unsubscribe: Subject<void> = new Subject();
   constructor(
     private router: Router,
     public route: ActivatedRoute,
     public classStoreService: DanceClassStoreApi
   ) {}
-
-  ngOnInit(): void {}
 
   bookClicked({ id }): void {
     this.router.navigate([id, 'book'], { relativeTo: this.route });

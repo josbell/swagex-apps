@@ -1,7 +1,7 @@
 module.exports = {
-  name: 'sign-up-for-class',
+  name: 'book-class',
   preset: '../../jest.config.js',
-  coverageDirectory: '../../coverage/libs/sign-up-for-class',
+  coverageDirectory: '../../coverage/libs/book-class',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',
