@@ -32,9 +32,6 @@ import { DanceClassService } from '../dance-class.service';
 export class BookClassSpotsComponent implements OnInit, OnDestroy {
   danceClass: DanceClass;
   nextClassDate: string;
-  allowChangeDatesAndNumberOfGuests: boolean = false;
-  numberOfGuestsOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  selected = 1;
   selectedSpace: string;
   unsubscribe: Subject<void> = new Subject();
 
