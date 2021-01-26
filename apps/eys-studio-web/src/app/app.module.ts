@@ -8,10 +8,10 @@ import {
   EysDanceStudioWebModule,
   DanceClassesService,
   UserService,
-  ClassBookingsService
+  ClassBookingsService,
+  ApiService
 } from '@swagex/eys-dance-studio-web';
 import { CommonUiMaterialLayoutWebModule } from '@swagex/common-ui/material-layout-web';
-import { SignUpForClassModule } from '@swagex/sign-up-for-class';
 import { PaymentModule } from '@swagex/payment';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,11 +22,14 @@ import { AngularFireFunctionsModule } from '@angular/fire/functions';
 
 import {
   DanceClassStoreApi,
-  DanceClassBookingsApi,
-  UserApi
+  UserApi,
+  BookingServiceApi,
+  HttpsApi,
+  BookingStoreApi
 } from '@swagex/shared-models';
 import { WindowRefService } from '@swagex/utils';
 import { AdminModule } from '@swagex/admin';
+import { BookingStoreService } from 'libs/eys-dance-studio-web/src/lib/stores/booking-store.service';
 
 export function windowFactory(): Window {
   return window;
@@ -41,7 +44,6 @@ export function windowFactory(): Window {
     CommonUiMaterialLayoutWebModule,
     EysDanceStudioWebModule,
     LatinSwagStudioWebHomeModule,
-    SignUpForClassModule,
     PaymentModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
@@ -50,9 +52,11 @@ export function windowFactory(): Window {
   ],
   providers: [
     { provide: DanceClassStoreApi, useExisting: DanceClassesService },
-    { provide: DanceClassBookingsApi, useExisting: ClassBookingsService },
+    { provide: BookingStoreApi, useExisting: BookingStoreService },
+    { provide: BookingServiceApi, useExisting: ClassBookingsService },
     { provide: UserApi, useExisting: UserService },
     { provide: 'environment', useValue: environment },
+    { provide: HttpsApi, useExisting: ApiService },
     WindowRefService
   ],
   bootstrap: [AppComponent]

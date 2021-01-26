@@ -17,12 +17,6 @@ export interface Spaces {
   [key: string]: boolean;
 }
 
-export interface AdminViewBooking extends PersonalDetails {
-  created: Date;
-  paymentMethod: string;
-  spaceNumber: string;
-}
-
 export interface BookedSpace {
   spaceNumber: number;
   booking: string;
@@ -34,24 +28,4 @@ export interface PersonalDetails {
   lastName: string;
   email?: string;
   phone?: string;
-}
-
-export interface NewBookingPayload {
-  canceled: boolean;
-  archived: boolean;
-  danceClassDate: string;
-  danceClassId: string;
-  danceClassTime: string;
-  danceClassTitle: string;
-  email: string;
-  firstName: string;
-  lastName?: string;
-  paymentMethod: string;
-  spaceNumber: string;
-  stripeCustomerId?: string;
-  stripeSessionId?: string;
-}
-
-export interface Booking extends NewBookingPayload {
-  id: string;
 }

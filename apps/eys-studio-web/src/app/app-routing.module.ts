@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { PaymentSucceededComponent } from 'libs/payment/src/lib/payment-succeeded/payment-succeeded.component';
 import { LandingPageComponent } from 'libs/eys-dance-studio-web/src/lib/landing-page/landing-page.component';
 import { AuthGuard } from '@swagex/users';
@@ -27,7 +27,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

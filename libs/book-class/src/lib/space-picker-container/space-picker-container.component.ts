@@ -8,7 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { nextDay } from '@swagex/utils';
 import {
   DanceClass,
-  DanceClassBookingsApi,
+  BookingServiceApi,
   DanceClassStoreApi
 } from '@swagex/shared-models';
 import {
@@ -30,7 +30,7 @@ export class SpacePickerContainerComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     public danceClassStore: DanceClassStoreApi,
-    public bookingService: DanceClassBookingsApi,
+    public bookingService: BookingServiceApi,
     public dialog: MatDialog
   ) {}
 
@@ -56,22 +56,25 @@ export class SpacePickerContainerComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(StudentFormComponent, {
       width: '600px'
     });
-    dialogRef.afterClosed().subscribe((bookingPayload: StudentFormPayload) => {
-      const { hasSubscription, ...rest } = bookingPayload;
-      const paymentMethod = hasSubscription ? 'Subscription' : 'Credit Card';
-      const bookingInfo = {
-        ...rest,
-        paymentMethod,
-        spaceNumber: this.selectedSpace
-      };
+    dialogRef
+      .afterClosed()
+      .pipe(takeUntil(this.unsubscribe))
+      .subscribe((bookingPayload: StudentFormPayload) => {
+        const { hasSubscription, ...rest } = bookingPayload;
+        const paymentMethod = hasSubscription ? 'Subscription' : 'Credit Card';
+        const bookingInfo = {
+          ...rest,
+          paymentMethod,
+          spaceNumber: this.selectedSpace,
+          id: this.danceClass
+        };
 
-      const { id } = this.danceClass;
-      if (hasSubscription) {
-        this.bookingService.bookClassWithSubscription(bookingInfo, id);
-      } else {
-        this.bookingService.bookClassWithCreditCardPayment(bookingInfo, id);
-      }
-    });
+        if (hasSubscription) {
+          this.bookingService.bookClassWithSubscription(bookingInfo);
+        } else {
+          this.bookingService.bookClassWithCreditCardPayment(bookingInfo);
+        }
+      });
   }
 
   ngOnDestroy() {

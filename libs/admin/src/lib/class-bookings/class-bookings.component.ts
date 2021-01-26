@@ -1,23 +1,13 @@
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger
-} from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import {
-  AdminViewBooking,
-  DanceClassBookingsApi,
-  BookingData
-} from '@swagex/shared-models';
-import { filter, map, switchMap, tap } from 'rxjs/operators';
+import { Booking, BookingData, BookingStoreApi } from '@swagex/shared-models';
+import { filter, map, switchMap, takeUntil, tap } from 'rxjs/operators';
 import {
   StudentFormComponent,
   StudentFormPayload
 } from '@swagex/common-ui/web-components';
+import { Subject } from 'rxjs';
 
 interface BookingRow {
   spaceNumber: string;
@@ -29,28 +19,19 @@ interface BookingRow {
 @Component({
   selector: 'swagex-class-bookings',
   templateUrl: './class-bookings.component.html',
-  styleUrls: ['./class-bookings.component.scss'],
-  animations: [
-    trigger('detailExpand', [
-      state('collapsed', style({ height: '0px', minHeight: '0' })),
-      state('expanded', style({ height: '*' })),
-      transition(
-        'expanded <=> collapsed',
-        animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')
-      )
-    ])
-  ]
+  styleUrls: ['./class-bookings.component.scss']
 })
-export class ClassBookingsComponent implements OnInit {
+export class ClassBookingsComponent implements OnInit, OnDestroy {
+  private unsubscribe: Subject<void> = new Subject();
   classId: string;
-  bookings: AdminViewBooking[];
+  bookings: Booking[];
   rowsData: BookingRow[];
   expandedElement: BookingRow | null;
   columnsToDisplay = ['spaceNumber', 'name', 'paymentMethod', 'email', 'star'];
 
   constructor(
     private route: ActivatedRoute,
-    private bookingsApi: DanceClassBookingsApi,
+    private bookingStore: BookingStoreApi,
     public dialog: MatDialog
   ) {}
 
@@ -58,7 +39,8 @@ export class ClassBookingsComponent implements OnInit {
     this.route.paramMap
       .pipe(
         tap(params => (this.classId = params.get('id'))),
-        switchMap(params => this.bookingsApi.getBookings(params.get('id')))
+        switchMap(params => this.bookingStore.getBookings(params.get('id'))),
+        takeUntil(this.unsubscribe)
       )
       .subscribe(bookings => {
         this.bookings = bookings;
@@ -126,17 +108,16 @@ export class ClassBookingsComponent implements OnInit {
               stripeCustomerId: '',
               stripeSessionId: ''
             };
-            return this.bookingsApi.replaceBooking(booking, newBooking);
+            return this.bookingStore.replaceBooking(booking, newBooking);
           } else {
-            return this.bookingsApi.addBookingToDB(
-              {
-                ...bookingData,
-                spaceNumber
-              },
-              this.classId
-            );
+            return this.bookingStore.add({
+              ...bookingData,
+              spaceNumber,
+              danceClassId: this.classId
+            });
           }
-        })
+        }),
+        takeUntil(this.unsubscribe)
       )
       .subscribe();
   }
@@ -145,7 +126,10 @@ export class ClassBookingsComponent implements OnInit {
     const booking = this.bookings.find(
       booking => booking.spaceNumber === spaceNumber
     );
-    this.bookingsApi.cancelBooking(booking).subscribe();
+    this.bookingStore
+      .cancelBooking(booking)
+      .pipe(takeUntil(this.unsubscribe))
+      .subscribe();
   }
 
   private generateEmptySpace(): BookingRow {
@@ -155,5 +139,9 @@ export class ClassBookingsComponent implements OnInit {
       paymentMethod: '',
       email: ''
     };
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe.next();
   }
 }
