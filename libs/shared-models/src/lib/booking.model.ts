@@ -1,26 +1,23 @@
 import { PersonalDetails } from './dance-class.model';
 
-export interface NewBookingPayload {
+export interface NewBookingPayload extends PersonalDetails {
   canceled: boolean;
   archived: boolean;
   danceClassDate: string;
   danceClassId: string;
   danceClassTime: string;
   danceClassTitle: string;
-  email: string;
-  firstName: string;
-  lastName?: string;
   paymentMethod: string;
   spaceNumber: string;
   stripeCustomerId?: string;
   stripeSessionId?: string;
 }
 export interface BookingData extends PersonalDetails {
-  paymentMethod;
-  spaceNumber;
-  stripeCustomerId?;
-  stripeSessionId?;
-  danceClassId?;
+  danceClassId: string;
+  paymentMethod: string;
+  spaceNumber: string;
+  stripeCustomerId?: string;
+  stripeSessionId?: string;
 }
 export interface Booking extends NewBookingPayload {
   id: string;

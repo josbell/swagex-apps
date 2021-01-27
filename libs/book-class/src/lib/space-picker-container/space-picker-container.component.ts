@@ -9,7 +9,8 @@ import { nextDay } from '@swagex/utils';
 import {
   DanceClass,
   BookingServiceApi,
-  DanceClassStoreApi
+  DanceClassStoreApi,
+  BookingData
 } from '@swagex/shared-models';
 import {
   StudentFormComponent,
@@ -62,11 +63,11 @@ export class SpacePickerContainerComponent implements OnInit, OnDestroy {
       .subscribe((bookingPayload: StudentFormPayload) => {
         const { hasSubscription, ...rest } = bookingPayload;
         const paymentMethod = hasSubscription ? 'Subscription' : 'Credit Card';
-        const bookingInfo = {
+        const bookingInfo: BookingData = {
           ...rest,
           paymentMethod,
           spaceNumber: this.selectedSpace,
-          id: this.danceClass
+          danceClassId: this.danceClass.id
         };
 
         if (hasSubscription) {

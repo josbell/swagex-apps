@@ -98,14 +98,16 @@ export class ClassBookingsService implements BookingServiceApi {
     const productImage = `${this.environment.webAppUrl}/assets/images/dance-classes/${data.danceClassId}.jpg`;
     const description = `${data.danceClassDate}, ${data.danceClassTime} - Space Number: ${data.spaceNumber}`;
 
-    const lineItems: LineItem = {
-      name: data.danceClassTitle,
-      amount: 1500,
-      currency: 'usd',
-      quantity: 1,
-      images: [productImage],
-      ...(!!description && { description })
-    };
+    const lineItems: LineItem[] = [
+      {
+        name: data.danceClassTitle,
+        amount: 1500,
+        currency: 'usd',
+        quantity: 1,
+        images: [productImage],
+        ...(!!description && { description })
+      }
+    ];
     return this.api.createSession({
       lineItems,
       successRoute,

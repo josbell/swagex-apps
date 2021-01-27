@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BookingData, NewBookingPayload } from '@swagex/shared-models';
 import { nextDay } from '@swagex/utils';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { DanceClassesService } from './stores/dance-classes.service';
 
@@ -44,6 +44,8 @@ export class BookingPayloadAdapterService {
           return booking;
         })
       );
+    } else {
+      return throwError(new Error('danceClass id missing'));
     }
   }
 }

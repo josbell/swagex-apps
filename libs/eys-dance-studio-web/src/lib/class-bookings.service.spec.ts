@@ -1,8 +1,15 @@
 import { NewBookingPayload } from '@swagex/shared-models';
-import { MockClass } from '@swagex/utils';
 
 import { ClassBookingsService } from './class-bookings.service';
 import { BookingStoreService } from './stores/booking-store.service';
+
+export type StrictMockClass<actualClass> = {
+  [K in keyof actualClass]: actualClass[K] extends (...args: infer A) => infer B
+    ? actualClass[K] & jest.Mock<B, A>
+    : actualClass[K];
+};
+
+export type MockClass<actualClass> = Partial<StrictMockClass<actualClass>>;
 
 describe('ClassBookingsService', () => {
   let service: ClassBookingsService;

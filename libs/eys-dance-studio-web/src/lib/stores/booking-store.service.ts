@@ -8,7 +8,7 @@ import {
   isNewBookingPayload
 } from '@swagex/shared-models';
 import { from, Observable, of } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import { BookingPayloadAdapterService } from '../booking-payload-adapter.service';
 /**
  * DB abstraction for Bookings resource
