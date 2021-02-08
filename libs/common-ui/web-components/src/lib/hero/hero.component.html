@@ -4,11 +4,11 @@
   [ngClass.lg]="'large'"
 >
   <video
-    *ngIf="videoUrl"
+    *ngIf="videoUrl && !isInMobileLowPowerMode"
     id="hero-video"
     playsinline
     autoplay
-    [muted]="true"
+    muted
     loop
   >
     <source src="{{ videoUrl }}" type="video/mp4" />

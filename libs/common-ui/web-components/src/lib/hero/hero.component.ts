@@ -2,7 +2,8 @@ import {
   Component,
   OnInit,
   ChangeDetectionStrategy,
-  Input
+  Input,
+  HostListener
 } from '@angular/core';
 
 @Component({
@@ -12,8 +13,11 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeroComponent implements OnInit {
+  isInMobileLowPowerMode = false;
   @Input() videoUrl?: string;
-
+  @HostListener('suspend') onIosLowPowerMode() {
+    this.isInMobileLowPowerMode = true;
+  }
   constructor() {}
 
   ngOnInit(): void {}
