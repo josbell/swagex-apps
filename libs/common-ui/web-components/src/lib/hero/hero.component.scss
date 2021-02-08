@@ -1,7 +1,5 @@
-$hero-height: 65vh;
-
-:host {
-  height: $hero-height;
+section {
+  height: 65vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,6 +13,18 @@ $hero-height: 65vh;
   }
   .hero-text {
     z-index: 2;
+  }
+
+  &.small {
+    height: 25vh;
+  }
+
+  &.medium {
+    height: 40vh;
+  }
+
+  &.large {
+    height: 45vh;
   }
 }
 

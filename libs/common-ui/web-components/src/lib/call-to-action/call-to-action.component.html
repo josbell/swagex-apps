@@ -1,4 +1,12 @@
-<section fxLayout="column" fxLayoutAlign="center center" class="welcome-offer">
+<section
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  class="welcome-offer"
+  [ngClass.lt-md]="'small'"
+  [ngClass.md]="'medium'"
+  [ngClass.lg]="'large'"
+  [ngClass.xl]="'xlarge'"
+>
   <h1 class="mat-headline">Welcome New Students!</h1>
   <h2 class="mat-subheading-2">
     Sign up now for one of our weekly classes
