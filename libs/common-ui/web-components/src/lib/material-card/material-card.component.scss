@@ -5,6 +5,10 @@
   img {
     height: 360px;
     object-fit: cover;
+
+    & .ng-lazyloading {
+      filter: blur(25px);
+    }
   }
 
   mat-card-content {
