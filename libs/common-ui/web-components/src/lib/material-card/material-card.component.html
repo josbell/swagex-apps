@@ -1,5 +1,11 @@
 <mat-card class="p-0 m-0">
-  <img mat-card-image loading="lazy" [src]="imageUrl" [alt]="alt" />
+  <img
+    mat-card-image
+    loading="lazy"
+    [defaultImage]="defaultImageUrl"
+    [lazyLoad]="imageUrl"
+    [alt]="alt"
+  />
   <mat-card-content>
     <h5>
       <strong

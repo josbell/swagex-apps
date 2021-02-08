@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CommonUiMaterialModule } from '@swagex/common-ui/material';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 import { HeroComponent } from './hero/hero.component';
 import { ReviewsComponent } from './reviews/reviews.component';
@@ -21,7 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonUiMaterialModule,
     NguCarouselModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    LazyLoadImageModule
   ],
   declarations: [
     HeroComponent,

@@ -17,6 +17,7 @@ export class MaterialCardComponent {
   @Input() title?: string;
   @Input() subtitle?: string;
   @Input() imageUrl?: string;
+  @Input() defaultImageUrl?: string;
   @Input() alt?: string;
   @Input() description?: string;
   @Input() actionButtons: ActionButton[];
