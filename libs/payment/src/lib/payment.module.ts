@@ -13,7 +13,7 @@ import { WindowRefService } from '@swagex/utils';
   imports: [
     CommonModule,
     NgxStripeModule.forRoot(
-      'pk_test_51HIOJICcgFukbIK99fietHHQS3EfF7UFcon9wBN8njSiz45HUn7eciz0msHeyF3QMPcJQVnmFz1U0pbYsVPZqfaV00e3S2WLC9'
+      'pk_live_51HIOJICcgFukbIK9AVTWGqYexU5qY5EQfDomBZ2eGw9Y4Cbd7tPGdjZfWcTuJZ7McydPkMo7E1vX4T3XI1pKTsYw00ovI0np3z'
     ),
     FormsModule,
     ReactiveFormsModule,
