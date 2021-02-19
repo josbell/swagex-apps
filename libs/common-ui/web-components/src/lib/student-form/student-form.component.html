@@ -37,10 +37,6 @@
       />
       <mat-error *ngIf="email.invalid">{{ getEmailErrorMessage() }}</mat-error>
     </mat-form-field>
-
-    <mat-checkbox formControlName="hasSubscription"
-      >Reserve space with subscription</mat-checkbox
-    >
   </mat-dialog-content>
   <mat-dialog-actions align="end">
     <button mat-button type="reset" (click)="cancel()">Cancel</button>

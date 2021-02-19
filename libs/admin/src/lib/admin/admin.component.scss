@@ -1,8 +1,11 @@
-@import "theme_variables";
-@import "variables";
+@import 'theme_variables';
+@import 'variables';
 
 :host {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  h1 {
+    margin: 40px auto 0px auto;
+  }
 }

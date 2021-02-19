@@ -10,12 +10,16 @@
     top: 0;
   }
   .mat-sidenav {
-    min-width: 150px;
+    width: 60%;
+    height: 100%;
     .auth-container {
       padding: 8px 15px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      button {
+        padding-left: 0;
+        margin-left: 20px;
+      }
     }
   }
 }

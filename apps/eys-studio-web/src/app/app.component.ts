@@ -17,6 +17,7 @@ export class AppComponent {
       title: this.title,
       toolbarColor: '#fff',
       menuItems: [
+        { text: 'Home', route: '/home', icon: 'home' },
         { text: 'Classes', route: '/classes', icon: 'group' },
         {
           text: 'Admin',

@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  webAppUrl: 'https://eys-dance-studio.web.app',
+  webAppUrl: 'https://eysdancestudio.com',
   firebase: {
     apiKey: 'AIzaSyDF-MjXM0k_EAhNHLFkneshtU0qTQnR5Gk',
     authDomain: 'eys-dance-studio.firebaseapp.com',
